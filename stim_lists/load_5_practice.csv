@@ -1,0 +1,6 @@
+block_number,stimulus_seq,trial_seq,trial_number,trial_type,stimulus_type,image_v1,image_v2,hue_v1,hue_prom_v1,hue_v2,hue_prom_v2
+7,321,1,65,ongoing,ongoing,ong_350.jpg,ong_351.jpg,-126,NA,107,NA
+7,322,2,65,ongoing,ongoing,ong_207.jpg,ong_064.jpg,156,NA,51,NA
+7,323,3,65,ongoing,ongoing,ong_277.jpg,ong_184.jpg,103,NA,-28,NA
+7,324,4,65,ongoing,ongoing,ong_185.jpg,ong_055.jpg,-38,NA,166,NA
+7,325,5,65,ongoing,ongoing,ong_072.jpg,ong_271.jpg,31,NA,-136,NA
