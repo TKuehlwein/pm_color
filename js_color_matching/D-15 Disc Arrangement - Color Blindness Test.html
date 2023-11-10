@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>D-15 Disc Arrangement - Color Blindness Test</title>
+
+    <script type="text/javascript" src="js/lib/prototype.js"></script>
+    <script type="text/javascript" src="js/lib/scriptaculous.js?load=effects,dragdrop"></script>    
+    <script type="text/javascript" src="js/lib/ondomready.js"></script>
+    <script type="text/javascript" src="js/lib/wz_jsgraphics.js"></script>
+    <script type="text/javascript" src="js/disc-arrangement.js"></script>
+    <script type="text/javascript" src="js/inertia.js"></script>
+
+    <link type="text/css" rel="StyleSheet" href="css/style.css" />
+    <link type="text/css" rel="StyleSheet" href="css/cnc.css" />
+    <link type="text/css" rel="StyleSheet" href="css/infobox.css" />
+</head>
+<body style="color: #333; font-size: 10pt; font-family: 'trebuchet ms', helvetica, sans-serif;">
+
+<div id="main_container">
+	<div id="title_frame">D-15 Disc Arrangement CVD Test</div>
+	<div id="d15_main">
+    <div id="droppable_container">
+      <div id="spotsline"><div id="spotsline_inner"></div></div>
+      
+      <div id="spot_pilot" class="droppable"></div>
+      <div id="disc_pilot" class="draggable" style="cursor: default;" title="Pilot Disc"></div>
+
+      <div id="spot1" class="droppable"></div>
+      <div id="spot2" class="droppable"></div>
+      <div id="spot3" class="droppable"></div>
+      <div id="spot4" class="droppable"></div>
+      <div id="spot5" class="droppable"></div>
+      <div id="spot6" class="droppable"></div>
+      <div id="spot7" class="droppable"></div>
+      <div id="spot8" class="droppable"></div>
+      <div id="spot9" class="droppable"></div>
+      <div id="spot10" class="droppable"></div>
+      <div id="spot11" class="droppable"></div>
+      <div id="spot12" class="droppable"></div>
+      <div id="spot13" class="droppable"></div>
+      <div id="spot14" class="droppable"></div>
+      <div id="spot15" class="droppable"></div>
+
+      <div id="disc1" class="draggable"></div>
+      <div id="disc2" class="draggable"></div>
+      <div id="disc3" class="draggable"></div>
+      <div id="disc4" class="draggable"></div>
+      <div id="disc5" class="draggable"></div>
+      <div id="disc6" class="draggable"></div>
+      <div id="disc7" class="draggable"></div>
+      <div id="disc8" class="draggable"></div>
+      <div id="disc9" class="draggable"></div>
+      <div id="disc10" class="draggable"></div>
+      <div id="disc11" class="draggable"></div>
+      <div id="disc12" class="draggable"></div>
+      <div id="disc13" class="draggable"></div>
+      <div id="disc14" class="draggable"></div>
+      <div id="disc15" class="draggable"></div>
+
+      <div id="resultform">
+      <form>
+        <input type="button" id="resultbutton" name="resultbutton" value="Show me my Results"/>
+      </form>
+      </div>
+    </div>
+    
+    <div id="graph_container" style="display: none;">
+      <div id="canvas">
+      </div>
+      <div id="graph_text">
+          The thick line describes your order of the test plates.
+          People with normal color vision order them in a circle (P, 1, 2, ..., 15).
+          Crossings indicate some form of color blindness. Paralleslism of 
+          crossings to a confusion line (protan, deutan, tritan) is a clue for the
+          type of your color blindness.
+      </div>
+      <div id="detailedresultform">
+      <form>
+        <input type="button" id="detailedresultbutton" name="detailedresultbutton" value="Give me more detailed Results"/>
+      </form>
+      </div>
+    </div>
+
+    <div id="result_container" style="display: none;">
+      <table width="100%">
+        <thead>
+          <tr>
+            <th>Angle</th>
+            <th>Major</th>
+            <th>Minor</th>
+            <th>TES</th>
+            <th>S-index</th>
+            <th>C-index</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span id="angle"></span></td>
+            <td><span id="major_radius"></span></td>
+            <td><span id="minor_radius"></span></td>
+            <td><span id="tes"></span></td>
+            <td><span id="s_index"></span></td>
+            <td><span id="c_index"></span></td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div id="eplanation_text">&nbsp;Find an explanation of the resultset and sample values to compare in the description below.</div>
+      
+      <div id="result_text">According to this test result you <span id="cvd_type"></span>.</div>
+      <div id="severity_box">
+        <div id="severity_box_inner">
+          <div id="severity_range"></div>
+          <div id="severity_text">severity</div>
+        </div>
+        <div id="severity_caption">
+          <div id="slightly_cb">slightly</div>
+          <div id="moderate_cb">moderate</div>
+          <div id="strong_cb">strong</div>
+        </div>
+      </div>
+      
+    </div>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+  Event.onReady(function() { var arrangement = new Arrangement(); } );
+</script>
+</body>
+</html>
