@@ -1,0 +1,995 @@
+{
+  "components": {
+    "230": {
+      "id": "230",
+      "type": "lab.html.Screen",
+      "files": [],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "responses": [
+        {
+          "label": "ArrowRight",
+          "event": "keydown",
+          "target": "",
+          "filter": "ArrowRight"
+        }
+      ],
+      "messageHandlers": [],
+      "title": "End of Questionnaire",
+      "content": "<header style=\"color: #DC143C;\">\r\n  <h2 id=\"head1\">Ende des Fragebogens </h2>\r\n</header>\r\n\r\n<main class=\"content-horizontal-center content-vertical-center\">\r\n  <section id=\"page1\" class=\"w-l text-justify\" style = font-size:20px>\r\n    <div style=\"text-align:center\">\r\n    <p>\tPrima, Sie haben den Fragebogen vollständig absolviert! <br> <br> \r\n    </div>\r\n    </p>\r\n  </section>\r\n</main>\r\n\r\n<footer >\r\n <table class=\"table-plain\" style = font-size:20px>\r\n    <tr>\r\n      <td id=\"bck\" style=\"visibility: hidden\">\r\n        Sobald Sie auf die <span style=\"color: #DC143C;\">rechte Pfeiltaste</span> <kbd>&rarr;</kbd> drücken, <br>\r\n          geht es weiter.\r\n      </td>\r\n      <td id=\"done\" style=\"visibility: hidden\">\r\n        Sobald Sie auf die <span style=\"color: #DC143C;\">rechte Pfeiltaste</span> <kbd>&rarr;</kbd> drücken, <br>\r\n          geht es weiter.                        \r\n      </td>\r\n      <td id=\"fwd\">\r\n         Sobald Sie auf die <span style=\"color: #DC143C;\">rechte Pfeiltaste</span> <kbd>&rarr;</kbd> drücken, <br>\r\n          geht es weiter.\r\n      </td>\r\n    </tr>\r\n  </table>\r\n</footer>",
+      "_tab": "Content",
+      "scrollTop": true
+    },
+    "2421": {
+      "id": "2421",
+      "type": "lab.flow.Sequence",
+      "children": [
+        "2423",
+        "2434",
+        "230"
+      ],
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "run",
+          "code": "document.body.style.cursor = ''"
+        }
+      ],
+      "title": "DorsalVentral",
+      "_collapsed": false,
+      "_tab": "Behavior",
+      "skip": false
+    },
+    "2423": {
+      "id": "2423",
+      "type": "lab.html.Screen",
+      "files": [],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "before:prepare",
+          "code": "let done = false // is it the last screen?\r\n\r\nconst setVisibility = (selector, isVisible) => {\r\n  // Extract the content from the current element\r\n  const target = this.options.el.querySelector(selector)\r\n\r\n  target.style.visibility = isVisible ? 'visible' : 'hidden'\r\n}\r\n\r\nconst moveForth = (selector) => {\r\n  const target = this.options.el.querySelector(selector)\r\n  if(target.nextElementSibling){\r\n    target.classList.add(\"hidden\"); // hide current screen\r\n    target.nextElementSibling.classList.remove(\"hidden\"); //show next screen\r\n    \r\n    setVisibility('#bck', true) // make sure that 'back' button is visible\r\n\r\n    if(!target.nextElementSibling.nextElementSibling){ // if the end is reached\r\n      setVisibility('#fwd', false) // hide the forward button\r\n      setVisibility('#done', true) // show the end button\r\n      done = true\r\n    }\r\n  }\r\n}\r\n\r\nconst moveBack = (selector) => {\r\n  target = this.options.el.querySelector(selector);\r\n  if(target.previousElementSibling){ //.innerHTML !== undefined\r\n    target.classList.add(\"hidden\");  // hide current screen\r\n    target.previousElementSibling.classList.remove(\"hidden\"); // show previous screen\r\n\r\n    setVisibility('#fwd', true) // make sure that 'forward' button is visible\r\n    setVisibility('#done', false) // hide the 'done' button\r\n    done = false\r\n\r\n    if(!target.previousElementSibling.previousElementSibling){ // if the beginning is reached\r\n      setVisibility('#bck', false) // hide the back button\r\n    }\r\n  } \r\n}\r\n\r\nthis.options.events['keydown(ArrowRight)'] = function(){\r\n  moveForth(\"section[id^='page']:not(.hidden)\")\r\n  moveForth(\"h2[id^='head']:not(.hidden)\")\r\n}\r\n\r\nthis.options.events['keydown(ArrowLeft)'] = function(){\r\n  moveBack(\"section[id^='page']:not(.hidden)\")\r\n  moveBack(\"h2[id^='head']:not(.hidden)\")\r\n}\r\n\r\nthis.options.events['keypress(Space)'] = function() {\r\n    if(done)\r\n      // End instructions\r\n      this.end('done')\r\n}"
+        }
+      ],
+      "title": "Instructions",
+      "content": "<header style=\"color: #DC143C;\">\r\n  <h2 id=\"head1\">Anleitung (1 von 2)</h2>\r\n  <h2 id=\"head2\" class=\"hidden\">Anleitung (2 von 2)</h2>\r\n</header>\r\n\r\n<main class=\"content-horizontal-center content-vertical-top\">\r\n  <section id=\"page1\" class=\"w-l text-justify\" style = font-size:20px>\r\n     <p>Nun gibt es mehrere Fragebogen. Mit dem ersten Fragebogen finden Sie eine Reihe von Aussagen. Bitte lesen Sie jede durch. Geben Sie an, inwiefern die einzelnen Aussagen auf Sie zutreffen. \r\n      <br><br>\r\n      Bitte wählen Sie die am besten auf Sie zutreffende Aussage <strong>mit einem linken Mausklick</strong> aus. Bestätigen Sie Ihre Eingabe mit <span style=\"color: #DC143C;\"><kbd>Weiter</kbd></span> am unteren Ende des Bildschirms.\r\n      </p>\r\n  </section>\r\n  <section id=\"page2\" class=\"w-l text-justify hidden\" style = font-size:20px>\r\n    <p>Für alle Fragen gilt: <br>\r\n     Denken Sie nicht lange nach, antworten Sie spontan aus dem Bauch heraus. Es gibt keine richtigen und falschen Antworten. Wir sind an Ihren persönlichen Präferenzen interessiert.\r\n    <br><br>\r\n    <div style=\"text-align:center\">\r\n      <span style=\"color: #DC143C;\"><strong>Alles klar?</strong></span><br> \r\n      Bitte wenden Sie sich jetzt an die Versuchsleitung,<br> \r\n      falls Sie noch Fragen haben.\r\n    </div>\r\n    </p>\r\n  </section>\r\n</main>\r\n\r\n<footer>\r\n  <table class=\"table-plain\" style = font-size:20px>\r\n    <tr>\r\n      <td id=\"bck\" style=\"visibility: hidden\">\r\n        Drücken Sie bitte die <span style=\"color: #DC143C;\">linke Pfeiltaste</span> <kbd>&larr;</kbd>, <br>\r\n         um zur vorherigen Seite der Anleitung zu gelangen.\r\n      </td>\r\n      <td id=\"done\" style=\"visibility: hidden\">\r\n        Sobald Sie auf die <span style=\"color: #DC143C;\"><kbd>Leertaste</kbd></span> drücken, <br>\r\n        beginnt der Fragebogen.\r\n      </td>\r\n      <td id=\"fwd\">\r\n         Drücken Sie bitte die <span style=\"color: #DC143C;\">rechte Pfeiltaste</span> <kbd>&rarr;</kbd>, <br>\r\n         um zur nächsten Seite der Anleitung zu gelangen.\r\n      </td>\r\n    </tr>\r\n  </table>\r\n</footer>",
+      "_tab": "Content",
+      "tardy": false,
+      "skipCondition": "",
+      "scrollTop": true
+    },
+    "2434": {
+      "id": "2434",
+      "type": "lab.flow.Loop",
+      "children": [
+        "2436"
+      ],
+      "templateParameters": {
+        "columns": [
+          {
+            "name": "trialtype",
+            "type": "string"
+          },
+          {
+            "name": "question",
+            "type": "string"
+          },
+          {
+            "name": "entrytype",
+            "type": "string"
+          },
+          {
+            "name": "id_name",
+            "type": "string"
+          },
+          {
+            "name": "text1",
+            "type": "string"
+          },
+          {
+            "name": "text2",
+            "type": "string"
+          },
+          {
+            "name": "text3",
+            "type": "string"
+          },
+          {
+            "name": "text4",
+            "type": "string"
+          },
+          {
+            "name": "text5",
+            "type": "string"
+          },
+          {
+            "name": "text6",
+            "type": "string"
+          },
+          {
+            "name": "task",
+            "type": "string"
+          }
+        ],
+        "rows": [
+          [
+            "5",
+            "question1",
+            "radio",
+            "response",
+            "Ich liebe es, aufs weite Meer zu schauen.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question2",
+            "radio",
+            "response",
+            "Ich geniesse Aktivitäten, die das Navigieren durch Hindernisse oder räumliche Herausforderungen erfordern.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question3",
+            "radio",
+            "response",
+            "Ich kann die Geschwindigkeit bewegter Objekte präzise abschätzen.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question4",
+            "radio",
+            "response",
+            "Ich kann bekannte Sehenswürdigkeiten und Monumente leicht erkennen.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question5",
+            "radio",
+            "response",
+            "Ich bevorzuge visuell dynamische und bewegte Präsentationen.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question6",
+            "radio",
+            "response",
+            "Ich schaue gerne Actionfilme oder schnelle Sportveranstaltungen.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question7",
+            "radio",
+            "response",
+            "Ich kann verschiedene Farben schnell und genau erkennen und benennen.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question8",
+            "radio",
+            "response",
+            "Ich betrachte gerne monotone Bilder.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question9",
+            "radio",
+            "response",
+            "Ich kann vertraute Objekte leicht erkennen, selbst wenn sie teilweise verdeckt sind.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question10",
+            "radio",
+            "response",
+            "Ich geniesse es, bewegte Objekte zu verfolgen.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question11",
+            "radio",
+            "response",
+            "Ich löse gerne Sudokus.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question12",
+            "radio",
+            "response",
+            "Ich bin gut darin, die Geschwindigkeit von Autos einzuschätzen.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question13",
+            "radio",
+            "response",
+            "Mir gelingt es leicht, einen Ball oder andere bewegte Objekte aufzufangen.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question14",
+            "radio",
+            "response",
+            "Ich kann meine Freunde leicht in einer überfüllten Umgebung erkennen.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question15",
+            "radio",
+            "response",
+            "Mir fällt es leicht, Objekte allein anhand ihrer Form zu identifizieren.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question16",
+            "radio",
+            "response",
+            "Ich beschäftige mich lieber mit Details anstatt mit grossen Zusammenhängen.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question17",
+            "radio",
+            "response",
+            "Ich liebe es, Landschaften als Ganzes auf mich wirken zu lassen.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question18",
+            "radio",
+            "response",
+            "Ich arbeite gerne mit Farben.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question19",
+            "radio",
+            "response",
+            "Ich kann mich mithilfe von Karten oder räumlichem Bewusstsein leicht in unbekannten Gegenden orientieren.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question20",
+            "radio",
+            "response",
+            "Ich kann leicht vertraute Objekte oder Symbole in verschiedenen Zusammenhängen erkennen.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question21",
+            "radio",
+            "response",
+            "Bereits die geringsten Bewegungen in der Umwelt ziehen meine Aufmerksamkeit an.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question22",
+            "radio",
+            "response",
+            "Ich geniesse es, die Details und Ästhetik von Kunstwerken und Bildern zu analysieren.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question23",
+            "radio",
+            "response",
+            "Mir gelingt es leicht, bewegte Objekte aus verschiedenen Winkeln zu fangen.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question24",
+            "radio",
+            "response",
+            "Von mir gemalte Bilder sind meist farbenfroh.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question25",
+            "radio",
+            "response",
+            "Beim Betrachten von Landschaften bin ich sehr an der Konstellation der einzelnen Objekte interessiert.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question26",
+            "radio",
+            "response",
+            "Ich habe Spass an Aktivitäten im Freien, die körperliche Koordination erfordern.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question27",
+            "radio",
+            "response",
+            "Wenn ich in einen Wald schaue, achte ich auf kleinste Verästelungen und einzelne Blätter.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question28",
+            "radio",
+            "response",
+            "Ich kann bekannte Menschen nicht an ihren Bewegungen unterscheiden.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question29",
+            "radio",
+            "response",
+            "Ich kann leicht abschätzen, wie lange es dauert, zwischen zwei Orten zu reisen.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question30",
+            "radio",
+            "response",
+            "Ich kann kleinste Farbunterschiede wahrnehmen.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question31",
+            "radio",
+            "response",
+            "Ich habe Spass an Aktivitäten, die mein räumliches Denkvermögen fordern.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question32",
+            "radio",
+            "response",
+            "Ich kann verschiedene Arten von Fahrzeugen leicht an ihrem Aussehen erkennen.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question33",
+            "radio",
+            "response",
+            "Wenn ich ein Puzzle zusammensetze, sehe ich sofort, ob ein Teil passt.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question34",
+            "radio",
+            "response",
+            "Ich kann vertraute Gesichter leicht erkennen.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question35",
+            "radio",
+            "response",
+            "Ich kann Entfernungen genau schätzen.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question36",
+            "radio",
+            "response",
+            "Bei meinem Beruf, ist räumliches Denken wichtig.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question37",
+            "radio",
+            "response",
+            "Ich erinnere mich oft an Orte, die ich besucht habe, anhand von visuellen Markierungen oder einzigartigen Merkmalen.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question38",
+            "radio",
+            "response",
+            "Ich bevorzuge visuell ansprechende und farbenfrohe Präsentationen.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question39",
+            "radio",
+            "response",
+            "In einer fremden Stadt kann ich mich ohne Probleme orientieren.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question40",
+            "radio",
+            "response",
+            "Ich bin gut darin, Objekte auf engstem Raum zu verstauen.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question41",
+            "radio",
+            "response",
+            "Ich kann Emotionen leicht erkennen, indem ich Gesichtsausdrücke beobachte.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question42",
+            "radio",
+            "response",
+            "Ich erkenne einen Menschen anhand feiner Merkmalen in seinem Gesicht.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question43",
+            "radio",
+            "response",
+            "Ich betrachtet gerne Wimmelbilder.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question44",
+            "radio",
+            "response",
+            "Mir fällt es leicht, verschiedene Arten von Lebensmitteln anhand ihres Aussehens zu unterscheiden.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question45",
+            "radio",
+            "response",
+            "Ich kann gut seitwärts einparken.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question46",
+            "radio",
+            "response",
+            "Ich interessiere mich nicht für Farben.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question47",
+            "radio",
+            "response",
+            "Ich kann sehr gut unterschiedliche Distanzen einschätzen.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question48",
+            "radio",
+            "response",
+            "Ich bin gut darin, verschiedene Logos bekannter Marken zu erkennen.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question49",
+            "radio",
+            "response",
+            "Ich kann schnell Muster und Texturen in Bildern erkennen.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question50",
+            "radio",
+            "response",
+            "Von mir gemalte Bilder sind meist technisch und stark perspektivisch.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question51",
+            "radio",
+            "response",
+            "Ich achte auf kleine Details in Bildern, wie feine Linien und Kurven.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ],
+          [
+            "5",
+            "question52",
+            "radio",
+            "response",
+            "Ich erkenne einen mir bekannten Menschen sofort an seinen Bewegungen.",
+            "überhaupt nicht einverstanden",
+            "eher nicht einverstanden",
+            "weder/ noch",
+            "eher einverstanden",
+            "voll und ganz einverstanden",
+            "dorsalventral"
+          ]
+        ]
+      },
+      "sample": {
+        "mode": "sequential",
+        "n": ""
+      },
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Questionnaire",
+      "_tab": "Content",
+      "skipCondition": ""
+    },
+    "2436": {
+      "id": "2436",
+      "type": "lab.flow.Sequence",
+      "children": [
+        "2464"
+      ],
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "",
+          "code": ""
+        }
+      ],
+      "title": "Sequence",
+      "_tab": "Behavior",
+      "skipCondition": "",
+      "_collapsed": false
+    },
+    "2464": {
+      "id": "2464",
+      "type": "lab.html.Form",
+      "content": "<header style=\"color: #DC143C;\">\n  <h2>Fragebogen zu Verarbeitungspräferenzen</h2>\n</header>\n\n<main class=\"content-horizontal-center content-vertical-center\">\n  <form id=\"myForm\" style=\"text-align:center\" >\n    <div style=font-size:20px>\n      <label for=\"${this.parameters.id_name}\">${this.parameters.text1}</label>\n\n      <br><br>\n\n      <table class=\"content-horizontal-center\" >\n        <tr >\n          <th style=\"text-align:right\">\n            <input type=\"${this.parameters.entrytype}\" name=\"${this.parameters.id_name}\" id=\"${this.parameters.text2}\" value=\"${this.parameters.text2}\" required>\n          </th>\n          <td style=\"text-align:left\">\n            <label for=\"${this.parameters.text2}\">${this.parameters.text2}</label>\n          </td>\n        </tr>\n        <tr>\n          <th style=\"text-align:right\">\n            <input type=\"${this.parameters.entrytype}\" name=\"${this.parameters.id_name}\" id=\"${this.parameters.text3}\" value=\"${this.parameters.text3}\" required>\n          </th>\n          <td style=\"text-align:left\">\n            <label for=\"${this.parameters.text3}\">${this.parameters.text3}</label>\n          </td>\n        </tr>\n        <tr>\n          <th style=\"text-align:right\">\n            <input type=\"${this.parameters.entrytype}\" name=\"${this.parameters.id_name}\" id=\"${this.parameters.text4}\" value=\"${this.parameters.text4}\" required>\n          </th>\n          <td style=\"text-align:left\">\n            <label for=\"${this.parameters.text4}\">${this.parameters.text4}</label>\n          </td>\n        </tr>\n        <tr>\n          <th style=\"text-align:right\">\n            <input type=\"${this.parameters.entrytype}\" name=\"${this.parameters.id_name}\" id=\"${this.parameters.text5}\" value=\"${this.parameters.text5}\" required>\n          </th>\n          <td style=\"text-align:left\">\n            <label for=\"${this.parameters.text5}\">${this.parameters.text5}</label>\n          </td>\n        </tr>\n        <tr>\n          <th style=\"text-align:right\">\n            <input type=\"${this.parameters.entrytype}\" name=\"${this.parameters.id_name}\" id=\"${this.parameters.text6}\" value=\"${this.parameters.text6}\" required>\n          </th>\n          <td style=\"text-align:left\">\n            <label for=\"${this.parameters.text6}\">${this.parameters.text6}</label>\n          </td>\n        </tr>\n\n      </table>\n    </div>\n    <br><br><br>\n  </form>\n</main>\n\n<footer>\n  <button type=\"submit\" form=\"myForm\" style = font-size:20px>\n      Weiter\n  </button>\n</footer>",
+      "scrollTop": true,
+      "files": [],
+      "responses": [
+        {
+          "label": "",
+          "event": "",
+          "target": "",
+          "filter": ""
+        }
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "messageHandlers": [
+        {
+          "title": "",
+          "message": "before:prepare",
+          "code": "if (this.parameters.trialtype == 5){\r\n  this.parameters.seq = false\r\n} else {\r\n  this.parameters.seq = true\r\n}"
+        }
+      ],
+      "title": "QuestType5",
+      "_tab": "Content",
+      "skipCondition": "${ this.parameters.seq }"
+    },
+    "root": {
+      "id": "root",
+      "title": "root",
+      "type": "lab.flow.Sequence",
+      "children": [
+        "2421"
+      ],
+      "parameters": [
+        {
+          "name": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "plugins": [
+        {
+          "type": "lab.plugins.Metadata"
+        }
+      ],
+      "metadata": {
+        "title": "dorsalventral",
+        "description": "",
+        "repository": "https://neurocog.fernuni.ch/studies/",
+        "contributors": "Alodie Rey-Mermet <alodie.rey-mermet@fernuni.ch>\nNicolas Rothen <nicolas.rothen@fernuni.ch>"
+      },
+      "messageHandlers": [],
+      "files": []
+    }
+  },
+  "version": [
+    20,
+    2,
+    4
+  ],
+  "files": {
+    "files": {
+      "index.html": {
+        "content": "data:text/html,%3C!doctype%20html%3E%0A%3Chtml%20lang%3D%22de%22%20class%3D%22notranslate%22%20translate%3D%22no%22%3E%0A%3Chead%3E%0A%20%20%3Cmeta%20charset%3D%22utf-8%22%3E%0A%20%20%3Ctitle%3EExperiment%3C%2Ftitle%3E%0A%20%20%3C!--%20viewport%20setup%20--%3E%0A%20%20%3Cmeta%20name%3D%22viewport%22%20content%3D%22width%3Ddevice-width%2C%20initial-scale%3D1%22%3E%0A%20%20%3C!--%20lab.js%20library%20and%20experiment%20code%20--%3E%0A%20%20%24%7B%20header%20%7D%0A%3C%2Fhead%3E%0A%3Cbody%3E%0A%20%20%3C!--%20If%20you'd%20rather%20have%20a%20container%20with%20a%20fixed%20width%0A%20%20%20%20%20%20%20and%20variable%20height%2C%20try%20removing%20the%20fullscreen%20class%20below%20--%3E%0A%20%20%3Cdiv%20class%3D%22container%20fullscreen%22%20data-labjs-section%3D%22main%22%3E%0A%20%20%20%20%3Cmain%20class%3D%22content-vertical-center%20content-horizontal-center%22%3E%0A%20%20%20%20%20%20%3Cdiv%3E%0A%20%20%20%20%20%20%20%20%3Ch2%3ELoading%20Experiment%3C%2Fh2%3E%0A%20%20%20%20%20%20%20%20%3Cp%3EThe%20experiment%20is%20loading%20and%20should%20start%20in%20a%20few%20seconds%3C%2Fp%3E%0A%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%3C%2Fmain%3E%0A%20%20%3C%2Fdiv%3E%0A%3C%2Fbody%3E%0A%3C%2Fhtml%3E%0A",
+        "source": "library"
+      },
+      "style.css": {
+        "content": "data:text/css,%2F*%20Please%20define%20your%20custom%20styles%20here%20*%2F%0D%0A%0D%0A%2F*%20for%20the%20fullscreen%20*%2F%0D%0Abody%3Afullscreen%2C%20%3A%3Abackdrop%20%7B%0D%0A%20%20background-color%3A%20white%3B%0D%0A%7D%0D%0A%0D%0A%2F*%20Scaling%20task%20*%2F%0D%0Ainput%5Btype%3D%22range%22%5D%20%7B%0D%0A%20%20border%3A%20none%3B%0D%0A%7D%0D%0A%0D%0A%2F*%20CSS%20text-indent%20Property*%2F%0D%0Adiv.a%20%7B%0D%0A%20%20text-indent%3A%20-7px%3B%0D%0A%7D%0D%0A",
+        "source": "library"
+      }
+    },
+    "bundledFiles": {
+      "lib/lab.js": {
+        "type": "application/javascript"
+      },
+      "lib/lab.js.map": {
+        "type": "text/plain"
+      },
+      "lib/lab.fallback.js": {
+        "type": "application/javascript"
+      },
+      "lib/lab.legacy.js": {
+        "type": "application/javascript"
+      },
+      "lib/lab.legacy.js.map": {
+        "type": "text/plain"
+      },
+      "lib/lab.css": {
+        "type": "text/css"
+      },
+      "lib/loading.svg": {
+        "type": "image/svg+xml"
+      }
+    }
+  }
+}
