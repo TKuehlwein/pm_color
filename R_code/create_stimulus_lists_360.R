@@ -8,23 +8,27 @@
 
 
 # ================================================================= settings ===
-
 # required R packages
 library(tidyverse)
+
+setwd("/Users/tobiaskuehlwein/Color_PM/prom_wm")
+
+# clear workspace
+rm(list=ls())
 
 # settings
 dir_stimuli       <- paste0(getwd(), "/stimulus_lists/images")
 dir_output        <- paste0(getwd(), "/stimulus_lists/output")
-seed              <- set.seed(20220513)
-n_stimuli         <- 360
-n_practice_trials <- 3
+seed              <- set.seed(20220533)
+n_stimuli         <- 240
+n_practice_trials <- 1
 min_distance      <- 40 # minimal distance between colors in degrees (max distance is twice min distance)
 pm_cat            <- c('prm_505.jpg')
-pm_cues           <- c('prm_501.jpg', 'prm_502.jpg', 'prm_503.jpg', 'prm_504.jpg')
+pm_cues           <- c('prm_112.jpg', 'prm_126.jpg', 'prm_197.jpg', 'prm_343.jpg')
 
 # experimental conditions
 block <- c("baseline", "prom")
-load  <- c(1, 3, 5)            # images are repeated between load conditions
+load  <- c(3)            # images are repeated between load conditions
 
 # perform some basic checks before building the stimulus lists
 n_pm    <- length(pm_cues)
@@ -80,15 +84,16 @@ color_dev_deg <- function(target, response) {
 
 # ================================================ create folders for output ===
 
-if (file.exists(dir_output)) {
+
+#if (file.exists(dir_output)) {
   
-  cat("The folder already exists")
+#  cat("The folder already exists")
   
-} else {
+#} else {
   
-  dir.create(dir_output)
+#  dir.create(dir_output)
   
-}
+#}
 
 
 # ================================================= create basic image lists ===
@@ -232,9 +237,9 @@ for (load_i in 1:length(load)) {
     hues_prm <- hues_all %>%
       head(n = nrow(stim_prm))
     
-    if(nrow(hues_prm) > hues_all$n[1]) {
-      stop("Error: NOT ENOUGH identical colors for the number of prospectice memory cues")
-    }
+#    if(nrow(hues_prm) > hues_all$n[1]) {
+#      stop("Error: NOT ENOUGH identical colors for the number of prospectice memory cues")
+#    }
     
     hues_remaining <- hues_all %>%
       slice(which(! hues_remaining$trial_number %in% hues_prm$trial_number))

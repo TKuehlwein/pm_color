@@ -12,9 +12,15 @@
 library(ggpubr)
 library(tidyverse)
 
+setwd("/Users/tobiaskuehlwein/pm_color/stim_lists")
+
+# clear workspace
+rm(list=ls())
+
+
 # settings
-dir_input  <- paste0(getwd(), "/stim_lists/color_dis/")
-dir_output <- paste0(getwd(), "/stim_lists/color_dis/")
+dir_input  <- paste0(getwd(), "/new_lists/pm/")
+dir_output <- paste0(getwd(), "/new_lists/pm/")
 
 # avoid scientific notation
 options(scipen = 100)
