@@ -20,15 +20,15 @@ rm(list=ls())
 dir_stimuli       <- paste0(getwd(), "/stimulus_lists/images")
 dir_output        <- paste0(getwd(), "/stimulus_lists/output")
 seed              <- set.seed(20220533)
-n_stimuli         <- 240
-n_practice_trials <- 1
+n_stimuli         <- 120
+n_practice_trials <- 2
 min_distance      <- 40 # minimal distance between colors in degrees (max distance is twice min distance)
 pm_cat            <- c('prm_505.jpg')
 pm_cues           <- c('prm_112.jpg', 'prm_126.jpg', 'prm_197.jpg', 'prm_343.jpg')
 
 # experimental conditions
 block <- c("baseline", "prom")
-load  <- c(3)            # images are repeated between load conditions
+load  <- c(5)            # images are repeated between load conditions
 
 # perform some basic checks before building the stimulus lists
 n_pm    <- length(pm_cues)
@@ -56,7 +56,7 @@ if((length(stimuli) - (n_pm + n_cat)) < n_stimuli){
 
 n_colors <- function(load) {
   # determine maximum number of colors for any given trial
-  return(max(load) + 1)
+  return(max(load) + 3)
 }
 
 equidistant_colors <- function(n_colors){

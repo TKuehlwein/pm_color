@@ -52,7 +52,7 @@ hues <- data %>%
   pivot_longer(!block_number & !stimulus_seq & !trial_number & !stimulus_type & !load,
                names_to = "condition", values_to = "hue") %>%
   filter(!is.na(hue)) %>%
-  mutate(hue = hue + hue_correction, load = paste0("load ", load),
+  mutate(hue = hue, load = paste0("load ", load),
          version = paste0("version ", parse_number(condition)))
 
 
