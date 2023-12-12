@@ -1,4 +1,4 @@
-block_number,stimulus_seq,trial_seq,trial_number,trial_type,stimulus_type,image_v1,image_v2,hue_v1,hue_prom_v1,hue_v2,hue_prom_v2,image_v3,image_v3,hue_v3,hue_prom_v3,hue_v4,hue_prom_v3,image_v5,image_v6,hue_v5,hue_prom_v5,hue_v6,hue_prom_v6
+block_number,stimulus_seq,trial_seq,trial_number,trial_type,stimulus_type,image_v1,image_v2,hue_v1,hue_prom_v1,hue_v2,hue_prom_v2,image_v3,image_v4,hue_v3,hue_prom_v3,hue_v4,hue_prom_v4,image_v5,image_v6,hue_v5,hue_prom_v5,hue_v6,hue_prom_v6
 5,1,1,130,ongoing,ongoing,ong_034.jpg,ong_159.jpg,-43.65653,NA,139.6854,NA,ong_034.jpg,ong_159.jpg,-43.65653,NA,139.6854,NA,ong_034.jpg,ong_159.jpg,-43.65653,NA,139.6854,NA
 5,2,1,131,ongoing,ongoing,ong_022.jpg,ong_082.jpg,-77.78421,NA,-18.34228,NA,ong_022.jpg,ong_082.jpg,-77.78421,NA,-18.34228,NA,ong_022.jpg,ong_082.jpg,-77.78421,NA,-18.34228,NA
 5,3,1,132,ongoing,ongoing,ong_216.jpg,ong_120.jpg,136.8328,NA,-39.26676,NA,ong_216.jpg,ong_120.jpg,136.8328,NA,-39.26676,NA,ong_216.jpg,ong_120.jpg,136.8328,NA,-39.26676,NA
@@ -61,8 +61,8 @@ block_number,stimulus_seq,trial_seq,trial_number,trial_type,stimulus_type,image_
 6,60,1,189,ongoing,ongoing,ong_105.jpg,ong_006.jpg,-24.50201,NA,-81.63947,NA,ong_105.jpg,ong_006.jpg,-24.50201,NA,-81.63947,NA,ong_105.jpg,ong_006.jpg,-24.50201,NA,-81.63947,NA
 7,61,1,190,ongoing,ongoing,ong_207.jpg,ong_096.jpg,145.0351,NA,8.026173,NA,ong_207.jpg,ong_096.jpg,145.0351,NA,8.026173,NA,ong_207.jpg,ong_096.jpg,145.0351,NA,8.026173,NA
 7,62,1,191,ongoing,ongoing,ong_122.jpg,ong_174.jpg,-27.81346,NA,107.1837,NA,ong_122.jpg,ong_174.jpg,-27.81346,NA,107.1837,NA,ong_122.jpg,ong_174.jpg,-27.81346,NA,107.1837,NA
-7,63,1,192,ongoing,ongoing,ong_072.jpg,ong_071.jpg,130.4746,NA,-24.40118,NA,ong_072.jpg,ong_071.jpg,130.4746,NA,-24.40118,NA,ong_072.jpg,ong_071.jpg,130.4746,NA,-24.40118,NA
-7,64,1,193,prom,prom_spec,prm_502.jpg,prm_502.jpg,-164.9046,-122,-160.9498,48,prm_162.jpg,prm_162.jpg,-164.9046,-122,-160.9498,48,prm_197.jpg,prm_197.jpg,-164.9046,-122,-160.9498,48
+7,63,1,192,ongoing,ongoing,ong_072.jpg,ong_071.jpg,-164.9046,NA,-24.40118,NA,ong_072.jpg,ong_071.jpg,-164.9046,NA,-24.40118,NA,ong_072.jpg,ong_071.jpg,-164.9046,NA,-24.40118,NA
+7,64,1,193,prom,prom_spec,prm_502.jpg,prm_502.jpg,130.4746,-122,-160.9498,48,prm_162.jpg,prm_162.jpg,130.4746,-122,-160.9498,48,prm_197.jpg,prm_197.jpg,130.4746,-122,-160.9498,48
 7,65,1,194,ongoing,ongoing,ong_020.jpg,ong_140.jpg,-171.1212,NA,-178.6372,NA,ong_020.jpg,ong_140.jpg,-171.1212,NA,-178.6372,NA,ong_020.jpg,ong_140.jpg,-171.1212,NA,-178.6372,NA
 7,66,1,195,ongoing,ongoing,ong_106.jpg,ong_062.jpg,84.26601,NA,137.5961,NA,ong_106.jpg,ong_062.jpg,84.26601,NA,137.5961,NA,ong_106.jpg,ong_062.jpg,84.26601,NA,137.5961,NA
 7,67,1,196,ongoing,ongoing,ong_002.jpg,ong_073.jpg,146.2211,NA,-14.40747,NA,ong_002.jpg,ong_073.jpg,146.2211,NA,-14.40747,NA,ong_002.jpg,ong_073.jpg,146.2211,NA,-14.40747,NA
