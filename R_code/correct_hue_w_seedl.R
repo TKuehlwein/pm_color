@@ -45,10 +45,10 @@ rm(list=ls())
 # seed l3 v2,4,6: 260425
 # seed l3 v2,4,6: 260426
 # seed l5 v1,3,5: 260427
-# seed l3 v2,4,6: 260428
+# seed l5 v2,4,6: 260428
 
 set.seed(260428) # seed to recreate pm color
-pm_col <- runif(n=1, min=-140, max=140) # random number -180 to 180 for pm color
+pm_col <- runif(n=1, min=-140, max=140) # random number for pm color
 
 # define function for values
 generate_blocks_excluded_range <- function(num_blocks) {
