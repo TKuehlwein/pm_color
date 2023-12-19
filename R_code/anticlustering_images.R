@@ -1,3 +1,4 @@
+#clear workspace
 rm(list=ls())
 
 # load in packages
@@ -5,15 +6,15 @@ library(tidyverse)
 library(anticlust)
 library(readxl)
 
-
+#check working directory
 getwd()
+
 # set working directory
 setwd("/Users/tobiaskuehlwein/pm_color/stim_lists/BOSS")
 
 # read in excel file
 stimuli_norms_2014a <- read_excel("BOSS_NORMS_December15_2014.xlsx", sheet = "Brodeur et al 2014a")
-# stimuli_norms_2014b <- read_excel("BOSS_NORMS_December15_2014.xlsx", sheet = "Brodeur et al 2014b")
- 
+
 # choose relevant columns
 stimuli_norms_2014a <- stimuli_norms_2014a %>%
   select(one_of(c("FILENAME", "Mean...31", "StDev...32", "Mean...35",
@@ -21,13 +22,8 @@ stimuli_norms_2014a <- stimuli_norms_2014a %>%
   set_names(c("filename", "familiarity_mean_2014a",
               "familiarity_sd_2014a", "visual_complexity_mean_2014a", "visual_complexity_sd_2014a"))
 
-# stimuli_norms_2014b <- stimuli_norms_2014b %>%
-#   select(one_of(c("FILENAME...10", "Mean...15", "StDev...16"))) %>%
-#   set_names(c("filename", "visual_complexity_mean_2014b", "visual_complexity_sd_2014b"))
 
 # read in stimulus list
-setwd("/Users/chhavisachdeva/Documents/Documents - MAC-J77PF9K56N/Postdoc/Stimuli/Stimuli_lists")
-
 stimuli_list <- read.csv("stimuli_list_v2.csv", header = TRUE)
 
 stimuli_list <- subset(stimuli_list, select = -X)
@@ -68,7 +64,7 @@ set.seed(NULL)
 # anticluster for the different tasks
 anticluster_stimuli <- anticlustering(
   stimuli_norms_2014a_NA_remove[, -1],
-  K = 3,
+  K = 4,
   objective = 'diversity',
   method = 'local-maximum',
   repetitions = 10,
@@ -88,12 +84,14 @@ stimuli_allocation$task <- ifelse(stimuli_allocation$anticluster_stimuli == 1 & 
                         ifelse(stimuli_allocation$anticluster_stimuli == 3 & stimuli_allocation$Freq == 1, "3",
                                ifelse(stimuli_allocation$anticluster_stimuli == 4 & stimuli_allocation$Freq == 1, "4",
                                       ifelse(stimuli_allocation$anticluster_stimuli == 5 & stimuli_allocation$Freq == 1, "5", "6")))))
-  
+
+#exclude items with frequency = 0
 stimuli_allocation <- stimuli_allocation[!(stimuli_allocation$Freq == 0),] 
 
 
 summary(stimuli_allocation)
 
+#write list into a .csv
 write.csv(stimuli_allocation, file='/Users/tobiaskuehlwein/pm_color/stim_lists/BOSS/list_4_6.csv', 
           fileEncoding = "UTF-8")
 
