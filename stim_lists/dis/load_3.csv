@@ -1,121 +1,121 @@
 block_number,stimulus_seq,trial_seq,trial_number,trial_type,stimulus_type,image_v1,image_v2,hue_v1,hue_prom_v1,hue_v2,hue_prom_v2,image_v3,image_v4,hue_v3,hue_prom_v3,hue_v4,hue_prom_v4,image_v5,image_v6,hue_v5,hue_prom_v5,hue_v6,hue_prom_v6
-4,1,1,46,ongoing,ongoing,ong_266.jpg,ong_269.jpg,-54.54287,NA,43.43770,NA,ong_266.jpg,ong_269.jpg,-54.54287,NA,43.43770,NA,ong_266.jpg,ong_269.jpg,-54.54287,NA,43.43770,NA
-5,2,2,47,ongoing,ongoing,ong_144.jpg,ong_102.jpg,128.82798,NA,-15.61492,NA,ong_144.jpg,ong_102.jpg,128.82798,NA,-15.61492,NA,ong_144.jpg,ong_102.jpg,128.82798,NA,-15.61492,NA
-4,3,3,46,ongoing,ongoing,ong_269.jpg,ong_264.jpg,-130.53178,NA,149.78968,NA,ong_269.jpg,ong_264.jpg,-130.53178,NA,149.78968,NA,ong_269.jpg,ong_264.jpg,-130.53178,NA,149.78968,NA
-4,4,1,47,ongoing,ongoing,ong_229.jpg,ong_202.jpg,100.01465,NA,39.8775,NA,ong_229.jpg,ong_202.jpg,100.01465,NA,39.8775,NA,ong_229.jpg,ong_202.jpg,100.01465,NA,39.8775,NA
-4,5,2,47,ongoing,ongoing,ong_134.jpg,ong_140.jpg,-86.35924,NA,142.4418,NA,ong_134.jpg,ong_140.jpg,-86.35924,NA,142.4418,NA,ong_134.jpg,ong_140.jpg,-86.35924,NA,142.4418,NA
-4,6,3,47,ongoing,ongoing,ong_082.jpg,ong_046.jpg,-156.88151,NA,-156.6190,NA,ong_082.jpg,ong_046.jpg,-156.88151,NA,-156.6190,NA,ong_082.jpg,ong_046.jpg,-156.88151,NA,-156.6190,NA
-5,7,1,48,ongoing,ongoing,ong_145.jpg,ong_009.jpg,129.865,NA,-158.25021,NA,ong_145.jpg,ong_009.jpg,129.865,NA,-158.25021,NA,ong_145.jpg,ong_009.jpg,129.865,NA,-158.25021,NA
-5,8,2,48,ongoing,ongoing,ong_212.jpg,ong_175.jpg,-94.02382,NA,50.38334,NA,ong_212.jpg,ong_175.jpg,-94.02382,NA,50.38334,NA,ong_212.jpg,ong_175.jpg,-94.02382,NA,50.38334,NA
-5,9,3,48,ongoing,ongoing,ong_096.jpg,ong_084.jpg,83.45801,NA,107.24329,NA,ong_096.jpg,ong_084.jpg,83.45801,NA,107.24329,NA,ong_096.jpg,ong_084.jpg,83.45801,NA,107.24329,NA
-5,10,1,49,ongoing,ongoing,ong_016.jpg,ong_076.jpg,-162.4891,NA,137.799308,NA,ong_016.jpg,ong_076.jpg,-162.4891,NA,137.799308,NA,ong_016.jpg,ong_076.jpg,-162.4891,NA,137.799308,NA
-5,11,2,49,ongoing,ongoing,ong_201.jpg,ong_245.jpg,61.1854,NA,-9.775576,NA,ong_201.jpg,ong_245.jpg,61.1854,NA,-9.775576,NA,ong_201.jpg,ong_245.jpg,61.1854,NA,-9.775576,NA
-5,12,3,49,ongoing,ongoing,ong_151.jpg,ong_164.jpg,110.3565,NA,-55.482884,NA,ong_151.jpg,ong_164.jpg,110.3565,NA,-55.482884,NA,ong_151.jpg,ong_164.jpg,110.3565,NA,-55.482884,NA
-5,13,1,50,ongoing,ongoing,ong_090.jpg,ong_086.jpg,91.82449,NA,173.63243,NA,ong_090.jpg,ong_086.jpg,91.82449,NA,173.63243,NA,ong_090.jpg,ong_086.jpg,91.82449,NA,173.63243,NA
-5,14,2,50,ongoing,ongoing,ong_027.jpg,ong_025.jpg,173.42364,NA,98.84098,NA,ong_027.jpg,ong_025.jpg,173.42364,NA,98.84098,NA,ong_027.jpg,ong_025.jpg,173.42364,NA,98.84098,NA
-5,15,3,50,ongoing,ongoing,ong_180.jpg,ong_194.jpg,-158.40472,NA,-66.78700,NA,ong_180.jpg,ong_194.jpg,-158.40472,NA,-66.78700,NA,ong_180.jpg,ong_194.jpg,-158.40472,NA,-66.78700,NA
-5,16,1,51,prom,ongoing,ong_129.jpg,ong_085.jpg,-97.25163,NA,171.728437,NA,ong_129.jpg,ong_085.jpg,-97.25163,NA,171.728437,NA,ong_129.jpg,ong_085.jpg,-97.25163,NA,171.728437,NA
-5,17,2,51,prom,ongoing,ong_150.jpg,ong_209.jpg,121.25121,NA,-174.726566,NA,ong_150.jpg,ong_209.jpg,121.25121,NA,-174.726566,NA,ong_150.jpg,ong_209.jpg,121.25121,NA,-174.726566,NA
-5,18,3,51,prom,prom_spec,prm_162.jpg,prm_117.jpg,-143.31892,17,-1.818731,-107,prm_502.jpg,prm_503.jpg,-143.31892,17,-1.818731,-107,prm_197.jpg,prm_343.jpg,-143.31892,17,-1.818731,-107
-5,19,1,52,ongoing,ongoing,ong_048.jpg,ong_195.jpg,-152.9912,NA,179.2949,NA,ong_048.jpg,ong_195.jpg,-152.9912,NA,179.2949,NA,ong_048.jpg,ong_195.jpg,-152.9912,NA,179.2949,NA
-5,20,2,52,ongoing,ongoing,ong_205.jpg,ong_100.jpg,118.0166,NA,108.3939,NA,ong_205.jpg,ong_100.jpg,118.0166,NA,108.3939,NA,ong_205.jpg,ong_100.jpg,118.0166,NA,108.3939,NA
-5,21,3,52,ongoing,ongoing,ong_038.jpg,ong_044.jpg,160.1119,NA,-149.9985,NA,ong_038.jpg,ong_044.jpg,160.1119,NA,-149.9985,NA,ong_038.jpg,ong_044.jpg,160.1119,NA,-149.9985,NA
-5,22,1,53,ongoing,ongoing,ong_053.jpg,ong_158.jpg,-61.41013,NA,130.00166,NA,ong_053.jpg,ong_158.jpg,-61.41013,NA,130.00166,NA,ong_053.jpg,ong_158.jpg,-61.41013,NA,130.00166,NA
-5,23,2,53,ongoing,ongoing,ong_164.jpg,ong_204.jpg,-121.34805,NA,-18.08672,NA,ong_164.jpg,ong_204.jpg,-121.34805,NA,-18.08672,NA,ong_164.jpg,ong_204.jpg,-121.34805,NA,-18.08672,NA
-5,24,3,53,ongoing,ongoing,ong_123.jpg,ong_183.jpg,162.29587,NA,-154.12173,NA,ong_123.jpg,ong_183.jpg,162.29587,NA,-154.12173,NA,ong_123.jpg,ong_183.jpg,162.29587,NA,-154.12173,NA
-5,25,1,54,ongoing,ongoing,ong_084.jpg,ong_137.jpg,-83.85062,NA,34.46655,NA,ong_084.jpg,ong_137.jpg,-83.85062,NA,34.46655,NA,ong_084.jpg,ong_137.jpg,-83.85062,NA,34.46655,NA
-5,26,2,54,ongoing,ongoing,ong_086.jpg,ong_228.jpg,145.72362,NA,-172.60349,NA,ong_086.jpg,ong_228.jpg,145.72362,NA,-172.60349,NA,ong_086.jpg,ong_228.jpg,145.72362,NA,-172.60349,NA
-5,27,3,54,ongoing,ongoing,ong_080.jpg,ong_016.jpg,-125.28461,NA,86.61363,NA,ong_080.jpg,ong_016.jpg,-125.28461,NA,86.61363,NA,ong_080.jpg,ong_016.jpg,-125.28461,NA,86.61363,NA
-5,28,1,55,ongoing,ongoing,ong_057.jpg,ong_205.jpg,-135.43039,NA,110.42172,NA,ong_057.jpg,ong_205.jpg,-135.43039,NA,110.42172,NA,ong_057.jpg,ong_205.jpg,-135.43039,NA,110.42172,NA
-5,29,2,55,ongoing,ongoing,ong_173.jpg,ong_057.jpg,-56.73722,NA,-61.34423,NA,ong_173.jpg,ong_057.jpg,-56.73722,NA,-61.34423,NA,ong_173.jpg,ong_057.jpg,-56.73722,NA,-61.34423,NA
-5,30,3,55,ongoing,ongoing,ong_079.jpg,ong_243.jpg,73.11586,NA,150.95792,NA,ong_079.jpg,ong_243.jpg,73.11586,NA,150.95792,NA,ong_079.jpg,ong_243.jpg,73.11586,NA,150.95792,NA
-5,31,1,56,ongoing,ongoing,ong_009.jpg,ong_042.jpg,65.93304,NA,-21.38072,NA,ong_009.jpg,ong_042.jpg,65.93304,NA,-21.38072,NA,ong_009.jpg,ong_042.jpg,65.93304,NA,-21.38072,NA
-5,32,2,56,ongoing,ongoing,ong_234.jpg,ong_015.jpg,-82.2306,NA,37.29153,NA,ong_234.jpg,ong_015.jpg,-82.2306,NA,37.29153,NA,ong_234.jpg,ong_015.jpg,-82.2306,NA,37.29153,NA
-5,33,3,56,ongoing,ongoing,ong_152.jpg,ong_189.jpg,-156.88502,NA,-168.55954,NA,ong_152.jpg,ong_189.jpg,-156.88502,NA,-168.55954,NA,ong_152.jpg,ong_189.jpg,-156.88502,NA,-168.55954,NA
-5,34,1,57,ongoing,ongoing,ong_264.jpg,ong_267.jpg,143.30817,NA,159.57034,NA,ong_264.jpg,ong_267.jpg,143.30817,NA,159.57034,NA,ong_264.jpg,ong_267.jpg,143.30817,NA,159.57034,NA
-6,35,2,57,ongoing,ongoing,ong_010.jpg,ong_106.jpg,87.06069,NA,-41.04771,NA,ong_010.jpg,ong_106.jpg,87.06069,NA,-41.04771,NA,ong_010.jpg,ong_106.jpg,87.06069,NA,-41.04771,NA
-5,36,3,57,ongoing,ongoing,ong_270.jpg,ong_265.jpg,-93.5509,NA,86.58324,NA,ong_270.jpg,ong_265.jpg,-93.5509,NA,86.58324,NA,ong_270.jpg,ong_265.jpg,-93.5509,NA,86.58324,NA
-5,37,1,58,ongoing,ongoing,ong_189.jpg,ong_119.jpg,-132.84077,NA,50.83115,NA,ong_189.jpg,ong_119.jpg,-132.84077,NA,50.83115,NA,ong_189.jpg,ong_119.jpg,-132.84077,NA,50.83115,NA
-5,38,2,58,ongoing,ongoing,ong_213.jpg,ong_213.jpg,81.38742,NA,-61.04782,NA,ong_213.jpg,ong_213.jpg,81.38742,NA,-61.04782,NA,ong_213.jpg,ong_213.jpg,81.38742,NA,-61.04782,NA
-5,39,3,58,ongoing,ongoing,ong_214.jpg,ong_225.jpg,-31.49201,NA,179.62414,NA,ong_214.jpg,ong_225.jpg,-31.49201,NA,179.62414,NA,ong_214.jpg,ong_225.jpg,-31.49201,NA,179.62414,NA
-6,40,1,59,ongoing,ongoing,ong_045.jpg,ong_186.jpg,-100.73578,NA,-1.718368,NA,ong_045.jpg,ong_186.jpg,-100.73578,NA,-1.718368,NA,ong_045.jpg,ong_186.jpg,-100.73578,NA,-1.718368,NA
-6,41,2,59,ongoing,ongoing,ong_122.jpg,ong_103.jpg,-154.50921,NA,66.756994,NA,ong_122.jpg,ong_103.jpg,-154.50921,NA,66.756994,NA,ong_122.jpg,ong_103.jpg,-154.50921,NA,66.756994,NA
-6,42,3,59,ongoing,ongoing,ong_221.jpg,ong_159.jpg,-49.85758,NA,132.000584,NA,ong_221.jpg,ong_159.jpg,-49.85758,NA,132.000584,NA,ong_221.jpg,ong_159.jpg,-49.85758,NA,132.000584,NA
-6,43,1,60,ongoing,ongoing,ong_225.jpg,ong_077.jpg,-68.76169,NA,0.526003,NA,ong_225.jpg,ong_077.jpg,-68.76169,NA,0.526003,NA,ong_225.jpg,ong_077.jpg,-68.76169,NA,0.526003,NA
-6,44,2,60,ongoing,ongoing,ong_067.jpg,ong_096.jpg,-177.05234,NA,44.001245,NA,ong_067.jpg,ong_096.jpg,-177.05234,NA,44.001245,NA,ong_067.jpg,ong_096.jpg,-177.05234,NA,44.001245,NA
-6,45,3,60,ongoing,ongoing,ong_194.jpg,ong_001.jpg,99.36645,NA,176.671804,NA,ong_194.jpg,ong_001.jpg,99.36645,NA,176.671804,NA,ong_194.jpg,ong_001.jpg,99.36645,NA,176.671804,NA
-6,46,1,61,ongoing,ongoing,ong_231.jpg,ong_017.jpg,-86.97752,NA,136.941244,NA,ong_231.jpg,ong_017.jpg,-86.97752,NA,136.941244,NA,ong_231.jpg,ong_017.jpg,-86.97752,NA,136.941244,NA
-6,47,2,61,ongoing,ongoing,ong_073.jpg,ong_144.jpg,139.0125,NA,6.387474,NA,ong_073.jpg,ong_144.jpg,139.0125,NA,6.387474,NA,ong_073.jpg,ong_144.jpg,139.0125,NA,6.387474,NA
-6,48,3,61,ongoing,ongoing,ong_060.jpg,ong_018.jpg,-172.59696,NA,-66.298473,NA,ong_060.jpg,ong_018.jpg,-172.59696,NA,-66.298473,NA,ong_060.jpg,ong_018.jpg,-172.59696,NA,-66.298473,NA
-6,49,1,62,ongoing,ongoing,ong_078.jpg,ong_060.jpg,103.3438,NA,90.77708,NA,ong_078.jpg,ong_060.jpg,103.3438,NA,90.77708,NA,ong_078.jpg,ong_060.jpg,103.3438,NA,90.77708,NA
-6,50,2,62,ongoing,ongoing,ong_219.jpg,ong_004.jpg,-112.7546,NA,160.07656,NA,ong_219.jpg,ong_004.jpg,-112.7546,NA,160.07656,NA,ong_219.jpg,ong_004.jpg,-112.7546,NA,160.07656,NA
-6,51,3,62,ongoing,ongoing,ong_036.jpg,ong_234.jpg,-57.9223,NA,2.46743,NA,ong_036.jpg,ong_234.jpg,-57.9223,NA,2.46743,NA,ong_036.jpg,ong_234.jpg,-57.9223,NA,2.46743,NA
-6,52,1,63,ongoing,ongoing,ong_110.jpg,ong_207.jpg,-140.66991,NA,-171.85274,NA,ong_110.jpg,ong_207.jpg,-140.66991,NA,-171.85274,NA,ong_110.jpg,ong_207.jpg,-140.66991,NA,-171.85274,NA
-6,53,2,63,ongoing,ongoing,ong_021.jpg,ong_107.jpg,-85.73485,NA,64.92391,NA,ong_021.jpg,ong_107.jpg,-85.73485,NA,64.92391,NA,ong_021.jpg,ong_107.jpg,-85.73485,NA,64.92391,NA
-6,54,3,63,ongoing,ongoing,ong_118.jpg,ong_087.jpg,142.32115,NA,111.31338,NA,ong_118.jpg,ong_087.jpg,142.32115,NA,111.31338,NA,ong_118.jpg,ong_087.jpg,142.32115,NA,111.31338,NA
-6,55,1,64,ongoing,ongoing,ong_109.jpg,ong_031.jpg,-92.5464,NA,-173.52245,NA,ong_109.jpg,ong_031.jpg,-92.5464,NA,-173.52245,NA,ong_109.jpg,ong_031.jpg,-92.5464,NA,-173.52245,NA
-6,56,2,64,ongoing,ongoing,ong_139.jpg,ong_005.jpg,150.88263,NA,93.86023,NA,ong_139.jpg,ong_005.jpg,150.88263,NA,93.86023,NA,ong_139.jpg,ong_005.jpg,150.88263,NA,93.86023,NA
-6,57,3,64,ongoing,ongoing,ong_170.jpg,ong_071.jpg,72.87469,NA,146.40747,NA,ong_170.jpg,ong_071.jpg,72.87469,NA,146.40747,NA,ong_170.jpg,ong_071.jpg,72.87469,NA,146.40747,NA
-6,58,1,65,ongoing,ongoing,ong_076.jpg,ong_007.jpg,91.18869,NA,148.65511,NA,ong_076.jpg,ong_007.jpg,91.18869,NA,148.65511,NA,ong_076.jpg,ong_007.jpg,91.18869,NA,148.65511,NA
-6,59,2,65,ongoing,ongoing,ong_182.jpg,ong_028.jpg,134.11759,NA,38.28307,NA,ong_182.jpg,ong_028.jpg,134.11759,NA,38.28307,NA,ong_182.jpg,ong_028.jpg,134.11759,NA,38.28307,NA
-6,60,3,65,ongoing,ongoing,ong_105.jpg,ong_141.jpg,-93.82985,NA,-168.49833,NA,ong_105.jpg,ong_141.jpg,-93.82985,NA,-168.49833,NA,ong_105.jpg,ong_141.jpg,-93.82985,NA,-168.49833,NA
-6,61,1,66,ongoing,ongoing,ong_061.jpg,ong_075.jpg,99.75831,NA,-56.65400,NA,ong_061.jpg,ong_075.jpg,99.75831,NA,-56.65400,NA,ong_061.jpg,ong_075.jpg,99.75831,NA,-56.65400,NA
-6,62,2,66,ongoing,ongoing,ong_002.jpg,ong_136.jpg,-86.60214,NA,-152.16485,NA,ong_002.jpg,ong_136.jpg,-86.60214,NA,-152.16485,NA,ong_002.jpg,ong_136.jpg,-86.60214,NA,-152.16485,NA
-6,63,3,66,ongoing,ongoing,ong_191.jpg,ong_149.jpg,-169.0511,NA,-159.22358,NA,ong_191.jpg,ong_149.jpg,-169.0511,NA,-159.22358,NA,ong_191.jpg,ong_149.jpg,-169.0511,NA,-159.22358,NA
-6,64,1,67,prom,prom_spec,prm_240.jpg,prm_162.jpg,-159.7513,17,64.39103,-107,prm_504.jpg,prm_502.jpg,-159.7513,17,64.39103,-107,prm_112.jpg,prm_197.jpg,-159.7513,17,64.39103,-107
-6,65,2,67,prom,ongoing,ong_174.jpg,ong_078.jpg,-40.92119,NA,43.72763,NA,ong_174.jpg,ong_078.jpg,-40.92119,NA,43.72763,NA,ong_174.jpg,ong_078.jpg,-40.92119,NA,43.72763,NA
-6,66,3,67,prom,ongoing,ong_023.jpg,ong_122.jpg,123.76699,NA,166.98543,NA,ong_023.jpg,ong_122.jpg,123.76699,NA,166.98543,NA,ong_023.jpg,ong_122.jpg,123.76699,NA,166.98543,NA
-6,67,1,68,ongoing,ongoing,ong_265.jpg,ong_268.jpg,105.4292,NA,-1.750932,NA,ong_265.jpg,ong_268.jpg,105.4292,NA,-1.750932,NA,ong_265.jpg,ong_268.jpg,105.4292,NA,-1.750932,NA
-7,90,3,75,ongoing,ongoing,ong_024.jpg,ong_035.jpg,165.736,NA,-178.833330,NA,ong_024.jpg,ong_035.jpg,165.736,NA,-178.833330,NA,ong_024.jpg,ong_035.jpg,165.736,NA,-178.833330,NA
-6,69,3,68,ongoing,ongoing,ong_267.jpg,ong_266.jpg,-155.7033,NA,60.581476,NA,ong_267.jpg,ong_266.jpg,-155.7033,NA,60.581476,NA,ong_267.jpg,ong_266.jpg,-155.7033,NA,60.581476,NA
-6,70,1,69,ongoing,ongoing,ong_022.jpg,ong_012.jpg,-100.25838,NA,161.79575,NA,ong_022.jpg,ong_012.jpg,-100.25838,NA,161.79575,NA,ong_022.jpg,ong_012.jpg,-100.25838,NA,161.79575,NA
-6,71,2,69,ongoing,ongoing,ong_230.jpg,ong_011.jpg,-173.11242,NA,-64.05349,NA,ong_230.jpg,ong_011.jpg,-173.11242,NA,-64.05349,NA,ong_230.jpg,ong_011.jpg,-173.11242,NA,-64.05349,NA
-6,72,3,69,ongoing,ongoing,ong_114.jpg,ong_151.jpg,-42.35925,NA,77.39553,NA,ong_114.jpg,ong_151.jpg,-42.35925,NA,77.39553,NA,ong_114.jpg,ong_151.jpg,-42.35925,NA,77.39553,NA
-7,73,1,70,ongoing,ongoing,ong_159.jpg,ong_211.jpg,-105.33198,NA,139.72609,NA,ong_159.jpg,ong_211.jpg,-105.33198,NA,139.72609,NA,ong_159.jpg,ong_211.jpg,-105.33198,NA,139.72609,NA
-7,74,2,70,ongoing,ongoing,ong_188.jpg,ong_166.jpg,-28.55504,NA,93.46252,NA,ong_188.jpg,ong_166.jpg,-28.55504,NA,93.46252,NA,ong_188.jpg,ong_166.jpg,-28.55504,NA,93.46252,NA
-7,75,3,70,ongoing,ongoing,ong_075.jpg,ong_030.jpg,-148.5803,NA,-166.65352,NA,ong_075.jpg,ong_030.jpg,-148.5803,NA,-166.65352,NA,ong_075.jpg,ong_030.jpg,-148.5803,NA,-166.65352,NA
-7,76,1,71,ongoing,ongoing,ong_204.jpg,ong_174.jpg,111.13073,NA,113.719284,NA,ong_204.jpg,ong_174.jpg,111.13073,NA,113.719284,NA,ong_204.jpg,ong_174.jpg,111.13073,NA,113.719284,NA
-7,77,2,71,ongoing,ongoing,ong_200.jpg,ong_093.jpg,-72.73097,NA,-1.734873,NA,ong_200.jpg,ong_093.jpg,-72.73097,NA,-1.734873,NA,ong_200.jpg,ong_093.jpg,-72.73097,NA,-1.734873,NA
-7,78,3,71,ongoing,ongoing,ong_186.jpg,ong_014.jpg,154.35424,NA,176.237140,NA,ong_186.jpg,ong_014.jpg,154.35424,NA,176.237140,NA,ong_186.jpg,ong_014.jpg,154.35424,NA,176.237140,NA
-7,79,1,72,ongoing,ongoing,ong_175.jpg,ong_236.jpg,-76.81478,NA,-27.86689,NA,ong_175.jpg,ong_236.jpg,-76.81478,NA,-27.86689,NA,ong_175.jpg,ong_236.jpg,-76.81478,NA,-27.86689,NA
-7,80,2,72,ongoing,ongoing,ong_003.jpg,ong_113.jpg,80.76056,NA,125.50809,NA,ong_003.jpg,ong_113.jpg,80.76056,NA,125.50809,NA,ong_003.jpg,ong_113.jpg,80.76056,NA,125.50809,NA
-7,81,3,72,ongoing,ongoing,ong_203.jpg,ong_050.jpg,-32.4066,NA,79.61726,NA,ong_203.jpg,ong_050.jpg,-32.4066,NA,79.61726,NA,ong_203.jpg,ong_050.jpg,-32.4066,NA,79.61726,NA
-7,82,1,73,ongoing,ongoing,ong_064.jpg,ong_199.jpg,-114.8325,NA,-160.48496,NA,ong_064.jpg,ong_199.jpg,-114.8325,NA,-160.48496,NA,ong_064.jpg,ong_199.jpg,-114.8325,NA,-160.48496,NA
-7,83,2,73,ongoing,ongoing,ong_157.jpg,ong_097.jpg,-72.72813,NA,31.07597,NA,ong_157.jpg,ong_097.jpg,-72.72813,NA,31.07597,NA,ong_157.jpg,ong_097.jpg,-72.72813,NA,31.07597,NA
-7,84,3,73,ongoing,ongoing,ong_177.jpg,ong_043.jpg,159.30973,NA,-45.12203,NA,ong_177.jpg,ong_043.jpg,159.30973,NA,-45.12203,NA,ong_177.jpg,ong_043.jpg,159.30973,NA,-45.12203,NA
-7,85,1,74,ongoing,ongoing,ong_006.jpg,ong_045.jpg,-82.25556,NA,-154.743032,NA,ong_006.jpg,ong_045.jpg,-82.25556,NA,-154.743032,NA,ong_006.jpg,ong_045.jpg,-82.25556,NA,-154.743032,NA
-7,86,2,74,ongoing,ongoing,ong_012.jpg,ong_161.jpg,-146.97347,NA,4.088539,NA,ong_012.jpg,ong_161.jpg,-146.97347,NA,4.088539,NA,ong_012.jpg,ong_161.jpg,-146.97347,NA,4.088539,NA
-7,87,3,74,ongoing,ongoing,ong_132.jpg,ong_041.jpg,75.18725,NA,114.795473,NA,ong_132.jpg,ong_041.jpg,75.18725,NA,114.795473,NA,ong_132.jpg,ong_041.jpg,75.18725,NA,114.795473,NA
-7,88,1,75,prom,ongoing,ong_136.jpg,ong_051.jpg,69.5229,NA,-178.02257,NA,ong_136.jpg,ong_051.jpg,69.5229,NA,-178.02257,NA,ong_136.jpg,ong_051.jpg,69.5229,NA,-178.02257,NA
-7,89,2,75,prom,ongoing,ong_065.jpg,ong_062.jpg,-84.06582,NA,-34.06347,NA,ong_065.jpg,ong_062.jpg,-84.06582,NA,-34.06347,NA,ong_065.jpg,ong_062.jpg,-84.06582,NA,-34.06347,NA
-7,90,3,75,prom,prom_spec,prm_185.jpg,prm_185.jpg,-144.02075,17,101.05495,-107,prm_501.jpg,prm_501.jpg,-144.02075,17,101.05495,-107,prm_126.jpg,prm_126.jpg,-144.02075,17,101.05495,-107
-7,91,1,76,ongoing,ongoing,ong_243.jpg,ong_203.jpg,-131.0746,NA,124.0960,NA,ong_243.jpg,ong_203.jpg,-131.0746,NA,124.0960,NA,ong_243.jpg,ong_203.jpg,-131.0746,NA,124.0960,NA
-7,92,2,76,ongoing,ongoing,ong_083.jpg,ong_111.jpg,106.0991,NA,37.0334,NA,ong_083.jpg,ong_111.jpg,106.0991,NA,37.0334,NA,ong_083.jpg,ong_111.jpg,106.0991,NA,37.0334,NA
-7,93,3,76,ongoing,ongoing,ong_063.jpg,ong_160.jpg,157.0363,NA,177.3023,NA,ong_063.jpg,ong_160.jpg,157.0363,NA,177.3023,NA,ong_063.jpg,ong_160.jpg,157.0363,NA,177.3023,NA
-7,94,1,77,ongoing,ongoing,ong_041.jpg,ong_047.jpg,75.98752,NA,-147.68194,NA,ong_041.jpg,ong_047.jpg,75.98752,NA,-147.68194,NA,ong_041.jpg,ong_047.jpg,75.98752,NA,-147.68194,NA
-7,95,2,77,ongoing,ongoing,ong_072.jpg,ong_216.jpg,-85.20237,NA,61.19587,NA,ong_072.jpg,ong_216.jpg,-85.20237,NA,61.19587,NA,ong_072.jpg,ong_216.jpg,-85.20237,NA,61.19587,NA
-7,96,3,77,ongoing,ongoing,ong_216.jpg,ong_037.jpg,159.74583,NA,150.46879,NA,ong_216.jpg,ong_037.jpg,159.74583,NA,150.46879,NA,ong_216.jpg,ong_037.jpg,159.74583,NA,150.46879,NA
-7,97,1,78,ongoing,ongoing,ong_106.jpg,ong_176.jpg,83.41368,NA,-5.364124,NA,ong_106.jpg,ong_176.jpg,83.41368,NA,-5.364124,NA,ong_106.jpg,ong_176.jpg,83.41368,NA,-5.364124,NA
-7,98,2,78,ongoing,ongoing,ong_149.jpg,ong_006.jpg,-79.96421,NA,165.034712,NA,ong_149.jpg,ong_006.jpg,-79.96421,NA,165.034712,NA,ong_149.jpg,ong_006.jpg,-79.96421,NA,165.034712,NA
-7,99,3,78,ongoing,ongoing,ong_043.jpg,ong_124.jpg,-27.55513,NA,-160.312547,NA,ong_043.jpg,ong_124.jpg,-27.55513,NA,-160.312547,NA,ong_043.jpg,ong_124.jpg,-27.55513,NA,-160.312547,NA
-7,100,1,79,ongoing,ongoing,ong_044.jpg,ong_223.jpg,98.50399,NA,-33.90633,NA,ong_044.jpg,ong_223.jpg,98.50399,NA,-33.90633,NA,ong_044.jpg,ong_223.jpg,98.50399,NA,-33.90633,NA
-7,101,2,79,ongoing,ongoing,ong_179.jpg,ong_181.jpg,167.79943,NA,21.05644,NA,ong_179.jpg,ong_181.jpg,167.79943,NA,21.05644,NA,ong_179.jpg,ong_181.jpg,167.79943,NA,21.05644,NA
-7,102,3,79,ongoing,ongoing,ong_143.jpg,ong_002.jpg,-76.27608,NA,61.26953,NA,ong_143.jpg,ong_002.jpg,-76.27608,NA,61.26953,NA,ong_143.jpg,ong_002.jpg,-76.27608,NA,61.26953,NA
-8,103,1,80,ongoing,ongoing,ong_070.jpg,ong_029.jpg,-164.38575,NA,21.98214,NA,ong_070.jpg,ong_029.jpg,-164.38575,NA,21.98214,NA,ong_070.jpg,ong_029.jpg,-164.38575,NA,21.98214,NA
-8,104,2,80,ongoing,ongoing,ong_130.jpg,ong_196.jpg,-75.31013,NA,113.26954,NA,ong_130.jpg,ong_196.jpg,-75.31013,NA,113.26954,NA,ong_130.jpg,ong_196.jpg,-75.31013,NA,113.26954,NA
-8,105,3,80,ongoing,ongoing,ong_069.jpg,ong_052.jpg,132.18442,NA,-28.06323,NA,ong_069.jpg,ong_052.jpg,132.18442,NA,-28.06323,NA,ong_069.jpg,ong_052.jpg,132.18442,NA,-28.06323,NA
-8,106,1,81,ongoing,ongoing,ong_052.jpg,ong_067.jpg,-42.44488,NA,-18.44708,NA,ong_052.jpg,ong_067.jpg,-42.44488,NA,-18.44708,NA,ong_052.jpg,ong_067.jpg,-42.44488,NA,-18.44708,NA
-8,107,2,81,ongoing,ongoing,ong_034.jpg,ong_120.jpg,138.18653,NA,31.81020,NA,ong_034.jpg,ong_120.jpg,138.18653,NA,31.81020,NA,ong_034.jpg,ong_120.jpg,138.18653,NA,31.81020,NA
-8,108,3,81,ongoing,ongoing,ong_035.jpg,ong_114.jpg,-86.82271,NA,164.34106,NA,ong_035.jpg,ong_114.jpg,-86.82271,NA,164.34106,NA,ong_035.jpg,ong_114.jpg,-86.82271,NA,164.34106,NA
-8,109,1,82,prom,ongoing,ong_018.jpg,ong_094.jpg,128.61168,NA,105.75493,NA,ong_018.jpg,ong_094.jpg,128.61168,NA,105.75493,NA,ong_018.jpg,ong_094.jpg,128.61168,NA,105.75493,NA
-8,110,2,82,prom,prom_spec,prm_117.jpg,prm_240.jpg,-143.13378,17,50.63153,-107,prm_503.jpg,prm_504.jpg,-143.13378,17,50.63153,-107,prm_343.jpg,prm_112.jpg,-143.13378,17,50.63153,-107
-8,111,3,82,prom,ongoing,ong_097.jpg,ong_092.jpg,-79.42638,NA,-56.56375,NA,ong_097.jpg,ong_092.jpg,-79.42638,NA,-56.56375,NA,ong_097.jpg,ong_092.jpg,-79.42638,NA,-56.56375,NA
-8,112,1,83,ongoing,ongoing,ong_005.jpg,ong_064.jpg,93.49613,NA,-56.36389,NA,ong_005.jpg,ong_064.jpg,93.49613,NA,-56.36389,NA,ong_005.jpg,ong_064.jpg,93.49613,NA,-56.36389,NA
-8,113,2,83,ongoing,ongoing,ong_011.jpg,ong_173.jpg,-174.69875,NA,51.64812,NA,ong_011.jpg,ong_173.jpg,-174.69875,NA,51.64812,NA,ong_011.jpg,ong_173.jpg,-174.69875,NA,51.64812,NA
-8,114,3,83,ongoing,ongoing,ong_071.jpg,ong_032.jpg,-49.48521,NA,163.90364,NA,ong_071.jpg,ong_032.jpg,-49.48521,NA,163.90364,NA,ong_071.jpg,ong_032.jpg,-49.48521,NA,163.90364,NA
-8,115,1,84,ongoing,ongoing,ong_101.jpg,ong_163.jpg,65.3919,NA,9.839606,NA,ong_101.jpg,ong_163.jpg,65.3919,NA,9.839606,NA,ong_101.jpg,ong_163.jpg,65.3919,NA,9.839606,NA
-8,116,2,84,ongoing,ongoing,ong_247.jpg,ong_090.jpg,105.735,NA,153.997056,NA,ong_247.jpg,ong_090.jpg,105.735,NA,153.997056,NA,ong_247.jpg,ong_090.jpg,105.735,NA,153.997056,NA
-8,117,3,84,ongoing,ongoing,ong_209.jpg,ong_101.jpg,-154.5905,NA,77.730204,NA,ong_209.jpg,ong_101.jpg,-154.5905,NA,77.730204,NA,ong_209.jpg,ong_101.jpg,-154.5905,NA,77.730204,NA
-8,118,1,85,ongoing,ongoing,ong_066.jpg,ong_182.jpg,-83.49136,NA,-42.05484,NA,ong_066.jpg,ong_182.jpg,-83.49136,NA,-42.05484,NA,ong_066.jpg,ong_182.jpg,-83.49136,NA,-42.05484,NA
-8,119,2,85,ongoing,ongoing,ong_051.jpg,ong_020.jpg,115.22099,NA,27.33399,NA,ong_051.jpg,ong_020.jpg,115.22099,NA,27.33399,NA,ong_051.jpg,ong_020.jpg,115.22099,NA,27.33399,NA
-8,120,3,85,ongoing,ongoing,ong_121.jpg,ong_048.jpg,-36.3636,NA,86.12623,NA,ong_121.jpg,ong_048.jpg,-36.3636,NA,86.12623,NA,ong_121.jpg,ong_048.jpg,-36.3636,NA,86.12623,NA
+4,1,1,46,ongoing,ongoing,hose.png,acorn.png,-54.54287,NA,43.43770,NA,shoulderpad.png,8ball.png,-54.54287,NA,43.43770,NA,cherrytomato01.png,aceofdiamond.png,-54.54287,NA,43.43770,NA
+5,2,2,47,ongoing,ongoing,electricoutlet.png,airhockeytable.png,128.82798,NA,-15.61492,NA,gutteranddrainpipe.png,aircompressor.png,128.82798,NA,-15.61492,NA,handcuffs.png,    airvent.png,128.82798,NA,-15.61492,NA
+4,3,3,46,ongoing,ongoing,redonion.png,apron.png,-130.53178,NA,149.78968,NA,napkin.png,airconditioner.png,-130.53178,NA,149.78968,NA,nightstand.png,artichoke01b.png,-130.53178,NA,149.78968,NA
+4,4,1,47,ongoing,ongoing,stairs.png,atm.png,100.01465,NA,39.8775,NA,pintofbeer.png,aluminiumfoil.png,100.01465,NA,39.8775,NA,bowlofcereal.png,    ballofstring.png,100.01465,NA,39.8775,NA
+4,5,2,47,ongoing,ongoing,tombstone.png,basketball01.png,-86.35924,NA,142.4418,NA,mug05.png,armchair02.png,-86.35924,NA,142.4418,NA,hotdog.png,    baseballglove.png,-86.35924,NA,142.4418,NA
+4,6,3,47,ongoing,ongoing,buddhastatue.png,bed.png,-156.88151,NA,-156.6190,NA,gong.png,balcony02.png,-156.88151,NA,-156.6190,NA,firealarm.png,    bikewheel.png,-156.88151,NA,-156.6190,NA
+5,7,1,48,ongoing,ongoing,hand01b.png,blackolive.png,129.865,NA,-158.25021,NA,hockeygoaliepad.png,barbecue03.png,129.865,NA,-158.25021,NA,greathornowl.png,    boatmotor.png,129.865,NA,-158.25021,NA
+5,8,2,48,ongoing,ongoing,knee.png,bolt01a.png,-94.02382,NA,50.38334,NA,porchlight.png,barrel01.png,-94.02382,NA,50.38334,NA,coat.png,    bowtie.png,-94.02382,NA,50.38334,NA
+5,9,3,48,ongoing,ongoing,hand01b.png,bowlofchips.png,83.45801,NA,107.24329,NA,lawnmowertractor.png,bikerack.png,83.45801,NA,107.24329,NA,star.png,    bread.png,83.45801,NA,107.24329,NA
+5,10,1,49,ongoing,ongoing,manholecover.png,boxingglove01.png,-162.4891,NA,137.799308,NA,taxisign.png,bluecheese.png,-162.4891,NA,137.799308,NA,painting.png,    breadslice.png,-162.4891,NA,137.799308,NA
+5,11,2,49,ongoing,ongoing,smokedetector02.png,brainmodel.png,61.1854,NA,-9.775576,NA,football.png,bookshelf.png,61.1854,NA,-9.775576,NA,licenseplate.png,    bun.png,61.1854,NA,-9.775576,NA
+5,12,3,49,ongoing,ongoing,jumpingjack.png,brownsugar.png,110.3565,NA,-55.482884,NA,fireplaced.png,bowlofcereal.png,110.3565,NA,-55.482884,NA,pirateflag.png,    bus.png,110.3565,NA,-55.482884,NA
+5,13,1,50,ongoing,ongoing,christmaswreath.png,bucket02.png,91.82449,NA,173.63243,NA,desktopcomputer.png,brasslipstrike.png,91.82449,NA,173.63243,NA,icecreamcone01.png,    cactus.png,91.82449,NA,173.63243,NA
+5,14,2,50,ongoing,ongoing,cactus.png,cakeplatter.png,173.42364,NA,98.84098,NA,tire.png,bulldozer.png,173.42364,NA,98.84098,NA,waders.png,    campfire.png,173.42364,NA,98.84098,NA
+5,15,3,50,ongoing,ongoing,hockeygoalieglove.png,candydispenser.png,-158.40472,NA,-66.78700,NA,fanheater.png,bust.png,-158.40472,NA,-66.78700,NA,firehydrant.png,    carbattery.png,-158.40472,NA,-66.78700,NA
+5,16,1,51,prom,ongoing,pottery.png,carjack.png,-97.25163,NA,171.728437,NA,handgripper.png,callbell.png,-97.25163,NA,171.728437,NA,blender.png,    casabamelon.png,-97.25163,NA,171.728437,NA
+5,17,2,51,prom,ongoing,trampoline.png,cashregister01.png,121.25121,NA,-174.726566,NA,pokerchips.png,carsidemirror01.png,121.25121,NA,-174.726566,NA,cartonofeggs.png,    castletower.png,121.25121,NA,-174.726566,NA
+5,18,3,51,prom,prom_spec,granolabar01.png,chandelier.png,-143.31892,17,-1.818731,-107,toysoldier01b.png,cartonofeggs.png,-143.31892,17,-1.818731,-107,skullwithcrossbones.png,    charcoalbarbecue.png,-143.31892,17,-1.818731,-107
+5,19,1,52,ongoing,ongoing,cupcake.png,chessknight03a.png,-152.9912,NA,179.2949,NA,mailtruck.png,cementtruck.png,-152.9912,NA,179.2949,NA,boxtruck.png,cherrytomato01.png,-152.9912,NA,179.2949,NA
+5,20,2,52,ongoing,ongoing,electrictransformer.png,chime.png,118.0166,NA,108.3939,NA,keyhole.png,chiliflake.png,118.0166,NA,108.3939,NA,pokerchips.png,    chimney.png,118.0166,NA,108.3939,NA
+5,21,3,52,ongoing,ongoing,punchingball.png,christmastree.png,160.1119,NA,-149.9985,NA,espressomachine.png,chocolatecroissant.png,160.1119,NA,-149.9985,NA,coat.png,    chocolatemilk.png,160.1119,NA,-149.9985,NA
+5,22,1,53,ongoing,ongoing,treadmill.png,clover.png,-61.41013,NA,130.00166,NA,icecube02.png,church.png,-61.41013,NA,130.00166,NA,guitar.png,    cinderblock.png,-61.41013,NA,130.00166,NA
+5,23,2,53,ongoing,ongoing,skiBoot01a.png,coloringset.png,-121.34805,NA,-18.08672,NA,nintendods.png,coffeemachine.png,-121.34805,NA,-18.08672,NA,electricmixer.png,    cloud.png,-121.34805,NA,-18.08672,NA
+5,24,3,53,ongoing,ongoing,punchingball.png,contactlens.png,162.29587,NA,-154.12173,NA,outdoorfireplace.png,corkboard.png,162.29587,NA,-154.12173,NA,safetyglasses.png,    coffeemaker.png,162.29587,NA,-154.12173,NA
+5,25,1,54,ongoing,ongoing,well.png,couch02.png,-83.85062,NA,34.46655,NA,fortunecookie.png,daisy.png,-83.85062,NA,34.46655,NA,turkeyleg.png,    cookingpot.png,-83.85062,NA,34.46655,NA
+5,26,2,54,ongoing,ongoing,hand01b.png,crosscountryboot.png,145.72362,NA,-172.60349,NA,puzzle.png,dishrack.png,145.72362,NA,-172.60349,NA,mortarandpestle.png,corn02.png,145.72362,NA,-172.60349,NA
+5,27,3,54,ongoing,ongoing,fingerprint.png,cupcake.png,-125.28461,NA,86.61363,NA,plantpot.png,donotentersign.png,-125.28461,NA,86.61363,NA,horse.png,    cremebrulee.png,-125.28461,NA,86.61363,NA
+5,28,1,55,ongoing,ongoing,litterbox.png,diaperbag.png,-135.43039,NA,110.42172,NA,memorialplaque.png,donotwalksign.png,-135.43039,NA,110.42172,NA,springroll.png,    dartboard.png,-135.43039,NA,110.42172,NA
+5,29,2,55,ongoing,ongoing,pavedsidewalk.png,donut.png,-56.73722,NA,-61.34423,NA,projectorscreen.png,doorbolt.png,-56.73722,NA,-61.34423,NA,carjack.png,    desktopcomputer.png,-56.73722,NA,-61.34423,NA
+5,30,3,55,ongoing,ongoing,whiteout.png,ducttape.png,73.11586,NA,150.95792,NA,safetyglasses.png,dormer.png,73.11586,NA,150.95792,NA,cutleryset.png,diploma01.png,73.11586,NA,150.95792,NA
+5,31,1,56,ongoing,ongoing,cupcake.png,ear.png,65.93304,NA,-21.38072,NA,wheel04.png,dryingmachine02.png,65.93304,NA,-21.38072,NA,graveltruck.png,djmixer01.png,65.93304,NA,-21.38072,NA
+5,32,2,56,ongoing,ongoing,shoepolish.png,electricitymeter.png,-82.2306,NA,37.29153,NA,wheelchair.png,dumptruck.png,-82.2306,NA,37.29153,NA,shower.png,    doghouse.png,-82.2306,NA,37.29153,NA
+5,33,3,56,ongoing,ongoing,generator.png,electricoutlet.png,-156.88502,NA,-168.55954,NA,dumptruck.png,eggslicer.png,-156.88502,NA,-168.55954,NA,tire.png,    drinkshaker.png,-156.88502,NA,-168.55954,NA
+5,34,1,57,ongoing,ongoing,sailboat.png,escalator.png,143.30817,NA,159.57034,NA,porchlight.png,electrictransformer.png,143.30817,NA,159.57034,NA,tophat.png,    elbow.png,143.30817,NA,159.57034,NA
+6,35,2,57,ongoing,ongoing,bikewheel.png,exercisebike.png,87.06069,NA,-41.04771,NA,jarofapplesauce.png,espressomachine.png,87.06069,NA,-41.04771,NA,shoppingcart.png,    entrancegate.png,87.06069,NA,-41.04771,NA
+5,36,3,57,ongoing,ongoing,redonion.png,eyechart.png,-93.5509,NA,86.58324,NA,basketball01.png,faxmachine.png,-93.5509,NA,86.58324,NA,bookshelf.png,    eye.png,-93.5509,NA,86.58324,NA
+5,37,1,58,ongoing,ongoing,snowman.png,fanblades.png,-132.84077,NA,50.83115,NA,tricycle.png,fingerprint.png,-132.84077,NA,50.83115,NA,sandwich.png,fence02.png,-132.84077,NA,50.83115,NA
+5,38,2,58,ongoing,ongoing,well.png,fanheater.png,81.38742,NA,-61.04782,NA,gazebo.png,fireplace.png,81.38742,NA,-61.04782,NA,watercolorpaintset.png,    firstaidkit.png,81.38742,NA,-61.04782,NA
+5,39,3,58,ongoing,ongoing,microwave.png,filingcabinet.png,-31.49201,NA,179.62414,NA,mailbox01.png,floodlight.png,-31.49201,NA,179.62414,NA,lighthouse.png,    firtree.png,-31.49201,NA,179.62414,NA
+6,40,1,59,ongoing,ongoing,redonion.png,firealarm.png,-100.73578,NA,-1.718368,NA,pumpkin.png,floortile02.png,-100.73578,NA,-1.718368,NA,diskbrake.png,flower01.png,-100.73578,NA,-1.718368,NA
+6,41,2,59,ongoing,ongoing,christmaswreath.png,flipflop01b.png,-154.50921,NA,66.756994,NA,gift01.png,flowerwreath.png,-154.50921,NA,66.756994,NA,taco.png,    football.png,-154.50921,NA,66.756994,NA
+6,42,3,59,ongoing,ongoing,manholecover.png,fluorescentlightbulb.png,-49.85758,NA,132.000584,NA,gamecontroller01.png,foot.png,-49.85758,NA,132.000584,NA,briefcase.png,    frisbee.png,-49.85758,NA,132.000584,NA
+6,43,1,60,ongoing,ongoing,mailtruck.png,footrest02.png,-68.76169,NA,0.526003,NA,mug05.png,fortunecookie.png,-68.76169,NA,0.526003,NA,footrest02.png,gamecontroller01.png,-68.76169,NA,0.526003,NA
+6,44,2,60,ongoing,ongoing,christmaswreath.png,freezer02.png,-177.05234,NA,44.001245,NA,safe.png,frenchfries.png,-177.05234,NA,44.001245,NA,waterlily.png,garbagecan02.png,-177.05234,NA,44.001245,NA
+6,45,3,60,ongoing,ongoing,satellitedish01.png,funnel.png,99.36645,NA,176.671804,NA,onewaysign.png,fridge.png,99.36645,NA,176.671804,NA,albatross.png,    gazebo.png,99.36645,NA,176.671804,NA
+6,46,1,61,ongoing,ongoing,clover.png,gardenutilityvehicle.png,-86.97752,NA,136.941244,NA,tire.png,fusebox.png,-86.97752,NA,136.941244,NA,woodenlog.png,    gearshift.png,-86.97752,NA,136.941244,NA
+6,47,2,61,ongoing,ongoing,christmaswreath.png,generator.png,139.0125,NA,6.387474,NA,shield02.png,garbagebin.png,139.0125,NA,6.387474,NA,flute.png,    golfball.png,139.0125,NA,6.387474,NA
+6,48,3,61,ongoing,ongoing,jumpingjack.png,gong.png,-172.59696,NA,-66.298473,NA,lifesaver.png,gastank.png,-172.59696,NA,-66.298473,NA,portapotty.png,    gravyboat.png,-172.59696,NA,-66.298473,NA
+6,49,1,62,ongoing,ongoing,carjack.png,greathornowl.png,103.3438,NA,90.77708,NA,lunchbag.png,goldnugget.png,103.3438,NA,90.77708,NA,chest01.png,    guacamole.png,103.3438,NA,90.77708,NA
+6,50,2,62,ongoing,ongoing,electrictransformer.png,gutteranddrainpipe.png,-112.7546,NA,160.07656,NA,stool01.png,granolabar01.png,-112.7546,NA,160.07656,NA,beachumbrella.png,hand01b.png,-112.7546,NA,160.07656,NA
+6,51,3,62,ongoing,ongoing,forklift.png,handblender.png,-57.9223,NA,2.46743,NA,pokerchips.png,hamslice.png,-57.9223,NA,2.46743,NA,fountainpen.png,    handvacuum.png,-57.9223,NA,2.46743,NA
+6,52,1,63,ongoing,ongoing,stool01.png,hangar.png,-140.66991,NA,-171.85274,NA,shower.png,handgripper.png,-140.66991,NA,-171.85274,NA,golfball.png,hibiscusflower02.png,-140.66991,NA,-171.85274,NA
+6,53,2,63,ongoing,ongoing,hand01b.png,hockeygoalieglove.png,-85.73485,NA,64.92391,NA,icecube02.png,heatpump.png,-85.73485,NA,64.92391,NA,candydispenser.png,    holdfast.png,-85.73485,NA,64.92391,NA
+6,54,3,63,ongoing,ongoing,electricoutlet.png,honeycomb.png,142.32115,NA,111.31338,NA,treadmill.png,hockeypuck.png,142.32115,NA,111.31338,NA,umbrella.png,    icemaker.png,142.32115,NA,111.31338,NA
+6,55,1,64,ongoing,ongoing,punchingball.png,hotdog.png,-92.5464,NA,-173.52245,NA,chessknight03a.png,hose.png,-92.5464,NA,-173.52245,NA,soda.png,    jarofapplesauce.png,-92.5464,NA,-173.52245,NA
+6,56,2,64,ongoing,ongoing,hose.png,icebucket.png,150.88263,NA,93.86023,NA,tree.png,humanskull.png,150.88263,NA,93.86023,NA,lifebuoy.png,    jeep.png,150.88263,NA,93.86023,NA
+6,57,3,64,ongoing,ongoing,snowman.png,inukshuk.png,72.87469,NA,146.40747,NA,wetfloorsign.png,icecube02.png,72.87469,NA,146.40747,NA,leatherboot01a.png,    jumpercables.png,72.87469,NA,146.40747,NA
+6,58,1,65,ongoing,ongoing,stairs.png,jackolantern.png,91.18869,NA,148.65511,NA,urinal.png,jarofcapers.png,91.18869,NA,148.65511,NA,tire.png,    kidbicycle.png,91.18869,NA,148.65511,NA
+6,59,2,65,ongoing,ongoing,christmaswreath.png,Jesusstatue.png,134.11759,NA,38.28307,NA,shower.png,jeans01.png,134.11759,NA,38.28307,NA,knee.png,    knee.png,134.11759,NA,38.28307,NA
+6,60,3,65,ongoing,ongoing,cactus.png,key07.png,-93.82985,NA,-168.49833,NA,mug05.png,jumpingjack.png,-93.82985,NA,-168.49833,NA,teddybear.png,lantern03.png,-93.82985,NA,-168.49833,NA
+6,61,1,66,ongoing,ongoing,buddhastatue.png,keyboard.png,99.75831,NA,-56.65400,NA,poloshirt.png,keyhole.png,99.75831,NA,-56.65400,NA,firehydrant.png,    licenseplate.png,99.75831,NA,-56.65400,NA
+6,62,2,66,ongoing,ongoing,hockeygoalieglove.png,kiddiepool.png,-86.60214,NA,-152.16485,NA,shoulderpad.png,kiwi03.png,-86.60214,NA,-152.16485,NA,accordion.png,lightswitch01.png,-86.60214,NA,-152.16485,NA
+6,63,3,66,ongoing,ongoing,christmaswreath.png,kneepad01c.png,-169.0511,NA,-159.22358,NA,toilet.png,lawnmowertractor.png,-169.0511,NA,-159.22358,NA,sewingmachine.png,    lunchbag.png,-169.0511,NA,-159.22358,NA
+6,64,1,67,prom,prom_spec,stairs.png,lilypad.png,-159.7513,17,64.39103,-107,tombstone.png,lighthouse.png,-159.7513,17,64.39103,-107,chandelier.png,    manholecover.png,-159.7513,17,64.39103,-107
+6,65,2,67,prom,ongoing,satellitedish01.png,lychee01.png,-40.92119,NA,43.72763,NA,pintofbeer.png,litterbox.png,-40.92119,NA,43.72763,NA,sprinkler.png,    marble.png,-40.92119,NA,43.72763,NA
+6,66,3,67,prom,ongoing,stairs.png,magneticcompass.png,123.76699,NA,166.98543,NA,lawnmowertractor.png,locomotive.png,123.76699,NA,166.98543,NA,table01.png,    memorialplaque.png,123.76699,NA,166.98543,NA
+6,67,1,68,ongoing,ongoing,generator.png,mailtruck.png,105.4292,NA,-1.750932,NA,lifesaver.png,mailbox01.png,105.4292,NA,-1.750932,NA,table01.png,    moon.png,105.4292,NA,-1.750932,NA
+7,90,3,75,ongoing,ongoing,electrictransformer.png,martiniglass01b.png,165.736,NA,-178.833330,NA,shoulderpad.png,maraca01.png,165.736,NA,-178.833330,NA,waterfountain02.png,    nailgun.png,165.736,NA,-178.833330,NA
+6,69,3,68,ongoing,ongoing,stairs.png,menwashroomsign.png,-155.7033,NA,60.581476,NA,toilet.png,mitresaw.png,-155.7033,NA,60.581476,NA,salmon.png,    nintendods.png,-155.7033,NA,60.581476,NA
+6,70,1,69,ongoing,ongoing,hose.png,mortarandpestle.png,-100.25838,NA,161.79575,NA,television.png,muffintray01.png,-100.25838,NA,161.79575,NA,armchair02.png,    noparkingsign.png,-100.25838,NA,161.79575,NA
+6,71,2,69,ongoing,ongoing,stairs.png,napkin.png,-173.11242,NA,-64.05349,NA,safetyglasses.png,mug05.png,-173.11242,NA,-64.05349,NA,napkin.png,    officecabinet.png,-173.11242,NA,-64.05349,NA
+6,72,3,69,ongoing,ongoing,bikewheel.png,nose.png,-42.35925,NA,77.39553,NA,icecube02.png,officechair03.png,-42.35925,NA,77.39553,NA,frisbee.png,    oven.png,-42.35925,NA,77.39553,NA
+7,73,1,70,ongoing,ongoing,hockeygoalieglove.png,outdoorchair.png,-105.33198,NA,139.72609,NA,handvacuum.png,onewaysign.png,-105.33198,NA,139.72609,NA,armchair02.png,    papershredder.png,-105.33198,NA,139.72609,NA
+7,74,2,70,ongoing,ongoing,shoepolish.png,parachute.png,-28.55504,NA,93.46252,NA,stool01.png,palmier.png,-28.55504,NA,93.46252,NA,firstaidkit.png,    penne.png,-28.55504,NA,93.46252,NA
+7,75,3,70,ongoing,ongoing,litterbox.png,patiochair.png,-148.5803,NA,-166.65352,NA,handblender.png,parkfountain.png,-148.5803,NA,-166.65352,NA,tire.png,    phonebooth.png,-148.5803,NA,-166.65352,NA
+7,76,1,71,ongoing,ongoing,litterbox.png,pavedsidewalk.png,111.13073,NA,113.719284,NA,chessknight03a.png,pipe.png,111.13073,NA,113.719284,NA,mortarandpestle.png,    plantpot.png,111.13073,NA,113.719284,NA
+7,77,2,71,ongoing,ongoing,forklift.png,phonejack.png,-72.73097,NA,-1.734873,NA,recyclingbin.png,podium.png,-72.73097,NA,-1.734873,NA,microphone.png,    pokerchips.png,-72.73097,NA,-1.734873,NA
+7,78,3,71,ongoing,ongoing,litterbox.png,photocopier.png,154.35424,NA,176.237140,NA,puzzle.png,popcorn.png,154.35424,NA,176.237140,NA,albatross.png,    porsche.png,154.35424,NA,176.237140,NA
+7,79,1,72,ongoing,ongoing,pavedsidewalk.png,pin.png,-76.81478,NA,-27.86689,NA,treestump.png,pottery.png,-76.81478,NA,-27.86689,NA,corkboard.png,postalmailbox01.png,-76.81478,NA,-27.86689,NA
+7,80,2,72,ongoing,ongoing,generator.png,pokerset.png,80.76056,NA,125.50809,NA,gutteranddrainpipe.png,projectorscreen.png,80.76056,NA,125.50809,NA,golfball.png,pouch01b.png,80.76056,NA,125.50809,NA
+7,81,3,72,ongoing,ongoing,snowman.png,powerchair.png,-32.4066,NA,79.61726,NA,shower.png,puzzle.png,-32.4066,NA,79.61726,NA,spacehelmet.png,    pumpkin.png,-32.4066,NA,79.61726,NA
+7,82,1,73,ongoing,ongoing,jumpingjack.png,punchingball.png,-114.8325,NA,-160.48496,NA,tire.png,rubikcube.png,-114.8325,NA,-160.48496,NA,chocolatechip.png,    radiator.png,-114.8325,NA,-160.48496,NA
+7,83,2,73,ongoing,ongoing,christmaswreath.png,railwaycrossingsign.png,-72.72813,NA,31.07597,NA,treestump.png,sailboat.png,-72.72813,NA,31.07597,NA,lamp.png,    record.png,-72.72813,NA,31.07597,NA
+7,84,3,73,ongoing,ongoing,forklift.png,recyclingbin.png,159.30973,NA,-45.12203,NA,pokerchips.png,sandbagthrowgame.png,159.30973,NA,-45.12203,NA,pricetag.png,road02.png,159.30973,NA,-45.12203,NA
+7,85,1,74,ongoing,ongoing,forklift.png,rollerblade.png,-82.25556,NA,-154.743032,NA,corkboard.png,scanner.png,-82.25556,NA,-154.743032,NA,rollercoaster.png,    ruins.png,-82.25556,NA,-154.743032,NA
+7,86,2,74,ongoing,ongoing,shoepolish.png,safe.png,-146.97347,NA,4.088539,NA,lawnmowertractor.png,shelves.png,-146.97347,NA,4.088539,NA,diploma01.png,    saladspinner.png,-146.97347,NA,4.088539,NA
+7,87,3,74,ongoing,ongoing,manholecover.png,salsa.png,75.18725,NA,114.795473,NA,wetfloorsign.png,shopvac.png,75.18725,NA,114.795473,NA,wetfloorsign.png,    sandcastle.png,75.18725,NA,114.795473,NA
+7,88,1,75,prom,ongoing,forklift.png,satellitedish01.png,69.5229,NA,-178.02257,NA,recyclingbin.png,showerhead01.png,69.5229,NA,-178.02257,NA,wallclock.png,    schoolbus.png,69.5229,NA,-178.02257,NA
+7,89,2,75,prom,ongoing,snowman.png,scissorlift.png,-84.06582,NA,-34.06347,NA,tire.png,smartboard.png,-84.06582,NA,-34.06347,NA,walkingshoe01.png,shield02.png,-84.06582,NA,-34.06347,NA
+7,90,3,75,prom,prom_spec,litterbox.png,shed02.png,-144.02075,17,101.05495,-107,honeycomb.png,snowman.png,-144.02075,17,101.05495,-107,chainsaw.png,    shotglass.png,-144.02075,17,101.05495,-107
+7,91,1,76,ongoing,ongoing,litterbox.png,shinpad.png,-131.0746,NA,124.0960,NA,menwashroomsign.png,soundmixer.png,-131.0746,NA,124.0960,NA,sushiroll.png,    shoulder.png,-131.0746,NA,124.0960,NA
+7,92,2,76,ongoing,ongoing,stairs.png,shoepolish.png,106.0991,NA,37.0334,NA,corkboard.png,spicerack.png,106.0991,NA,37.0334,NA,suitofarmor.png,smokedetector02.png,106.0991,NA,37.0334,NA
+7,93,3,76,ongoing,ongoing,sailboat.png,shoulderpad.png,157.0363,NA,177.3023,NA,honeycomb.png,sportsjersey.png,157.0363,NA,177.3023,NA,keyhole.png,    soccerball.png,157.0363,NA,177.3023,NA
+7,94,1,77,ongoing,ongoing,hose.png,sink.png,75.98752,NA,-147.68194,NA,honeycomb.png,stairs.png,75.98752,NA,-147.68194,NA,dresser02.png,    spiderweb.png,75.98752,NA,-147.68194,NA
+7,95,2,77,ongoing,ongoing,satellitedish01.png,slushiemachine.png,-85.20237,NA,61.19587,NA,recyclingbin.png,steeringwheel.png,-85.20237,NA,61.19587,NA,playground.png,    spotlight.png,-85.20237,NA,61.19587,NA
+7,96,3,77,ongoing,ongoing,christmaswreath.png,spacerover.png,159.74583,NA,150.46879,NA,handblender.png,stroller.png,159.74583,NA,150.46879,NA,fingernail02.png,    staplegun.png,159.74583,NA,150.46879,NA
+7,97,1,78,ongoing,ongoing,litterbox.png,springroll.png,83.41368,NA,-5.364124,NA,gutteranddrainpipe.png,suitofarmor.png,83.41368,NA,-5.364124,NA,jokercard.png,    stuffedpuffin.png,83.41368,NA,-5.364124,NA
+7,98,2,78,ongoing,ongoing,forklift.png,star.png,-79.96421,NA,165.034712,NA,honeycomb.png,swissarmyknife01a.png,-79.96421,NA,165.034712,NA,swimsuit.png,    sunflowerseeds.png,-79.96421,NA,165.034712,NA
+7,99,3,78,ongoing,ongoing,jumpingjack.png,stool01.png,-27.55513,NA,-160.312547,NA,recyclingbin.png,taxisign.png,-27.55513,NA,-160.312547,NA,diaperbag.png,table01.png,-27.55513,NA,-160.312547,NA
+7,100,1,79,ongoing,ongoing,pavedsidewalk.png,stovetop.png,98.50399,NA,-33.90633,NA,gutteranddrainpipe.png,tent.png,98.50399,NA,-33.90633,NA,shoulder.png,    tire.png,98.50399,NA,-33.90633,NA
+7,101,2,79,ongoing,ongoing,buddhastatue.png,swimsuit.png,167.79943,NA,21.05644,NA,corkboard.png,toasteroven.png,167.79943,NA,21.05644,NA,flipflop01b.png,    tortillachip.png,167.79943,NA,21.05644,NA
+7,102,3,79,ongoing,ongoing,hockeygoalieglove.png,taillight.png,-76.27608,NA,61.26953,NA,handblender.png,toolbox02.png,-76.27608,NA,61.26953,NA,trailerhitchball.png,    trafficlight.png,-76.27608,NA,61.26953,NA
+8,103,1,80,ongoing,ongoing,stairs.png,toilet.png,-164.38575,NA,21.98214,NA,honeycomb.png,toytanktruck.png,-164.38575,NA,21.98214,NA,belltower01.png,    treetrunk.png,-164.38575,NA,21.98214,NA
+8,104,2,80,ongoing,ongoing,electrictransformer.png,toyfiretruck.png,-75.31013,NA,113.26954,NA,handblender.png,trampoline.png,-75.31013,NA,113.26954,NA,donut.png,    urinal.png,-75.31013,NA,113.26954,NA
+8,105,3,80,ongoing,ongoing,forklift.png,trailer.png,132.18442,NA,-28.06323,NA,gutteranddrainpipe.png,tree.png,132.18442,NA,-28.06323,NA,flower01.png,    volleyball.png,132.18442,NA,-28.06323,NA
+8,106,1,81,ongoing,ongoing,hockeygoalieglove.png,travelmug.png,-42.44488,NA,-18.44708,NA,shoulderpad.png,turnstile.png,-42.44488,NA,-18.44708,NA,log.png,    wallclock.png,-42.44488,NA,-18.44708,NA
+8,107,2,81,ongoing,ongoing,christmaswreath.png,treestump.png,138.18653,NA,31.81020,NA,gutteranddrainpipe.png,visor.png,138.18653,NA,31.81020,NA,suitcase.png,    watercolorpaintset.png,138.18653,NA,31.81020,NA
+8,108,3,81,ongoing,ongoing,buddhastatue.png,tricycle.png,-86.82271,NA,164.34106,NA,napkin.png,wagonwheel.png,-86.82271,NA,164.34106,NA,gazebo.png,    watervalve.png,-86.82271,NA,164.34106,NA
+8,109,1,82,prom,ongoing,satellitedish01.png,usbcable01a.png,128.61168,NA,105.75493,NA,pintofbeer.png,washingmachine.png,128.61168,NA,105.75493,NA,trafficlight.png,    webcam.png,128.61168,NA,105.75493,NA
+8,110,2,82,prom,prom_spec,litterbox.png,waders.png,-143.13378,17,50.63153,-107,mug05.png,waterlily.png,-143.13378,17,50.63153,-107,boogieboard.png,    wetfloorsign.png,-143.13378,17,50.63153,-107
+8,111,3,82,prom,ongoing,hockeygoalieglove.png,waterfall.png,-79.42638,NA,-56.56375,NA,gong.png,wheel04.png,-79.42638,NA,-56.56375,NA,tankertruck.png,    wheelchair.png,-79.42638,NA,-56.56375,NA
+8,112,1,83,ongoing,ongoing,snowman.png,weddingcake.png,93.49613,NA,-56.36389,NA,hockeygoaliepad.png,windowblinds02.png,93.49613,NA,-56.36389,NA,clapperboard.png,    windowshutter.png,93.49613,NA,-56.36389,NA
+8,113,2,83,ongoing,ongoing,electrictransformer.png,whiteout.png,-174.69875,NA,51.64812,NA,porchlight.png,womenwashroomsign.png,-174.69875,NA,51.64812,NA,table01.png,    windshieldwasherfluid.png,-174.69875,NA,51.64812,NA
+8,114,3,83,ongoing,ongoing,christmaswreath.png,bathtub.png,-49.48521,NA,163.90364,NA,lawnmowertractor.png,woodencrate01.png,-49.48521,NA,163.90364,NA,shellpasta.png,    worldmap.png,-49.48521,NA,163.90364,NA
+8,115,1,84,ongoing,ongoing,satellitedish01.png,playground.png,65.3919,NA,9.839606,NA,taxisign.png,gasburner.png,65.3919,NA,9.839606,NA,hotdog.png,wafflemaker.png,65.3919,NA,9.839606,NA
+8,116,2,84,ongoing,ongoing,generator.png,ong_090.jpg,105.735,NA,153.997056,NA,football.png,ong_090.jpg,105.735,NA,153.997056,NA,mailtruck.png,ong_090.jpg,105.735,NA,153.997056,NA
+8,117,3,84,ongoing,ongoing,litterbox.png,ong_101.jpg,-154.5905,NA,77.730204,NA,fireplaced.png,ong_101.jpg,-154.5905,NA,77.730204,NA,toilet.png,ong_101.jpg,-154.5905,NA,77.730204,NA
+8,118,1,85,ongoing,ongoing,hockeygoalieglove.png,ong_182.jpg,-83.49136,NA,-42.05484,NA,desktopcomputer.png,ong_182.jpg,-83.49136,NA,-42.05484,NA,doorbolt.png,ong_182.jpg,-83.49136,NA,-42.05484,NA
+8,119,2,85,ongoing,ongoing,electricoutlet.png,ong_020.jpg,115.22099,NA,27.33399,NA,tire.png,ong_020.jpg,115.22099,NA,27.33399,NA,gardenutilityvehicle.png,ong_020.jpg,115.22099,NA,27.33399,NA
+8,120,3,85,ongoing,ongoing,forklift.png,ong_048.jpg,-36.3636,NA,86.12623,NA,fanheater.png,ong_048.jpg,-36.3636,NA,86.12623,NA,hotdog.png,ong_048.jpg,-36.3636,NA,86.12623,NA
