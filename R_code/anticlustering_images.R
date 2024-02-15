@@ -64,7 +64,7 @@ set.seed(NULL)
 # anticluster for the different tasks
 anticluster_stimuli <- anticlustering(
   stimuli_norms_2014a_NA_remove[, -1],
-  K = 4,
+  K = 3,
   objective = 'diversity',
   method = 'local-maximum',
   repetitions = 10,
@@ -92,6 +92,6 @@ stimuli_allocation <- stimuli_allocation[!(stimuli_allocation$Freq == 0),]
 summary(stimuli_allocation)
 
 #write list into a .csv
-write.csv(stimuli_allocation, file='/Users/tobiaskuehlwein/pm_color/stim_lists/BOSS/list_4_6.csv', 
+write.csv(stimuli_allocation, file='/Users/tobiaskuehlwein/pm_color/stim_lists/BOSS/list_1_3.csv', 
           fileEncoding = "UTF-8")
 
