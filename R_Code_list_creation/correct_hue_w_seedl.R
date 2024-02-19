@@ -57,7 +57,7 @@ generate_blocks_excluded_range <- function(num_blocks) {
   for (i in 1:num_blocks) {
     block <- numeric()
     
-    while (length(block) < 5) {
+    while (length(block) < 5) { #define number of numbers per block/trial
       new_num <- runif(1, -180, 180)  # Generate a random number between -180 and 180
       
       # Ensure new_num differs by at least 40 from all existing numbers in the block
