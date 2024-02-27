@@ -16,7 +16,7 @@ data_load1_v2 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_1_v2.csv
 describeBy(data_load1_v2$color_angle_abs_deviation, data_load1_v2$participant_id)
 
 
-# look at discriptive data based on trial and type and ignore the practice trial
+# look at descriptive data based on trial and type and ignore the practice trial
 data_load1_v2 |>  
   dplyr::filter(trial != "" & trial != "Practice" & participant_id != 402695612) |>
   group_by(trial) %>%
@@ -40,13 +40,21 @@ data_load1_v2 |>
   ggplot(aes(x = color_angle_deviation)) + 
   geom_histogram(aes(y = ..density.., bins = 100),
                  colour = 1, fill = "white") +
-  geom_density() +
+  geom_density(binwidth = 180) +
   facet_wrap(~ trial) +
   ggplot2::ggtitle("Density of color deviation by type load 1")
 
 
-# create density plot for each participant
+# violin plot with data points
+data_load1_v2 |>
+  dplyr::filter(trial != "" & trial != "Practice" & participant_id != 402695612) |>
+  ggplot(aes(x = color_angle_deviation, y = trial, fill = trial)) +
+    geom_violin(alpha = 0.5) +
+    geom_point(position = position_jitter(seed = 1, width = 0.01)) +
+    theme(legend.position = "bottom")
 
+
+# create density plot for each participant
 data_load1_v2 |>
   dplyr::filter(trial != "" & trial != "Practice") |>
   ggplot(aes(x = color_angle_deviation)) + 
@@ -57,8 +65,19 @@ data_load1_v2 |>
   ggplot2::ggtitle("Density of color deviation by type load 1 for all VP")
 
 
-#create simple LME for hypothesis testing while ignoring the practice trial
+# create denisty with better visuals
+data_load1_v2 |>
+  dplyr::filter(trial != "" & trial != "Practice" & url_code != 187575071) |>
+  ggplot(aes(x = color_angle_deviation, y = ..scaled..)) +
+  geom_density(adjust = 0.2) +
+  scale_y_continuous(labels = scales::percent_format()) +
+  facet_wrap(~ trial + url_code) +
+  ylab("Density (percentage)") +
+  theme(strip.text = element_text(size = 8, lineheight = 0.3),  # Adjust the size of the facet labels
+        strip.background = element_rect(size = 0.1))
 
+
+#create simple LME for hypothesis testing while ignoring the practice trial
 data_load1_no_practice <- data_load1_v2 %>%
   filter(trial != "" & trial != "Practice")
 

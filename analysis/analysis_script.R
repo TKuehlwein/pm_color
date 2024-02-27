@@ -8,7 +8,10 @@ rm(list=ls())
 setwd("/Users/tobiaskuehlwein/pm_color")
 
 
-data_all = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/all_load_test.csv',header=TRUE)
+data_all = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_all.csv',header=TRUE)
+data_l1 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_1_v2.csv',header=TRUE)
+data_l3 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_3.csv',header=TRUE)
+data_l5 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_5.csv',header=TRUE)
 
 # load all packages might needed
 library(psych)
@@ -54,12 +57,13 @@ ggplot(data_l3, aes(x = color_angle_deviation, y = trial, color = trial)) +
 
 
 data_all |>  
-  dplyr::filter(trial != "" & trial != "Practice" & participant_id != 402695612) |># m and sd depending on group in sessions
+  dplyr::filter(trial != "" & trial != "Practice") |># m and sd depending on group in sessions
   group_by(trial, load) %>%
   summarise(color_dif = mean(color_angle_abs_deviation, na.rm = TRUE),
             color_dif_sd = sd(color_angle_abs_deviation, na.rm = TRUE),
             color_dif_min = min(color_angle_abs_deviation, na.rm = TRUE),
-            color_dif_max = max(color_angle_abs_deviation, na.rm = TRUE))
+            color_dif_max = max(color_angle_abs_deviation, na.rm = TRUE),)%>%
+  arrange(trial)
 
 mean(data$color_angle_abs_deviation, na.rm = TRUE)
 
@@ -101,11 +105,13 @@ stargazer(LME_2, type = "text",
           star.cutoffs = c(0.05, 0.01, 0.001),
           digit.separator = "")
 
+# lots of testing around stuff, not all useful
+
 # density plit for all
 data_all |>
   dplyr::filter(trial != "" & trial != "Practice") |>
   ggplot2::ggplot(ggplot2::aes(y = color_angle_deviation, x = trial, group = trial)) +
-  ggplot2::facet_wrap(~ load) +
+  ggplot2::facet_wrap(~ load + trial) +
   ggplot2::geom_violin() + 
   ggplot2::ggtitle("Density of color deviation by type load 5")
 
@@ -136,10 +142,10 @@ data_all |>
     geom_histogram(aes(y = ..density.., bins = 100),
                    colour = 1, fill = "white") +
     geom_density() +
-    facet_wrap(~ load + trial, nrow = 2)
+    facet_wrap(~ trial + load, nrow = 3)
     
 
-
+## Some useful plots
 
 
 # density plot per load per trial
@@ -148,6 +154,27 @@ data_all |>
   ggplot(aes(x = color_angle_deviation)) + 
   geom_freqpoly(bins = 180) +
   facet_wrap(~ load + trial, nrow = 3)
+
+#different density plot
+data_all |>
+  dplyr::filter(trial != "" & trial != "Practice") |>
+  ggplot(aes(x = color_angle_deviation, y = ..scaled..)) +
+    geom_density(adjust = 0.2) +
+    scale_y_continuous(labels = scales::percent_format()) +
+    facet_wrap(~ load + trial, nrow = 3) +
+    ylab("Density (percentage)")
+
+#Density plot per load per trial per vp
+data_all |>
+  dplyr::filter(trial != "" & trial != "Practice" & url_code != 187575071) |>
+  ggplot(aes(x = color_angle_deviation, y = ..scaled..)) +
+  geom_density(adjust = 0.2) +
+  scale_y_continuous(labels = scales::percent_format()) +
+  facet_wrap(~ load + trial + url_code) +
+  ylab("Density (percentage)") +
+  theme(strip.text = element_text(size = 8, lineheight = 0.3),  # Adjust the size of the facet labels
+        strip.background = element_rect(size = 0.1))
+
 
 #some requirement testing
 qqnorm(resid(LMEE2))
