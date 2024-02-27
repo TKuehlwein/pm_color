@@ -8,7 +8,7 @@ rm(list=ls())
 setwd("/Users/tobiaskuehlwein/pm_color")
 
 
-data_all_v4 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/all_load_test.csv',header=TRUE)
+data_all = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/all_load_test.csv',header=TRUE)
 
 # load all packages might needed
 library(psych)
@@ -28,7 +28,7 @@ boxplot(data$color_angle_abs_deviation, xlab = "trial", ylab="Points rated stric
 #create simple plot for overwiev
 plot(data_all_v4$color_angle_abs_deviation, data_all_v4$trial, xlab = "deviation" ,
      ylab="Trial" , col=as.factor(data_all_v4$trial), pch=19, na.rm = TRUE)
-legend("topleft",
+      legend("topleft",
        legend = levels(factor(data_all_v4$trial)),
        pch = 19,
        col = factor(levels(factor(data_all_v4$trial))))
@@ -36,12 +36,15 @@ legend("topleft",
 #Regression_Data <- lm(Data$Sitzung1 ~ Data$Sitzung2 )
 
 #get description based on session
-describeBy(data_l3$color_angle_deviation, data_l3$trial)
-group_vp <- describeBy(data$color_angle_deviation, data$observation)
+
+  #dplyr::filter(participant_id != 402695612) |>
+describeBy(data_all$color_angle_abs_deviation, data_all$load)
+
+group_vp <- describeBy(data_all$color_angle_deviation, data_all$load)
 
 write.csv(group_vp, file = "data_group_load_1", row.names = TRUE)
 
-ezStats(data$color_angle_abs_deviation, data$trial, within = data$trial_seq)
+ezStats(data$color_angle_abs_deviation, data$trial, within = data$participant_id)
 
 
 #create simple ggplot for overwiev
@@ -50,12 +53,13 @@ ggplot(data_l3, aes(x = color_angle_deviation, y = trial, color = trial)) +
   geom_smooth(method = "lm", fill = NA)
 
 
-VP_data <-   data %>%   # m and sd depending on group in sessions
-    group_by(observation, trial) %>%
-    summarise(color_dif = mean(color_angle_abs_deviation, na.rm = TRUE),
-              color_dif_sd = sd(color_angle_abs_deviation, na.rm = TRUE),
-              color_dif_min = min(color_angle_abs_deviation, na.rm = TRUE),
-              color_dif_max = max(color_angle_abs_deviation, na.rm = TRUE))
+data_all |>  
+  dplyr::filter(trial != "" & trial != "Practice" & participant_id != 402695612) |># m and sd depending on group in sessions
+  group_by(trial, load) %>%
+  summarise(color_dif = mean(color_angle_abs_deviation, na.rm = TRUE),
+            color_dif_sd = sd(color_angle_abs_deviation, na.rm = TRUE),
+            color_dif_min = min(color_angle_abs_deviation, na.rm = TRUE),
+            color_dif_max = max(color_angle_abs_deviation, na.rm = TRUE))
 
 mean(data$color_angle_abs_deviation, na.rm = TRUE)
 
@@ -98,12 +102,52 @@ stargazer(LME_2, type = "text",
           digit.separator = "")
 
 # density plit for all
-filtered_data |>
+data_all |>
   dplyr::filter(trial != "" & trial != "Practice") |>
   ggplot2::ggplot(ggplot2::aes(y = color_angle_deviation, x = trial, group = trial)) +
   ggplot2::facet_wrap(~ load) +
-  ggplot2::geom_density() + 
+  ggplot2::geom_violin() + 
   ggplot2::ggtitle("Density of color deviation by type load 5")
+
+data_load1 |>
+  dplyr::filter(trial != "" & trial != "Practice") |>
+  ggplot(aes(x = color_angle_deviation, fill = participant_id)) + 
+  geom_histogram( bins = 180) +
+  facet_wrap(~ participant_id)
+
+
+
+data_all |>
+  dplyr::filter(trial != "" & trial != "Practice" & participant_id != 402695612) |>
+  ggplot(aes(x = color_angle_deviation, colour = trial)) + 
+    geom_histogram(bins = 60) + 
+  facet_wrap(~ load)
+
+data_all |>
+  dplyr::filter(trial != "" & trial != "Practice" & participant_id != 402695612) |>
+  ggplot(aes(x = color_angle_deviation)) +
+    geom_density() +
+  ggplot2::facet_wrap(~ load )
+  
+
+data_all |>
+  dplyr::filter(trial != "" & trial != "Practice" & participant_id != 402695612) |>
+  ggplot(aes(x = color_angle_deviation)) + 
+    geom_histogram(aes(y = ..density.., bins = 100),
+                   colour = 1, fill = "white") +
+    geom_density() +
+    facet_wrap(~ load + trial, nrow = 2)
+    
+
+
+
+
+# density plot per load per trial
+data_all |>
+  dplyr::filter(trial != "" & trial != "Practice") |>
+  ggplot(aes(x = color_angle_deviation)) + 
+  geom_freqpoly(bins = 180) +
+  facet_wrap(~ load + trial, nrow = 3)
 
 #some requirement testing
 qqnorm(resid(LMEE2))
@@ -135,7 +179,7 @@ lm(formula = Session1 ~ Session2, data = Data_gesamt)
 standard_res <- rstandard(modelR1)
 standard_res
 
-density(data$color_angle_abs_deviation, na.rm = TRUE)
+geom_density(data$color_angle_abs_deviation, na.rm = TRUE)
 
 
 
