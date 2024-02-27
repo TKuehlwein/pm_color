@@ -1,4 +1,4 @@
-## R Script to analyse only load 1 for pm_color task
+## R Script to analyse only load 5 for pm_color task
 
 # clear workspace and console
 cat('\014')
@@ -10,14 +10,14 @@ setwd("/Users/tobiaskuehlwein/pm_color")
 
 
 # load in date for load one 
-data_load1_v2 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_1_v2.csv',header=TRUE)
+data_l5 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_5.csv',header=TRUE)
 
 # look at each VP to see if someone stopped in the middle
-describeBy(data_load1_v2$color_angle_abs_deviation, data_load1_v2$participant_id)
+describeBy(data_l5$color_angle_abs_deviation, data_l5$url_code)
 
 
 # look at descriptive data based on trial and type and ignore the practice trial
-data_load1_v2 |>  
+data_l5 |>  
   dplyr::filter(trial != "" & trial != "Practice" & participant_id != 402695612) |>
   group_by(trial) %>%
   summarise(color_dif = mean(color_angle_abs_deviation, na.rm = TRUE),
@@ -26,7 +26,7 @@ data_load1_v2 |>
             color_dif_max = max(color_angle_abs_deviation, na.rm = TRUE))
 
 # Do the same but split for each participant
-data_load1_v2 |>  
+data_l5 |>  
   dplyr::filter(trial != "" & trial != "Practice" & participant_id != 402695612) |>
   group_by(participant_id, trial) %>%
   summarise(color_dif = mean(color_angle_abs_deviation, na.rm = TRUE),
@@ -35,8 +35,8 @@ data_load1_v2 |>
             color_dif_max = max(color_angle_abs_deviation, na.rm = TRUE))
 
 # create a density plot for all deviations based on trial type, ignoring practice
-data_load1_v2 |>
-  dplyr::filter(trial != "" & trial != "Practice" & participant_id != 402695612) |>
+data_l5 |>
+  dplyr::filter(trial != "" & trial != "Practice" & url_code != 402695612) |>
   ggplot(aes(x = color_angle_deviation)) + 
   geom_histogram(aes(y = ..density.., bins = 100),
                  colour = 1, fill = "white") +
@@ -46,16 +46,16 @@ data_load1_v2 |>
 
 
 # violin plot with data points
-data_load1_v2 |>
+data_l5 |>
   dplyr::filter(trial != "" & trial != "Practice" & participant_id != 402695612) |>
   ggplot(aes(x = color_angle_deviation, y = trial, fill = trial)) +
-    geom_violin(alpha = 0.5) +
-    geom_point(position = position_jitter(seed = 1, width = 0.01)) +
-    theme(legend.position = "bottom")
+  geom_violin(alpha = 0.5) +
+  geom_point(position = position_jitter(seed = 1, width = 0.01)) +
+  theme(legend.position = "bottom")
 
 
 # create density plot for each participant
-data_load1_v2 |>
+data_l5 |>
   dplyr::filter(trial != "" & trial != "Practice") |>
   ggplot(aes(x = color_angle_deviation)) + 
   geom_histogram(aes(y = ..density.., bins = 100),
@@ -66,7 +66,7 @@ data_load1_v2 |>
 
 
 # create denisty with better visuals
-data_load1_v2 |>
+data_l5 |>
   dplyr::filter(trial != "" & trial != "Practice" & url_code != 187575071) |>
   ggplot(aes(x = color_angle_deviation, y = ..scaled..)) +
   geom_density(adjust = 0.2) +
@@ -79,7 +79,7 @@ data_load1_v2 |>
 
 
 #create simple LME for hypothesis testing while ignoring the practice trial
-data_load1_no_practice <- data_load1_v2 %>%
+data_load1_no_practice <- data_l5 %>%
   filter(trial != "" & trial != "Practice")
 
 LME_l1 <- lmer(color_angle_abs_deviation ~ trial + stimulus_type + (1|trial_type)

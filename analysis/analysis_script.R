@@ -55,10 +55,20 @@ ggplot(data_l3, aes(x = color_angle_deviation, y = trial, color = trial)) +
   geom_point() +
   geom_smooth(method = "lm", fill = NA)
 
-
+# m and sd for each trial type per load
 data_all |>  
-  dplyr::filter(trial != "" & trial != "Practice") |># m and sd depending on group in sessions
+  dplyr::filter(trial != "" & trial != "Practice") |>
   group_by(trial, load) %>%
+  summarise(color_dif = mean(color_angle_abs_deviation, na.rm = TRUE),
+            color_dif_sd = sd(color_angle_abs_deviation, na.rm = TRUE),
+            color_dif_min = min(color_angle_abs_deviation, na.rm = TRUE),
+            color_dif_max = max(color_angle_abs_deviation, na.rm = TRUE),)%>%
+  arrange(trial)
+
+# m, sd, min, max for each trial per load per vp
+data_l5 |>  
+  dplyr::filter(trial != "" & trial != "Practice") |>
+  group_by(trial, url_code) %>%
   summarise(color_dif = mean(color_angle_abs_deviation, na.rm = TRUE),
             color_dif_sd = sd(color_angle_abs_deviation, na.rm = TRUE),
             color_dif_min = min(color_angle_abs_deviation, na.rm = TRUE),
@@ -162,7 +172,8 @@ data_all |>
     geom_density(adjust = 0.2) +
     scale_y_continuous(labels = scales::percent_format()) +
     facet_wrap(~ load + trial, nrow = 3) +
-    ylab("Density (percentage)")
+    ylab("Density (percentage)") + 
+    xlab("Color deviation in degrees")
 
 #Density plot per load per trial per vp
 data_all |>
@@ -172,6 +183,7 @@ data_all |>
   scale_y_continuous(labels = scales::percent_format()) +
   facet_wrap(~ load + trial + url_code) +
   ylab("Density (percentage)") +
+  xlab("Color deviation in degrees") +
   theme(strip.text = element_text(size = 8, lineheight = 0.3),  # Adjust the size of the facet labels
         strip.background = element_rect(size = 0.1))
 
