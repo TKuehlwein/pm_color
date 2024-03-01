@@ -326,6 +326,10 @@ summary_stats_avg <- average_values_abs %>%
             ci_upper = overall_avg + qt(0.975, n()) * sd_value / sqrt(n()))
 
 
+# change factor key to Baseline and Prospective memory
+median_values_abs$trial <- ifelse(median_values_abs$trial == "Pm", 
+"Prospective memory", "Baseline")
+
 ## create main plot with jitter points and 95% interval (Poster Plot!)
 plot_median <-   ggplot(data = median_values_abs, aes(x = trial, y = median_color_angle_deviation, fill = trial)) +
                   geom_boxplot(alpha = 0.8) +
@@ -335,14 +339,17 @@ plot_median <-   ggplot(data = median_values_abs, aes(x = trial, y = median_colo
                   facet_wrap(~ load, labeller = labeller(load = function(variable) paste("Load", variable))) +
                   labs(x = "Trial type", y = "Median Color Angle Deviation", fill = "Trial type") +
                   theme_minimal() +
-  theme(strip.text = element_text(size = 12), axis.text.x = element_text(size = 10))
+  theme(strip.text = element_text(size = 12), axis.text.x = element_text(size = 4))
   
+
+
+
 plot_median <-  plot_median + 
                   geom_point(data = summary_stats_median, aes(x = trial, y = overall_avg, color = "Average"), size = 3) +
                   scale_color_manual(values = c("black", "red", "blue"), labels = c("Overall median",
                                                                                     "median per person",
                                                                                     "median per person")) +
-                  labs(color = "Mean and\ndistinct data\npoints") +
+                  labs(color = "Median and\ndistinct data\npoints") +
                   facet_wrap(~ load, labeller = labeller(load = function(variable) paste("Load", variable))) +
                   theme(legend.title = element_text(size = 6), legend.text = element_text(size = 3))
 
