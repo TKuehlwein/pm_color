@@ -78,6 +78,50 @@ data_l5 |>
         strip.background = element_rect(size = 0.1))
 
 
+# create average per VP to use in boxplot for general outliers
+load_5_vp_avg <- subset_data_l5_filtered %>%
+  group_by(url_code, trial) %>%
+  summarise(avg_color_angle_abs_deviation = mean(color_angle_abs_deviation))
+
+#create average oer trial lot split for VP for barplot
+load_5_avg <- subset_data_l5_filtered %>%
+  group_by(trial) %>%
+  summarise(avg_color_angle_abs_deviation = mean(color_angle_abs_deviation))
+
+#calculate outliers for naming
+outliers_l5 <- boxplot.stats(load_5_vp_avg$avg_color_angle_abs_deviation)$out
+
+# boxplot for baseline and pm stplit into 6 groups with 20 stimuli each
+load_5_base6_pm6_box <- ggplot(load_5_vp_avg, aes(x = trial, y = avg_color_angle_abs_deviation, fill = trial)) +
+                          geom_boxplot(alpha = 0.8) + 
+                          geom_point(data = load_5_vp_avg, aes(x = trial, y = avg_color_angle_abs_deviation), color = "black", size = 2) +  # Add data points for average values
+                          labs(x = "Trial", y = "Color Angle Deviation abs") +  # Add axis labels
+                          theme_minimal()
+
+# add url_code for outliers
+load_5_base6_pm6_box <- load_5_base6_pm6_box +
+  geom_text(data = load_5_vp_avg[load_5_vp_avg$avg_color_angle_abs_deviation %in% outliers_l5, ],
+            aes(x = trial, y = avg_color_angle_abs_deviation, label = url_code),
+            vjust = -1)
+
+# barplot for baseline and pm stplit into 6 groups with 20 stimuli each
+load_5_base6_pm6_bar <- ggplot(load_5_avg, aes(x = trial, y = avg_color_angle_abs_deviation, fill = trial)) +
+  geom_bar(stat = "identity") +  # Use stat = "identity" to plot values directly
+  geom_point(data = load_5_vp_avg, aes(x = trial, y = avg_color_angle_abs_deviation), color = "black", size = 2) +
+  labs(x = "Trial load 5", y = "Average Color Angle Deviation abs") +  # Add axis labels
+  theme_minimal()
+
+# add url_code for outliers in barplot
+load_5_base6_pm6_bar <- load_5_base6_pm6_bar +
+  geom_text(data = load_5_vp_avg[load_5_vp_avg$avg_color_angle_abs_deviation %in% outliers_l5, ],
+            aes(x = trial, y = avg_color_angle_abs_deviation, label = url_code),
+            vjust = -1)
+
+
+load_5_base6_pm6_box
+load_5_base6_pm6_bar
+
+
 #create simple LME for hypothesis testing while ignoring the practice trial
 data_load1_no_practice <- data_l5 %>%
   filter(trial != "" & trial != "Practice")

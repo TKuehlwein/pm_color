@@ -1,4 +1,4 @@
-## R Script to analyse only load 1 for pm_color task
+## R Script to analyse only load 3 for pm_color task
 
 # clear workspace and console
 cat('\014')
@@ -10,16 +10,16 @@ setwd("/Users/tobiaskuehlwein/pm_color")
 
 
 # load in date for load one 
-data_load1_v2 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_1_v2.csv',header=TRUE)
+data_load3 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_3csv',header=TRUE)
 
 # look at each VP to see if someone stopped in the middle
-describeBy(data_load1_v2$color_angle_abs_deviation, data_load1_v2$participant_id)
+describeBy(data_load3$color_angle_abs_deviation, data_load3$participant_id)
 
 
 
 
 # look at descriptive data based on trial and type and ignore the practice trial
-data_load1_v2 |>  
+data_load3 |>  
   dplyr::filter(trial != "" & trial != "Practice" & participant_id != 402695612) |>
   group_by(trial) %>%
   summarise(color_dif = mean(color_angle_abs_deviation, na.rm = TRUE),
@@ -28,7 +28,7 @@ data_load1_v2 |>
             color_dif_max = max(color_angle_abs_deviation, na.rm = TRUE))
 
 # Do the same but split for each participant
-data_load1_v2 |>  
+data_load3 |>  
   dplyr::filter(trial != "" & trial != "Practice" & participant_id != 402695612) |>
   group_by(participant_id, trial) %>%
   summarise(color_dif = mean(color_angle_abs_deviation, na.rm = TRUE),
@@ -39,48 +39,49 @@ data_load1_v2 |>
 
 
 # create average per VP to use in boxplot for general outliers
-load_1_vp_avg <- subset_data_l1_filtered %>%
+load_3_vp_avg <- subset_data_l3_filtered %>%
   group_by(url_code, trial) %>%
   summarise(avg_color_angle_abs_deviation = mean(color_angle_abs_deviation))
 
-#create average per trial lot split for VP for barplot
-load_1_avg <- subset_data_l1_filtered %>%
+#create average oer trial lot split for VP for barplot
+trial_avg_l3 <- subset_data_l3_filtered %>%
   group_by(trial) %>%
   summarise(avg_color_angle_abs_deviation = mean(color_angle_abs_deviation))
 
-outliers <- boxplot.stats(load_1_vp_avg$avg_color_angle_abs_deviation)$out
+outliers_l3 <- boxplot.stats(load_3_vp_avg$avg_color_angle_abs_deviation)$out
+
 
 # boxplot for baseline and pm stplit into 6 groups with 20 stimuli each
-load_1_base6_pm6_box <- ggplot(load_1_vp_avg, aes(x = trial, y = avg_color_angle_abs_deviation, fill = trial)) +
+load_3_base6_pm6_box <- ggplot(load_3_vp_avg, aes(x = trial, y = avg_color_angle_abs_deviation, fill = trial)) +
   geom_boxplot(alpha = 0.8) + 
-  geom_point(data = load_1_vp_avg, aes(x = trial, y = avg_color_angle_abs_deviation), color = "black", size = 2) +
+  geom_point(data = load_3_vp_avg, aes(x = trial, y = avg_color_angle_abs_deviation), color = "black", size = 2) +
   labs(x = "trial", y = "Color Angle Deviation abs") +  # Add axis labels
   theme_minimal()
 
-# add url_code for outliers
-load_1_base6_pm6_box <- load_1_base6_pm6_box +
-  geom_text(data = load_1_vp_avg[load_1_vp_avg$avg_color_angle_abs_deviation %in% outliers, ],
+# add url_code for outliers in boxplot
+load_3_base6_pm6_box <- load_3_base6_pm6_box +
+  geom_text(data = load_3_vp_avg[load_3_vp_avg$avg_color_angle_abs_deviation %in% outliers_l3, ],
             aes(x = trial, y = avg_color_angle_abs_deviation, label = url_code),
             vjust = -1)
 
 # barplot for baseline and pm stplit into 6 groups with 20 stimuli each
-load_1_base6_pm6_bar <- ggplot(load_1_avg, aes(x = trial, y = avg_color_angle_abs_deviation, fill = trial)) +
+load_3_base6_pm6_bar <- ggplot(trial_avg_l3, aes(x = trial, y = avg_color_angle_abs_deviation, fill = trial)) +
   geom_bar(stat = "identity") +  # Use stat = "identity" to plot values directly
-  geom_point(data = load_1_vp_avg, aes(x = trial, y = avg_color_angle_abs_deviation), color = "black", size = 2) +
+  geom_point(data = load_3_vp_avg, aes(x = trial, y = avg_color_angle_abs_deviation), color = "black", size = 2) + 
   labs(x = "Trial", y = "Average Color Angle Deviation abs") +  # Add axis labels
   theme_minimal()
-
+  
 # add url_code for outliers in barplot
-load_1_base6_pm6_bar <- load_1_base6_pm6_bar +
-  geom_text(data = load_1_vp_avg[load_1_vp_avg$avg_color_angle_abs_deviation %in% outliers, ],
-            aes(x = trial, y = avg_color_angle_abs_deviation, label = url_code),
-            vjust = -1)
+load_3_base6_pm6_bar <- load_3_base6_pm6_bar +
+    geom_text(data = load_3_vp_avg[load_3_vp_avg$avg_color_angle_abs_deviation %in% outliers_l3, ],
+              aes(x = trial, y = avg_color_angle_abs_deviation, label = url_code),
+              vjust = -1)
 
-load_1_base6_pm6_box
-load_1_base6_pm6_bar
+load_3_base6_pm6_box
+load_3_base6_pm6_bar
 
 # create a density plot for all deviations based on trial type, ignoring practice
-data_load1_v2 |>
+data_load3 |>
   dplyr::filter(trial != "" & trial != "Practice" & participant_id != 402695612) |>
   ggplot(aes(x = color_angle_deviation)) + 
   geom_histogram(aes(y = ..density.., bins = 100),
@@ -91,16 +92,16 @@ data_load1_v2 |>
 
 
 # violin plot with data points
-data_load1_v2 |>
+data_load3 |>
   dplyr::filter(trial != "" & trial != "Practice" & participant_id != 402695612) |>
   ggplot(aes(x = color_angle_deviation, y = trial, fill = trial)) +
-    geom_violin(alpha = 0.5) +
-    geom_point(position = position_jitter(seed = 1, width = 0.01)) +
-    theme(legend.position = "bottom")
+  geom_violin(alpha = 0.5) +
+  geom_point(position = position_jitter(seed = 1, width = 0.01)) +
+  theme(legend.position = "bottom")
 
 
 # create density plot for each participant
-data_load1_v2 |>
+data_load3 |>
   dplyr::filter(trial != "" & trial != "Practice") |>
   ggplot(aes(x = color_angle_deviation)) + 
   geom_histogram(aes(y = ..density.., bins = 100),
@@ -111,7 +112,7 @@ data_load1_v2 |>
 
 
 # create denisty with better visuals
-data_load1_v2 |>
+data_load3 |>
   dplyr::filter(trial != "" & trial != "Practice" & url_code != 187575071) |>
   ggplot(aes(x = color_angle_deviation, y = ..scaled..)) +
   geom_density(adjust = 0.2) +
@@ -124,7 +125,7 @@ data_load1_v2 |>
 
 
 #create simple LME for hypothesis testing while ignoring the practice trial
-data_load1_no_practice <- data_load1_v2 %>%
+data_load1_no_practice <- data_load3 %>%
   filter(trial != "" & trial != "Practice")
 
 LME_l1 <- lmer(color_angle_abs_deviation ~ trial + stimulus_type + (1|trial_type)
