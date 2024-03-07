@@ -11,6 +11,7 @@ subset_data_l1_filtered = read.csv ("/Users/tobiaskuehlwein/pm_color/analysis/su
 subset_data_l3_filtered = read.csv ("/Users/tobiaskuehlwein/pm_color/analysis/subset_data_l3_filtered.csv", header = TRUE)
 subset_data_l5_filtered = read.csv ("/Users/tobiaskuehlwein/pm_color/analysis/subset_data_l5_filtered.csv", header = TRUE)
 subset_data_all_filtered = read.csv("/Users/tobiaskuehlwein/pm_color/analysis/data_all_b6_pm6.csv", header = TRUE)
+B1l1_P6l3 = read.csv("/Users/tobiaskuehlwein/pm_color/analysis/trial_split_by_load_trial_6.csv", header = TRUE)
 data_all = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_all.csv',header=TRUE)
 data_l1_ = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_1_v2.csv',header=TRUE)
 data_l3 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_3.csv',header=TRUE)
@@ -331,8 +332,9 @@ summary_stats_avg <- average_values_abs %>%
 
 
 # change factor key to Baseline and Prospective memory
-median_values_abs$trial <- ifelse(median_values_abs$trial == "Prospective memory", 
-"PM", "BL")
+avg_split_by_load$trial <- ifelse(avg_split_by_load$trial == "B4l1", "4Bl1", 
+                                  avg_split_by_load$trial)
+
 
 ## create main plot with jitter points and 95% interval (Poster Plot!)
 plot_median <- ggplot(data = median_values_abs, aes(x = trial, y = median_color_angle_deviation, fill = trial)) +
@@ -401,6 +403,10 @@ load_all_vp_avg_load <- subset_data_all_filtered %>%
   group_by(url_code, load, trial) %>%
   summarise(avg_color_angle_abs_deviation = mean(color_angle_abs_deviation))
 
+avg_split_by_load <- B1l1_P6l3 %>%
+  group_by(url_code, load, trial) %>%
+  summarise(avg_color_angle_abs_deviation = mean(color_angle_abs_deviation))
+
 # create average per VP to use in boxplot for general outliers
 load_all_vp_avg <- subset_data_all_filtered %>%
   group_by(url_code, trial) %>%
@@ -415,6 +421,9 @@ load_all_avg <- subset_data_all_filtered %>%
 
 #calculate outliers for naming
 outliers_all <- boxplot.stats(load_all_vp_avg$avg_color_angle_abs_deviation)$out
+
+# outliers for plot split by b1l1 to p6l3
+outliers_b6l1 <- boxplot.stats(avg_split_by_load$avg_color_angle_abs_deviation)$out
 
 # boxplot for baseline and pm stplit into 6 groups with 20 stimuli each
 load_all_base6_pm6_box <- ggplot(load_all_vp_avg, aes(x = trial, y = avg_color_angle_abs_deviation, fill = trial)) +
@@ -442,7 +451,6 @@ load_all_base6_pm6_bar <- load_all_base6_pm6_bar +
             vjust = -1) 
 
 # do the same split by load
-
 load_all_base6_pm6_bar_load <- load_all_vp_avg_load |>
   dplyr::filter(trial != "" & trial != "Practice") |>
   group_by(trial) |>
@@ -464,8 +472,6 @@ load_all_base6_pm6_bar_load <- load_all_base6_pm6_bar_load +
 
 
 # do the same as boxplot
-
-
 load_all_base6_pm6_load_boxplot <- load_all_vp_avg_load |>
   dplyr::filter(trial != "" & trial != "Practice") |>
   ggplot(aes(x = trial, y = avg_color_angle_abs_deviation, fill = trial)) +
@@ -473,7 +479,7 @@ load_all_base6_pm6_load_boxplot <- load_all_vp_avg_load |>
   geom_point(aes(x = trial, y = avg_color_angle_abs_deviation), color = "black", size = 2) +
   labs(x = "Trial load 5", y = "Average Color Angle Deviation abs") +  # Add axis labels
   theme_minimal() +
-  facet_wrap(~ load, labeller = labeller(load = function(variable) paste("Load", variable)))
+  facet_wrap( ~ load, labeller = labeller(load = function(variable) paste("Load", variable)))
 
 load_all_base6_pm6_load_boxplot <- load_all_base6_pm6_load_boxplot +
   geom_text(data = load_all_vp_avg_load %>%
@@ -482,6 +488,53 @@ load_all_base6_pm6_load_boxplot <- load_all_base6_pm6_load_boxplot +
             aes(x = trial, y = avg_color_angle_abs_deviation, label = url_code),
             vjust = -1) +
   facet_wrap(~ load, labeller = labeller(load = function(variable) paste("Load", variable)))
+
+
+
+
+trial_colors <- c("B1l1"= "red", "B1l2"="red", "B1l3"="red",
+                  "B2l1"= "blue", "B2l2"="blue", "B2l3"="blue",
+                  "B3l1"="green", "B3l2"="green", "B3l3"="green",
+                  "SB4l1"="orange", "SB4l2"="orange", "SB4l3"="orange",
+                  "SB5l1"="grey", "SB5l2"="grey", "SB5l3"="grey",
+                  "SB6l1"="yellow", "SB6l2"="yellow", "SB6l3"="yellow",
+                  "P1l1"="magenta", "P1l2"="magenta", "P1l3"="magenta",
+                  "P2l1"="brown", "P2l2"="brown", "P2l3"="brown",
+                  "P3l1"="red", "P3l2"="red", "P3l3"="red",
+                  "P4l1"="orange", "P4l2"="orange", "P4l3"="orange",
+                  "P5l1"="green", "P5l2"="green", "P5l3"="green",
+                  "P6l1"="blue", "P6l2"="blue", "P6l3"="blue",
+                  "Practice"= "blue")
+
+
+
+# change factor key for order
+avg_split_by_load$trial <- ifelse(avg_split_by_load$trial == "B6l3", "SB6l3", 
+                                  avg_split_by_load$trial)
+
+#reorder the plots so that each trial has the other loads next to it
+trial_split <- avg_split_by_load |>
+  dplyr::filter(trial != "" & trial != "Practice") |>
+  ggplot(aes(x = trial, y = avg_color_angle_abs_deviation, fill = trial)) +
+  geom_boxplot() +  # Use geom_boxplot to create a boxplot
+  geom_point(aes(x = trial, y = avg_color_angle_abs_deviation), color = "black", size = 2) +
+  labs(x = "Trial load 5", y = "Average Color Angle Deviation abs") +  # Add axis labels
+  scale_fill_manual(values = trial_colors) +  # Manually specify fill colors
+  theme_minimal() 
+
+trial_split <- trial_split +
+  geom_text(data = avg_split_by_load %>%
+              dplyr::filter(trial != "" & trial != "Practice") %>%
+              dplyr::filter(avg_color_angle_abs_deviation %in% outliers_b6l1),
+            aes(x = trial, y = avg_color_angle_abs_deviation, label = url_code),
+            vjust = -1) 
+
+trial_split
+trial_split_chron
+# save the plot
+ggplot2::ggsave(filename = "trial_split.pdf", path = "pm_color/analysis/plots", plot = trial_split, width = 6, height = 4, dpi = 300)
+
+load_all_base6_pm6_load_boxplot
 
 
 load_all_base6_pm6_box
@@ -493,6 +546,8 @@ load_all_base6_pm6_load_boxplot
 
 # show plots
 plot_median
+
+# save plot to use in poster
 ggplot2::ggsave(filename = "median_plot.png", path = "analysis/plots", plot = plot_median, width = 6, height = 6, dpi = 300)
 
 median_plot_nol_not
@@ -503,9 +558,7 @@ bar_plot
 par(mfrow=c(1,1))
 
 
-
-
-# show all plots for meeting rothen
+# show all plots for both per load and all together 
 
 #load 1
 load_1_base6_pm6_box
@@ -525,6 +578,13 @@ load_all_base6_pm6_bar
 load_all_base6_pm6_load_boxplot
 load_all_base6_pm6_bar_load
 
-median_plot_not
+# sorted so that base 1 load 1 is next to base 1 load 3, 5 etc.
+trial_split
+#same plot but sorted in chronological order
+trial_split_chron
+
+# general plot for all median to check for overall outliers not split by load or trial
 median_plot_nol_not
+# Same but split for trial but not load
+median_plot_not
 

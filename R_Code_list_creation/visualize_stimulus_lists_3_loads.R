@@ -19,8 +19,8 @@ rm(list=ls())
 
 
 # settings
-dir_input  <- paste0(getwd(), "/new_lists/pm/")
-dir_output <- paste0(getwd(), "/new_lists/pm/")
+dir_input  <- paste0(getwd(), "/dis/")
+dir_output <- paste0(getwd(), "/dis/")
 
 # avoid scientific notation
 options(scipen = 100)
@@ -106,7 +106,7 @@ hues %>%
   scale_shape_manual(values =c(1, 15)) +
   theme_minimal(base_size = 15) +
   facet_grid(version ~ .) +
-  scale_y_continuous(breaks = c(0, 360, 90, 180, 270)) +
+  scale_y_continuous(breaks = c(-180, 90, 0, 90, 180)) +
   ggtitle("Load 3") +
   labs(x = "", y = "") +
   theme(strip.background = element_rect(color = "black", fill = "grey90", linetype = "blank"),
