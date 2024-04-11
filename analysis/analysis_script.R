@@ -566,7 +566,10 @@ average_performance <- subset_data_all_filtered %>%
                         summarise(avg_color_abs_deviation = median(color_angle_abs_deviation))
 
 
+# ---------------------------------------------------------------
 # create line plot for each participant of avg color dev per load
+# ---------------------------------------------------------------
+
 
 # Count the number of unique loads for each url_code
 load_counts <- average_performance %>%
@@ -670,5 +673,3 @@ histo_stim_seq
 
 # line plot showing performance per participant throughout all 3 loads
 line_plot_vpn
-
-
