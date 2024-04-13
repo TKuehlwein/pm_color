@@ -141,6 +141,9 @@ LME_l1 <- lmer(color_angle_abs_deviation ~ trial + load + stimulus_type + (1|tri
               data = data, na.action = na.exclude)
 
 
+summary(LME_l1)
+anova(LME_l1)
+summ(LME_1)
 
 #create table to be used in paper two variants
 sjPlot::tab_model(LME_l3, 
