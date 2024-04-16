@@ -23,21 +23,29 @@ data_l_all <- histo_all |>
   # dplyr::tally()
 
 unique(data_l_all$load_condition)
-splithalf(data = data_l_all,
-          outcome = "accuracy",
-          score = "average",
-          conditionlist = unique(data_l_all$load_condition),
-          halftype = "random",
-          permutations = 5000,
-          var.ACC = "color_angle_abs_deviation",
-          var.condition = "load_condition",
-          var.participant = "url_code",
-          average = "mean",
-          plot = TRUE,
-          round.to = 2,
-          check = TRUE
+rel_l5 <- splithalf(data = subset_data_l5 %>%
+                dplyr::filter(trial != "" & trial != "Practice" & stimulus_type != "prom_spec" 
+                              & !is.na(color_angle_abs_deviation) & !is.na(url_code)),
+              outcome = "accuracy",
+              score = "average",
+              conditionlist = c("Baseline", "Pm"),
+              halftype = "random",
+              permutations = 5000,
+              var.ACC = "color_angle_abs_deviation",
+              var.condition = "trial",
+              var.participant = "url_code",
+              average = "mean",
+              plot = TRUE,
+              round.to = 2,
+              check = TRUE
 )
 
+
+
+# show final rel scores for each load condition
+rel_l1
+rel_l3
+rel_l5
 
 #check oddeven reliability by hand/bootstrap
 data_l1 |>
