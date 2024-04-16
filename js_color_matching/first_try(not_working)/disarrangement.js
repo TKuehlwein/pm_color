@@ -368,3 +368,80 @@ function randOrd() {
   return (Math.round(Math.random()) - 0.5);
 } 
 
+// adding stuff for the lab.js experiment for formating
+
+<header>
+  <h2 id="head1">Merken und erinnern von Objekten und deren Farben</h2>
+  <h2 id="head2" class="hidden">Instruktion</h2>
+</header>
+
+<body">
+
+<main class="content-horizontal-center content-vertical-center";>
+  <section id="page1" class="w-l text-justify">
+    <img src="${ this.files["valais-g3847af3b8_1920.jpg"] }" width="700"> </img>
+    <figcaption style="font-size:11px">https://pixabay.com/de/photos/wallis-alpen-berge-gletscher-3562988/</figcaption>
+  </section>
+
+  <section id="page2" class="w-l text-justify hidden">
+    <p>Wilkommen zur zweiten von drei Sitzungen dieser Studie.
+      Sie werden die gleiche Aufgabe wie in der ersten Sitzung, mit leicht veränderten Bedingungen, lösen. Diese werden Ihnen im folgenden erklärt.
+      <p class="alert alert-danger"> Die Resultate der Studie werden in einer internationalen wissenschaftlichen Fachzeitschrift veröffentlicht. Weichen Sie deshalb nicht von den Instruktionen ab und bearbeiten Sie die Aufgaben bitte so genau wie möglich. </p>
+  </section>
+</main>
+
+</body>
+
+<footer>
+  <table class="table-plain">
+    <tr>
+      <td id="bck" style="visibility: hidden">
+        Falls Sie auf die vorherige Seite zurück kehren möchten, <br>
+        drücken Sie bitte <span style="color: #DC143C;"><kbd>&larr;</kbd></span> auf der Tastatur</kbd>.
+      </td>
+      <td id="done" style="visibility: hidden">
+        Sobald Sie auf die <span style="color: #DC143C;"><kbd>W</kbd></span>-Taste (Grossbuchstabe) drücken, <br>
+       geht es weiter.
+      </td>
+      <td id="fwd">
+        Drücken Sie bitte <span style="color: #DC143C;"><kbd>&rarr;</kbd></span> auf der Tastatur</kbd>, <br>
+         um zur nächsten Seite zu gelangen.
+      </td>
+    </tr>
+  </table>
+</footer>
+
+
+
+// set as global css
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 150px; /* Adjust the height as needed */
+}
+
+footer p {
+  margin: 0;
+}
+
+
+// just some grammer
+
+<header> <h1> Korrekte Skalierung der Materialien </h1> </header>
+
+<p className="alert alter-warning" style="font-size: 20px;"> Haben Sie eine <strong> Karte in der Grösse einer Kreditkarte </strong> zur Hand?
+    Falls nicht, so holen Sie diese bitte, da die Karte als Refernz genutzt werden soll. Dies wird dazu genutzt, dass wir
+    sicher gehen können, dass alle Materialen in der korrekten Grösse angezeigt werden. </p>
+
+// instruction_prom_task_1
+
+Um dies zu testen, werden Sie später die gleiche Aufgabe (Farbe von Bildern merken) nochmals machen. Lösen Sie die Aufgabe ganz
+normal, wie Sie das vorhin getan haben, indem Sie in der Testphase für jedes Objekt die Farbe aus der Lernphase einstellen.
+
+// instruc_2
+
+Erster Abschnitt: Immer, wenn
+Letzer: selbstständig
