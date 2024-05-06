@@ -83,3 +83,8 @@ split_half_data <- histo_all %>%
 #           check = TRUE
 # )
 
+
+
+names_unique <- item_names |>
+  dplyr::mutate(unique = paste(names_unique)) # |>
+
