@@ -8,46 +8,46 @@ rm(list=ls())
 # read in all data files and clear them of unused rows and data points 
 
 subset_data_l1_filtered = read.csv ("/Users/tobiaskuehlwein/pm_color/analysis/subset_data_l1_filtered.csv", header = TRUE)
-subset_data_l3_filtered = read.csv ("/Users/tobiaskuehlwein/pm_color/analysis/subset_data_l3_filtered.csv", header = TRUE)
+subset_data_l3_filtered = read.csv ("/Users/tobiaskuehlwein/pm_color/analysis/load_3_filter_06.csv", header = TRUE)
 subset_data_l5_filtered = read.csv ("/Users/tobiaskuehlwein/pm_color/analysis/subset_data_l5_filtered.csv", header = TRUE)
 subset_data_all_filtered = read.csv("/Users/tobiaskuehlwein/pm_color/analysis/data_all_b6_pm6.csv", header = TRUE)
 B1l1_P6l3 = read.csv("/Users/tobiaskuehlwein/pm_color/analysis/trial_split_by_load_trial_6.csv", header = TRUE)
-data_all = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_all.csv',header=TRUE)
-data_l1_ = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_1_v2.csv',header=TRUE)
-data_l3 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_3.csv',header=TRUE)
-data_l5 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_5.csv',header=TRUE)
+data_all = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/data_all.csv',header=TRUE)
+data_l1 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_1_filter_06.csv',header=TRUE)
+data_l3 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_3_filter_06.csv',header=TRUE)
+data_l5 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_5_filter_06.csv',header=TRUE)
 data_l3_base2 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_3_baseline_1_2.csv',header=TRUE)
 histo_all = read.csv("/Users/tobiaskuehlwein/pm_color/analysis/all_load_test.csv", header = TRUE)
 
 
 
 subset_data_l1_filtered <- subset_data_l1_filtered %>% filter(color_angle_deviation != "")
-subset_data_l3_filtered <- subset_data_l2 %>% filter(color_angle_deviation != "")
-subset_data_l5_filtered <- subset_data_l5 %>% filter(color_angle_deviation != "")
+subset_data_l3_filtered <- subset_data_l3_filtered %>% filter(color_angle_deviation != "")
+subset_data_l5_filtered <- subset_data_l5_filtered %>% filter(color_angle_deviation != "")
 
-subset_data_l1_filtered <- subset(data_l1_base2, select = c("observation", "trial", "load",
+subset_data_l1_filtered <- subset(data_l1, select = c("observation", "trial", "load",
                                            "stimulus_type", "ended_on", "url_code",
                                            "trial_type", "trial_seq", "color_offset", 
                                            "color_angle_test", "color_angle_deviation",
                                            "color_angle_abs_deviation", "stimulus_seq" ))
 
 
-subset_data_l2 <- subset(data_l3, select = c("observation", "trial", "load",
+subset_data_l3_filtered  <- subset(data_l3, select = c("observation", "trial",
                                         "stimulus_type", "ended_on", "url_code",
                                         "trial_type", "trial_seq", "color_offset", 
                                         "color_angle_test", "color_angle_deviation",
-                                        "color_angle_abs_deviation", "stimulus_seq" )) ))
+                                        "color_angle_abs_deviation", "stimulus_seq" )) 
 
-subset_data_l5 <- subset(data_l5, select = c("observation", "trial", "load",
+subset_data_l5_filtered  <- subset(data_l5, select = c("observation", "trial", "load",
                                         "stimulus_type", "ended_on", "url_code",
                                         "trial_type", "trial_seq", "color_offset", 
                                         "color_angle_test", "color_angle_deviation",
-                                        "color_angle_abs_deviation", "stimulus_seq" )) ))
+                                        "color_angle_abs_deviation", "stimulus_seq" )) 
 
 #write the subsets into their own csv files
-write.csv(subset_data_l5_filtered, file = "subset_data_l5_filtered.csv", row.names = TRUE)
-write.csv(filtered_data_l3, file = "load_3_filter.csv", row.names = TRUE)
-write.csv(filtered_data_l5, file = "load_5_filter.csv", row.names = TRUE)
+write.csv(subset_data_l5_filtered, file = "load_5_filter_06.csv", row.names = TRUE)
+write.csv(subset_data_l3_filtered, file = "load_3_filter_06.csv", row.names = TRUE)
+write.csv(subset_data_l1_filtered, file = "load_1_filter_06.csv", row.names = TRUE)
 
 
 
@@ -64,13 +64,15 @@ library(stargazer)
 library(lme4)
 
 
-describeBy(data_all$color_angle_abs_deviation, data_all$stimulus_type)
+describeBy(data_l1$color_angle_abs_deviation, data_l1$trial)
+describeBy(data_l3$color_angle_abs_deviation, data_l3$trial)
+describeBy(data_l5$color_angle_abs_deviation, data_l5$trial)
+
 
 
 # look for outliers by averaging the median and creating a plot for it
 overall_median <-  data_all |>  
-                    dplyr::filter(trial != "" & trial != "Practice"  & stimulus_type != "prom_spec"
-                                  & url_code != "187575071") |>
+                    dplyr::filter(trial != "" & trial != "Practice"  & stimulus_type != "prom_spec") |>
                     group_by(url_code, load) %>%
                     summarise(overall_median_vp  = median(color_angle_abs_deviation, na.rm = TRUE),)%>%
                     arrange(url_code)
@@ -99,9 +101,8 @@ median_plot_not <- ggplot(overall_median, aes(x = "load", y = overall_median_vp)
 
 
 # m and sd for each trial type per load
-    data_l5_base2 |>  
-      dplyr::filter(trial != "" & trial != "Practice"  & stimulus_type != "prom_spec"
-                    & url_code != "187575071") |>
+m_sd_trial_load   <-  data_all |>  
+      dplyr::filter(trial != "" & trial != "practice"  & stimulus_type != "prom_spec") |>
       group_by(trial, load) %>%
       summarise(color_avg = mean(color_angle_abs_deviation, na.rm = TRUE),
                 color_median = median(color_angle_abs_deviation, na.rm = TRUE),
@@ -159,21 +160,20 @@ stargazer(LME_2, type = "text",
 
 # density plit for all
 data_all |>
-  dplyr::filter(trial != "" & trial != "Practice") |>
+  dplyr::filter(trial != "" & trial != "Practice" & stimulus_type != "prom_spec" ) |>
   ggplot2::ggplot(ggplot2::aes(y = color_angle_deviation, x = trial, group = trial, color = trial)) +
   ggplot2::facet_wrap( ~ trial) +
   ggplot2::geom_density() + 
   ggplot2::ggtitle("Density of color deviation by type load 5")
 
-histo_all |>
-  dplyr::filter(trial != "" & trial != "Practice"  & stimulus_type != "prom_spec"
-                & url_code != "187575071") |>
+data_all |>
+  dplyr::filter(trial != "" & trial != "Practice"  & stimulus_type != "prom_spec") |>
   ggplot(aes(y = color_angle_deviation, fill = stimulus_seq, group = stimulus_seq)) + 
   geom_histogram( bins = 180) +
   facet_wrap(~ trial)
 
 
-avg_data <- histo_all %>%
+avg_data <- data_all %>%
      filter(trial != "" & trial != "Practice" & stimulus_type != "prom_spec" & url_code != "187575071") %>%
      group_by(stimulus_seq, trial) %>%
      summarise(avg_color_angle_abs_deviation = mean(color_angle_abs_deviation, na.rm = TRUE))
@@ -188,8 +188,8 @@ histo_stim_seq <- avg_data |>
           facet_wrap(~ trial)
 
 
-data_l1_base2 |>
-  dplyr::filter(trial != "" & trial != "Practice" & url_code != 402695612) |>
+data_l1 |>
+  dplyr::filter(trial != "" & trial != "Practice") |>
   ggplot(aes(x = color_angle_deviation, colour = trial)) + 
     geom_histogram(bins = 60) + 
   facet_wrap(~ load)
@@ -220,7 +220,7 @@ average_values <- data_all %>%
 
 
 data_all |>
-  dplyr::filter(trial != "" & trial != "Practice") |>
+  dplyr::filter(trial != "" & trial != "Practice" & stimulus_type != "prom_spec") |>
   ggplot(aes(x = color_angle_deviation, y = trial)) +
     geom_violin(aes(x=color_angle_deviation, y = trial, fill = load), alpha = 0.5) +
     geom_point(data = average_values, aes(x = average_color_angle_deviation, y = trial), 
@@ -231,7 +231,7 @@ data_all |>
           strip.text = element_blank())
   
 data_all |>
-  dplyr::filter(trial != "" & trial != "Practice") |>  
+  dplyr::filter(trial != "" & trial != "Practice" & stimulus_type != "prom_spec") |>  
   ggplot(aes(x = color_angle_deviation, y = trial)) +
   geom_boxplot( aes(x = color_angle_deviation, y = trial)) +
   geom_point(data = average_values, aes(x = average_color_angle_deviation, y = trial), 
@@ -243,15 +243,15 @@ data_all |>
 
 
 # density plot per load per trial
-data_l1_base2 |>
-  dplyr::filter(trial != "" & trial != "Practice") |>
+data_l1 |>
+  dplyr::filter(trial != "" & trial != "Practice" & stimulus_type != "prom_spec") |>
   ggplot(aes(x = color_angle_deviation)) + 
   geom_freqpoly(bins = 180) +
   facet_wrap(~ trial, nrow = 3)
 
 #different density plot
-data_l1_base2 |>
-  dplyr::filter(trial != "" & trial != "Practice") |>
+data_l1 |>
+  dplyr::filter(trial != "" & trial != "Practice" & stimulus_type != "prom_spec") |>
   ggplot(aes(x = color_angle_deviation, y = ..scaled..)) +
     geom_density(adjust = 0.2) +
     scale_y_continuous(labels = scales::percent_format()) +
@@ -261,7 +261,7 @@ data_l1_base2 |>
 
 #Density plot per load per trial per vp
 data_all |>
-  dplyr::filter(trial != "" & trial != "Practice" & url_code != 187575071) |>
+  dplyr::filter(trial != "" & trial != "Practice" & stimulus_type != "prom_spec") |>
   ggplot(aes(x = color_angle_deviation, y = ..scaled..)) +
   geom_density(adjust = 0.2) +
   scale_y_continuous(labels = scales::percent_format()) +
@@ -274,7 +274,7 @@ data_all |>
 
 
 #more plots to have some choice
-(prelim_plot <- ggplot(data, aes(x = color_angle_abs_deviation, y = trial, color = trial)) +
+(prelim_plot <- ggplot(data_all, aes(x = color_angle_abs_deviation, y = trial, color = trial)) +
     geom_point() +
     geom_smooth(color = "Red" ,method = "lm"))
 
@@ -322,11 +322,11 @@ average_values_abs <- data_all %>%
   dplyr::filter(trial != "" & trial != "Practice"  & stimulus_type != "prom_spec") |>
   group_by(url_code, trial, load, stimulus_type) %>%
   summarise(average_color_angle_deviation = mean(color_angle_abs_deviation, na.rm = TRUE),
-            overall_avg = mean(color_angle_deviation, na.rm = TRUE)
+            overall_avg = mean(color_angle_deviation, na.rm = TRUE))
 
 # calculate median per participant
 median_values_abs <- data_all %>%
-  dplyr::filter(trial != "" & trial != "Practice"  & stimulus_type != "prom_spec") |>
+  dplyr::filter(trial != "" & trial != "practice"  & stimulus_type != "prom_spec") |>
   group_by(url_code, trial, load, stimulus_type) %>%
   summarise(median_color_angle_deviation = median(color_angle_abs_deviation, na.rm = TRUE),
             overall_avg = mean(color_angle_abs_deviation, na.rm = TRUE))
@@ -334,7 +334,7 @@ median_values_abs <- data_all %>%
 
 #create avg value for barplot and for 95% interval
 summary_stats_median <- median_values_abs %>%
-  dplyr::filter(trial != "" & trial != "Practice"  & stimulus_type != "prom_spec") |>
+  dplyr::filter(trial != "" & trial != "practice"  & stimulus_type != "prom_spec") |>
   group_by(load, trial) %>%
   summarise(overall_avg = median(median_color_angle_deviation, na.rm = TRUE),
             sd_value = sd(median_color_angle_deviation, na.rm = TRUE),
@@ -343,7 +343,7 @@ summary_stats_median <- median_values_abs %>%
             overall_avg = mean(median_color_angle_deviation, na.rm = TRUE))
 
 summary_stats_avg <- average_values_abs %>%
-  dplyr::filter(trial != "" & trial != "Practice"  & stimulus_type != "prom_spec") |>
+  dplyr::filter(trial != "" & trial != "practice"  & stimulus_type != "prom_spec") |>
   group_by(load, trial) %>%
   summarise(overall_avg = mean(average_color_angle_deviation, na.rm = TRUE),
             sd_value = sd(average_color_angle_deviation, na.rm = TRUE),
@@ -352,18 +352,67 @@ summary_stats_avg <- average_values_abs %>%
 
 
 # change factor key to Baseline and Prospective memory
-avg_split_by_load$trial <- ifelse(avg_split_by_load$trial == "B4l1", "4Bl1", 
-                                  avg_split_by_load$trial)
+data_all$trial <- ifelse(data_all$trial == "Baseline1", "baseline1", 
+                         data_all$trial)
 
 
 ## create main plot with jitter points and 95% interval (Poster Plot!)
+
+color_values <- c("red", "turquoise", "green", "purple", "orange")  # Replace with actual trial colors
+average_color <- "black"  # Color for the "Average" point
+
+
+# Create main plot with jitter points and 95% interval
+plot_median <- ggplot(data = median_values_abs, aes(x = trial, y = median_color_angle_deviation, fill = trial)) +
+  geom_boxplot(alpha = 0.75) +
+  geom_jitter(aes(x = trial, y = median_color_angle_deviation, color = trial),
+              show.legend = FALSE, position = position_dodge(width = 0.8)) +
+  geom_point(data = summary_stats_median, aes(x = trial, y = overall_avg, color = "Average"), size = 3) +
+  scale_color_manual(values = c(color_values, "Average" = average_color), 
+                     labels = c(levels(median_values_abs_v2$trial), "Average")) +
+  scale_fill_manual(values = color_values) +
+  facet_wrap(~ load, labeller = labeller(load = function(variable) paste("Load", variable))) +
+  labs(x = "Block type", y = "Average Color Deviation [°]", fill = "Block type", color = "") +
+  scale_y_continuous(breaks = seq(0, 50, by = 10)) +
+  theme_minimal() +
+  theme(strip.text = element_text(size = 12),
+        axis.title.x = element_text(size = 10),  # Adjust x-axis title size
+        axis.text.y = element_text(size = 10),   # Adjust y-axis label size
+        legend.title = element_text(size = 7), 
+        legend.text = element_text(size = 7), 
+        legend.position = "top") +
+  guides(color = guide_legend(nrow = 2))
+
+plot_median <-  plot_median + 
+  geom_point(data = summary_stats_median, aes(x = trial, y = overall_avg, color = "Average"), size = 3) +
+  scale_color_manual(values = c("black", "red", "blue", "violet"), labels = c("Mean",
+                                                                              "Median per person",
+                                                                              "Median per person")) +
+  labs(color = "") +
+  facet_wrap(~ load, labeller = labeller(load = function(variable) paste("Load", variable))) +
+  theme(legend.title = element_text(size = 7), legend.text = element_text(size = 7)) +
+  guides(color = guide_legend(nrow = 2))
+
+print(plot_median_v2)
+print(plot_median)
+
+# save the plot
+ggplot2::ggsave(filename = "median_version2.pdf", path = "pm_color/analysis/plots", plot = plot_median_v2, width = 6, height = 4, dpi = 300)
+
+
+
+# --------------------------------------------------#
+# old version left in for testing
+# --------------------------------------------------#
+
 plot_median <- ggplot(data = median_values_abs, aes(x = trial, y = median_color_angle_deviation, fill = trial)) +
                 geom_boxplot(alpha = 0.8) +
                 geom_jitter(aes(x = trial, y = median_color_angle_deviation, color = trial),
                             show.legend = FALSE, position = position_dodge(width = 0.8)) +
-                scale_color_manual(values = c("black", "blue")) +
+                scale_color_manual(values = color_values) +
+                scale_fill_manual(values = color_values) +
                 facet_wrap(~ load, labeller = labeller(load = function(variable) paste("Load", variable))) +
-                labs(x = "Block type", y = "Average  Color Deviation [°]", fill = "Block type") +
+                labs(x = "Block type", y = "Average Color Deviation [°]", fill = "Block type") +
                 scale_y_continuous(breaks = seq(0, 50, by = 10)) +
                 theme_minimal() +
                 theme(strip.text = element_text(size = 12),
@@ -373,9 +422,9 @@ plot_median <- ggplot(data = median_values_abs, aes(x = trial, y = median_color_
 
 
 
-plot_median <-  plot_median + 
-                  geom_point(data = summary_stats_median, aes(x = trial, y = overall_avg, color = "Average"), size = 3) +
-                  scale_color_manual(values = c("black", "red", "blue"), labels = c("Mean",
+plot_median_v2 <-  plot_median_v2 + 
+                  geom_point(data = summary_stats_median_v2, aes(x = trial, y = overall_avg, color = "Average"), size = 3) +
+                  scale_color_manual(values = c("black", "red", "blue", "violet"), labels = c("Mean",
                                                                                     "Median per person",
                                                                                     "Median per person")) +
                   labs(color = "") +
@@ -384,6 +433,12 @@ plot_median <-  plot_median +
                   guides(color = guide_legend(nrow = 2))
 
 plot_median
+
+
+# --------------------------------------------------#
+# End version
+# --------------------------------------------------#
+
 
 # plot for mean instead of median
 plot_average <-   ggplot(summary_stats_avg, aes(x = trial, y = overall_avg, fill = trial)) +
@@ -409,7 +464,7 @@ distinct_colors <- c("#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",
                      "#c49c94", "#f7b6d2", "#c7c7c7")
 
 # Create the bar plot with distinct colors
-bar_plot <- ggplot(x, aes(x = trial, y = color_median, fill = url_code)) +
+bar_plot <- ggplot(data_all, aes(x = trial, y = color_median, fill = url_code)) +
   geom_bar(stat = "identity") +
   facet_wrap(~ url_code + load, labeller = labeller(load = function(variable) paste("Load", variable)), ncol = 6) +
   labs(x = "X Axis Label", y = "Y Axis Label", title = "Bar Plot") +
@@ -419,21 +474,21 @@ bar_plot <- ggplot(x, aes(x = trial, y = color_median, fill = url_code)) +
 
 
 # create average per VP  per trial per load to use in boxplot for general outliers
-load_all_vp_avg_load <- subset_data_all_filtered %>%
+load_all_vp_avg_load <- data_all %>%
   group_by(url_code, load, trial) %>%
   summarise(avg_color_angle_abs_deviation = mean(color_angle_abs_deviation))
 
-avg_split_by_load <- B1l1_P6l3 %>%
+avg_split_by_load <- data_all %>%
   group_by(url_code, load, trial) %>%
   summarise(avg_color_angle_abs_deviation = mean(color_angle_abs_deviation))
 
 # create average per VP to use in boxplot for general outliers
-load_all_vp_avg <- subset_data_all_filtered %>%
+load_all_vp_avg <- data_all %>%
   group_by(url_code, trial) %>%
   summarise(avg_color_angle_abs_deviation = mean(color_angle_abs_deviation))
 
 #create average oer trial lot split for VP for barplot
-load_all_avg <- subset_data_all_filtered %>%
+load_all_avg <- data_all %>%
   group_by(trial) %>%
   summarise(avg_color_angle_abs_deviation = mean(color_angle_abs_deviation))
 
@@ -551,8 +606,9 @@ trial_split <- trial_split +
 
 trial_split
 trial_split_chron
+
 # save the plot
-ggplot2::ggsave(filename = "trial_split.pdf", path = "pm_color/analysis/plots", plot = trial_split, width = 6, height = 4, dpi = 300)
+ggplot2::ggsave(filename = "median_version2.pdf", path = "pm_color/analysis/plots", plot = plot_median_v2, width = 6, height = 4, dpi = 300)
 
 load_all_base6_pm6_load_boxplot
 
@@ -563,9 +619,9 @@ load_all_base6_pm6_bar_load
 load_all_base6_pm6_load_boxplot
 
 
-average_performance <- subset_data_all_filtered %>%
-                        filter(trial != "" & trial != "Practice" & stimulus_type != "prom_spec") %>%
-                        group_by(url_code, load) %>%
+average_performance_trial <- data_all %>%
+                        filter(trial != "" & trial != "practice" & stimulus_type != "prom_spec") %>%
+                        group_by(url_code, load, trial) %>%
                         summarise(avg_color_abs_deviation = median(color_angle_abs_deviation))
 
 
@@ -575,36 +631,44 @@ average_performance <- subset_data_all_filtered %>%
 
 
 # Count the number of unique loads for each url_code
-load_counts <- average_performance %>%
+load_counts_trial <- average_performance_trial %>%
   count(url_code)
 
 # Filter out url_code that do not have data for all loads
-complete_url_codes <- load_counts %>%
+complete_url_codes_trial <- load_counts_trial %>%
   filter(n == max(load_counts$n)) %>%
   pull(url_code)
 
 # Filter the average_performance data frame to include only complete url_codes
-complete_average_performance <- average_performance %>%
+complete_average_performance_trial <- average_performance_trial %>%
   filter(url_code %in% complete_url_codes)
 
+
+# Convert url_code to factor for coloring
+complete_average_performance$url_code <- factor(complete_average_performance$url_code)
+
+
 # Create the plot
-line_plot_vpn <- subset_data_all_filtered %>%
-                  filter(trial != "" & trial != "Practice" & stimulus_type != "prom_spec") %>%
-                  ggplot(aes(x = load, y = avg_color_abs_deviation, group = url_code, color = url_code)) +
-                  geom_line(data = complete_average_performance) +
-                  geom_point(data = complete_average_performance) +
-                  labs(x = "Load", y = "Median Color Abs Deviation", title = "Average Median Performance Across Loads") +
-                  theme_minimal()
+line_plot_vpn <- data_all %>%
+                        filter(trial != "" & trial != "practice" & stimulus_type != "prom_spec") %>%
+                        ggplot(aes(x = load, y = avg_color_abs_deviation, group = url_code, color = url_code)) +
+                        geom_line(data = complete_average_performance) +
+                        geom_point(data = complete_average_performance) +
+                        labs(x = "Load", y = "Median Color Abs Deviation", title = "Average Median Performance Across Loads") +
+                        #facet_wrap(~ trial) + 
+                        theme_minimal() +
+                        scale_color_hue(l = 50, c = 100) # Adjust lightness and chroma for more distinct colors
 
 line_plot_vpn <- line_plot_vpn +
-          geom_line(data = point, aes(x = x, y = y, label = label), vjust = -0.5) 
+          geom_line(data = data_all, aes(x = x, y = y, label = label), vjust = -0.5) 
 
   
 line_plot_vpn
+line_plot_vpn_trial
 
 # create histogram for avg color dev for each stimulus to see motivation/errors
 
-avg_data <- histo_all %>%
+avg_data <- data_all %>%
   filter(trial != "" & trial != "Practice" & stimulus_type != "prom_spec" & url_code != "187575071") %>%
   group_by(stimulus_seq, trial) %>%
   summarise(avg_color_angle_abs_deviation = mean(color_angle_abs_deviation, na.rm = TRUE))
@@ -676,3 +740,34 @@ histo_stim_seq
 
 # line plot showing performance per participant throughout all 3 loads
 line_plot_vpn
+line_plot_vpn_trial #(split by trial per vp and not general)
+
+# median plots (poster), with base 1/2 or only base general
+plot_median
+plot_median_v2
+
+#descriptive data of avg, sd, median, and min, max abs_col_dev for each load and trial 
+m_sd_trial_load
+
+
+#descriptive data of avg, sd, median, and min, max abs_col_dev only load 1
+data_l3 |>  
+  dplyr::filter(trial != "" & trial != "practice"  & stimulus_type != "prom_spec") |>
+  group_by(trial) %>%
+  summarise(color_avg = mean(color_angle_abs_deviation, na.rm = TRUE),
+            color_median = median(color_angle_abs_deviation, na.rm = TRUE),
+            color_dif_sd = sd(color_angle_abs_deviation, na.rm = TRUE),
+            color_dif_min = min(color_angle_abs_deviation, na.rm = TRUE),
+            color_dif_max = max(color_angle_abs_deviation, na.rm = TRUE),)
+
+#descriptive data of avg, sd, median, and min, max abs_col_dev for each load, only one trial type
+data_all |>  
+  dplyr::filter(trial != "" & trial != "practice"  & stimulus_type != "prom_spec"
+                & trial != "baseline2" & trial != "baseline1") |>
+  group_by(trial, load) %>%
+  summarise(color_avg = mean(color_angle_abs_deviation, na.rm = TRUE),
+            color_median = median(color_angle_abs_deviation, na.rm = TRUE),
+            color_dif_sd = sd(color_angle_abs_deviation, na.rm = TRUE),
+            color_dif_min = min(color_angle_abs_deviation, na.rm = TRUE),
+            color_dif_max = max(color_angle_abs_deviation, na.rm = TRUE),)%>%
+  arrange(load)
