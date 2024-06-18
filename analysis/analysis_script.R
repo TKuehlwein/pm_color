@@ -12,10 +12,10 @@ subset_data_l3_filtered = read.csv ("/Users/tobiaskuehlwein/pm_color/analysis/lo
 subset_data_l5_filtered = read.csv ("/Users/tobiaskuehlwein/pm_color/analysis/subset_data_l5_filtered.csv", header = TRUE)
 subset_data_all_filtered = read.csv("/Users/tobiaskuehlwein/pm_color/analysis/data_all_b6_pm6.csv", header = TRUE)
 B1l1_P6l3 = read.csv("/Users/tobiaskuehlwein/pm_color/analysis/trial_split_by_load_trial_6.csv", header = TRUE)
-data_all = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/data_all.csv',header=TRUE)
-data_l1 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_1_filter_06.csv',header=TRUE)
-data_l3 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_3_filter_06.csv',header=TRUE)
-data_l5 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_5_filter_06.csv',header=TRUE)
+data_all = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_all_filter_06.csv',header=TRUE)
+data_l1 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_1_june.csv',header=TRUE)
+data_l3 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_3_june.csv',header=TRUE)
+data_l5 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_5_june.csv',header=TRUE)
 data_l3_base2 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_3_baseline_1_2.csv',header=TRUE)
 histo_all = read.csv("/Users/tobiaskuehlwein/pm_color/analysis/all_load_test.csv", header = TRUE)
 
@@ -24,6 +24,7 @@ histo_all = read.csv("/Users/tobiaskuehlwein/pm_color/analysis/all_load_test.csv
 subset_data_l1_filtered <- subset_data_l1_filtered %>% filter(color_angle_deviation != "")
 subset_data_l3_filtered <- subset_data_l3_filtered %>% filter(color_angle_deviation != "")
 subset_data_l5_filtered <- subset_data_l5_filtered %>% filter(color_angle_deviation != "")
+data_all <- data_all %>% filter(color_angle_deviation != "")
 
 subset_data_l1_filtered <- subset(data_l1, select = c("observation", "trial", "load",
                                            "stimulus_type", "ended_on", "url_code",
@@ -48,7 +49,7 @@ subset_data_l5_filtered  <- subset(data_l5, select = c("observation", "trial", "
 write.csv(subset_data_l5_filtered, file = "load_5_filter_06.csv", row.names = TRUE)
 write.csv(subset_data_l3_filtered, file = "load_3_filter_06.csv", row.names = TRUE)
 write.csv(subset_data_l1_filtered, file = "load_1_filter_06.csv", row.names = TRUE)
-
+write.csv(data_all, file = "load_all_filter_06.csv", row.names = TRUE)
 
 
 # load all packages might needed
@@ -352,7 +353,7 @@ summary_stats_avg <- average_values_abs %>%
 
 
 # change factor key to Baseline and Prospective memory
-data_all$trial <- ifelse(data_all$trial == "Baseline1", "baseline1", 
+data_all$trial <- ifelse(data_all$trial == "pm", "PM", 
                          data_all$trial)
 
 
@@ -369,7 +370,7 @@ plot_median <- ggplot(data = median_values_abs, aes(x = trial, y = median_color_
               show.legend = FALSE, position = position_dodge(width = 0.8)) +
   geom_point(data = summary_stats_median, aes(x = trial, y = overall_avg, color = "Average"), size = 3) +
   scale_color_manual(values = c(color_values, "Average" = average_color), 
-                     labels = c(levels(median_values_abs_v2$trial), "Average")) +
+                     labels = c(levels(median_values_abs$trial), "Average")) +
   scale_fill_manual(values = color_values) +
   facet_wrap(~ load, labeller = labeller(load = function(variable) paste("Load", variable))) +
   labs(x = "Block type", y = "Average Color Deviation [°]", fill = "Block type", color = "") +
@@ -385,7 +386,7 @@ plot_median <- ggplot(data = median_values_abs, aes(x = trial, y = median_color_
 
 plot_median <-  plot_median + 
   geom_point(data = summary_stats_median, aes(x = trial, y = overall_avg, color = "Average"), size = 3) +
-  scale_color_manual(values = c("black", "red", "blue", "violet"), labels = c("Mean",
+  scale_color_manual(values = c("black", "red", "blue", "violet", "orange"), labels = c("Mean",
                                                                               "Median per person",
                                                                               "Median per person")) +
   labs(color = "") +
@@ -397,7 +398,7 @@ print(plot_median_v2)
 print(plot_median)
 
 # save the plot
-ggplot2::ggsave(filename = "median_version2.pdf", path = "pm_color/analysis/plots", plot = plot_median_v2, width = 6, height = 4, dpi = 300)
+ggplot2::ggsave(filename = "median_ADOK_v3.pdf", path = "/Users/tobiaskuehlwein/pm_color/analysis/plots", plot = plot_median, width = 7, height = 5, dpi = 300)
 
 
 
