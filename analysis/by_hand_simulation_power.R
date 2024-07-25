@@ -96,6 +96,7 @@ sim_test   <-  simulation |>
             color_dif_min = min(color_abs_deviation, na.rm = TRUE),
             color_dif_max = max(color_abs_deviation, na.rm = TRUE),)%>%
   arrange(load)
+
 view(sim_test)
 
 
@@ -188,7 +189,8 @@ contrasts(results$trial_type)
 # check pilot model for participant variance
 fit_pilot <- lmer(color_angle_abs_deviation ~ load * trial + (1|url_code), 
                   data = data_all, 
-                  subset = (trial != "practice"))summary(fit_pilot)
+                  subset = (trial != "practice"))
+summary(fit_pilot)
 summ(fit_pilot)
 summary(fit_pilot)
 
