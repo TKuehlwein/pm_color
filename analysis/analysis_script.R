@@ -12,10 +12,10 @@ subset_data_l3_filtered = read.csv ("/Users/tobiaskuehlwein/pm_color/analysis/lo
 subset_data_l5_filtered = read.csv ("/Users/tobiaskuehlwein/pm_color/analysis/subset_data_l5_filtered.csv", header = TRUE)
 subset_data_all_filtered = read.csv("/Users/tobiaskuehlwein/pm_color/analysis/data_all_b6_pm6.csv", header = TRUE)
 B1l1_P6l3 = read.csv("/Users/tobiaskuehlwein/pm_color/analysis/trial_split_by_load_trial_6.csv", header = TRUE)
-data_all = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_all_filter_06.csv',header=TRUE)
-data_l1 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_1_june.csv',header=TRUE)
-data_l3 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_3_june.csv',header=TRUE)
-data_l5 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_5_june.csv',header=TRUE)
+data_all = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/data_all_2.csv',header=TRUE)
+data_l1 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_1_2.csv',header=TRUE)
+data_l3 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_3_2.csv',header=TRUE)
+data_l5 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_5_2.csv',header=TRUE)
 data_l3_base2 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_3_baseline_1_2.csv',header=TRUE)
 histo_all = read.csv("/Users/tobiaskuehlwein/pm_color/analysis/all_load_test.csv", header = TRUE)
 
@@ -111,17 +111,19 @@ m_sd_trial_load   <-  data_all |>
                 color_dif_min = min(color_angle_abs_deviation, na.rm = TRUE),
                 color_dif_max = max(color_angle_abs_deviation, na.rm = TRUE),)%>%
       arrange(load)
+
+m_sd_trial_load
   
 
 # m, sd, min, max for each trial per load per vp
-data_l5 |>  
+outliers_vp <- data_all |>  
   dplyr::filter(trial != "" & trial != "Practice") |>
-  group_by(trial, url_code) %>%
+  group_by(trial, url_code, load) %>%
   summarise(color_dif = mean(color_angle_abs_deviation, na.rm = TRUE),
             color_dif_sd = sd(color_angle_abs_deviation, na.rm = TRUE),
             color_dif_min = min(color_angle_abs_deviation, na.rm = TRUE),
             color_dif_max = max(color_angle_abs_deviation, na.rm = TRUE),)%>%
-  arrange(trial)
+  arrange(load)
 
 
 
@@ -320,14 +322,14 @@ ggplot(average_values_abs, aes(x = trial, y = average_color_angle_deviation, fil
 
 #calculate average per participant for geom_jitter points
 average_values_abs <- data_all %>%
-  dplyr::filter(trial != "" & trial != "Practice"  & stimulus_type != "prom_spec") |>
+  dplyr::filter(trial != "" & trial != "Practice"  & stimulus_type != "prom_spec" & url_code != "222") |>
   group_by(url_code, trial, load, stimulus_type) %>%
   summarise(average_color_angle_deviation = mean(color_angle_abs_deviation, na.rm = TRUE),
             overall_avg = mean(color_angle_deviation, na.rm = TRUE))
 
 # calculate median per participant
 median_values_abs <- data_all %>%
-  dplyr::filter(trial != "" & trial != "practice"  & stimulus_type != "prom_spec") |>
+  dplyr::filter(trial != "" & trial != "practice"  & stimulus_type != "prom_spec" & url_code != "222") |>
   group_by(url_code, trial, load, stimulus_type) %>%
   summarise(median_color_angle_deviation = median(color_angle_abs_deviation, na.rm = TRUE),
             overall_avg = mean(color_angle_abs_deviation, na.rm = TRUE))
@@ -335,7 +337,7 @@ median_values_abs <- data_all %>%
 
 #create avg value for barplot and for 95% interval
 summary_stats_median <- median_values_abs %>%
-  dplyr::filter(trial != "" & trial != "practice"  & stimulus_type != "prom_spec") |>
+  dplyr::filter(trial != "" & trial != "practice"  & stimulus_type != "prom_spec" & url_code != "222") |>
   group_by(load, trial) %>%
   summarise(overall_avg = median(median_color_angle_deviation, na.rm = TRUE),
             sd_value = sd(median_color_angle_deviation, na.rm = TRUE),
@@ -344,7 +346,7 @@ summary_stats_median <- median_values_abs %>%
             overall_avg = mean(median_color_angle_deviation, na.rm = TRUE))
 
 summary_stats_avg <- average_values_abs %>%
-  dplyr::filter(trial != "" & trial != "practice"  & stimulus_type != "prom_spec") |>
+  dplyr::filter(trial != "" & trial != "practice"  & stimulus_type != "prom_spec" & url_code != "222") |>
   group_by(load, trial) %>%
   summarise(overall_avg = mean(average_color_angle_deviation, na.rm = TRUE),
             sd_value = sd(average_color_angle_deviation, na.rm = TRUE),
@@ -353,7 +355,7 @@ summary_stats_avg <- average_values_abs %>%
 
 
 # change factor key to Baseline and Prospective memory
-data_all$trial <- ifelse(data_all$trial == "pm", "PM", 
+data_all$trial <- ifelse(data_all$trial == "baseline2", "baseline", 
                          data_all$trial)
 
 

@@ -28,6 +28,17 @@ median_color_l3_base <- data_all %>%
   filter(trial != "practice" & trial != "pm" & load != "1" & load != "5") %>%  # Exclude 'everything irrelevant' trial
   summarise(median_color_angle_abs_deviation = median(color_angle_abs_deviation, na.rm = TRUE))
 
+
+# # change values for lowest effect of interest
+# median_color_l3_pm <- median_color_l3_pm %>%
+#   mutate(median_color_angle_abs_deviation = 21.1518)
+# 
+# # change values for lowest effect of interest
+# mad_color_l3_pm <- mad_color_l3_pm %>%
+#   mutate(mad_color_angle_abs_deviation = 7.72523)
+
+
+
 #load three pm block
 mad_color_l3_pm <- data_all %>%
   filter(trial != "practice" & trial != "baseline" & load != "1" & load != "5") %>%  # Exclude 'everything irrelevant' trial
@@ -59,12 +70,12 @@ median_color_l5_pm <- data_all %>%
 
 
 # cohen's d effect size
-d <- 0.6
+d <- 0.8
 
 # calculate the mean difference for the two conditions
 #for each condition again
 #l1 base
-mean_color_diff_l1_base <- d * median_color_l1_base
+mean_color_diff_l1_base <- d * mad_color_l1_base
 mad_color_diff_l1_base <- d * mad_color_l1_base
 
 #for each condition again
