@@ -12,10 +12,10 @@ subset_data_l3_filtered = read.csv ("/Users/tobiaskuehlwein/pm_color/analysis/lo
 subset_data_l5_filtered = read.csv ("/Users/tobiaskuehlwein/pm_color/analysis/subset_data_l5_filtered.csv", header = TRUE)
 subset_data_all_filtered = read.csv("/Users/tobiaskuehlwein/pm_color/analysis/data_all_b6_pm6.csv", header = TRUE)
 B1l1_P6l3 = read.csv("/Users/tobiaskuehlwein/pm_color/analysis/trial_split_by_load_trial_6.csv", header = TRUE)
-data_all = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/data_all_2.csv',header=TRUE)
-data_l1 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_1_2.csv',header=TRUE)
-data_l3 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_3_2.csv',header=TRUE)
-data_l5 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_5_2.csv',header=TRUE)
+data_all = read.csv('/Users/tobiaskuehlwein/pm_color/teaching_files/data_all.csv',header=TRUE)
+data_l1 = read.csv('/Users/tobiaskuehlwein/pm_color/teaching_files/load_1.csv',header=TRUE)
+data_l3 = read.csv('/Users/tobiaskuehlwein/pm_color/teaching_files/load_3.csv',header=TRUE)
+data_l5 = read.csv('/Users/tobiaskuehlwein/pm_color/teaching_files/load_5.csv',header=TRUE)
 data_l3_base2 = read.csv('/Users/tobiaskuehlwein/pm_color/analysis/load_3_baseline_1_2.csv',header=TRUE)
 histo_all = read.csv("/Users/tobiaskuehlwein/pm_color/analysis/all_load_test.csv", header = TRUE)
 
@@ -26,14 +26,14 @@ subset_data_l3_filtered <- subset_data_l3_filtered %>% filter(color_angle_deviat
 subset_data_l5_filtered <- subset_data_l5_filtered %>% filter(color_angle_deviation != "")
 data_all <- data_all %>% filter(color_angle_deviation != "")
 
-subset_data_l1_filtered <- subset(data_l1, select = c("observation", "trial", "load",
+data_l1 <- subset(data_l1, select = c("age", "observation", "trial", "load",
                                            "stimulus_type", "ended_on", "url_code",
                                            "trial_type", "trial_seq", "color_offset", 
                                            "color_angle_test", "color_angle_deviation",
-                                           "color_angle_abs_deviation", "stimulus_seq" ))
+                                           "color_angle_abs_deviation", "stimulus_seq", "gender" ))
 
 
-subset_data_l3_filtered  <- subset(data_l3, select = c("observation", "trial",
+subset_data_l3_filtered  <- subset(data_l3, select = c("observation", "trial", "load",
                                         "stimulus_type", "ended_on", "url_code",
                                         "trial_type", "trial_seq", "color_offset", 
                                         "color_angle_test", "color_angle_deviation",
@@ -46,9 +46,9 @@ subset_data_l5_filtered  <- subset(data_l5, select = c("observation", "trial", "
                                         "color_angle_abs_deviation", "stimulus_seq" )) 
 
 #write the subsets into their own csv files
-write.csv(subset_data_l5_filtered, file = "load_5_filter_06.csv", row.names = TRUE)
-write.csv(subset_data_l3_filtered, file = "load_3_filter_06.csv", row.names = TRUE)
-write.csv(subset_data_l1_filtered, file = "load_1_filter_06.csv", row.names = TRUE)
+write.csv(subset_data_l5_filtered, file = "load_5_filter.csv", row.names = TRUE)
+write.csv(subset_data_l3_filtered, file = "load_3_filter.csv", row.names = TRUE)
+write.csv(subset_data_l1_filtered, file = "load_1_filter.csv", row.names = TRUE)
 write.csv(data_all, file = "load_all_filter_06.csv", row.names = TRUE)
 
 
@@ -73,10 +73,10 @@ describeBy(data_l5$color_angle_abs_deviation, data_l5$trial)
 
 # look for outliers by averaging the median and creating a plot for it
 overall_median <-  data_all |>  
-                    dplyr::filter(trial != "" & trial != "Practice"  & stimulus_type != "prom_spec") |>
-                    group_by(url_code, load) %>%
+                    dplyr::filter(trial != "" & trial != "Practice" & trial != "practice" & stimulus_type != "prom_spec") |>
+                    group_by(load, trial) %>%
                     summarise(overall_median_vp  = median(color_angle_abs_deviation, na.rm = TRUE),)%>%
-                    arrange(url_code)
+                    arrange(load)
 
 subset_data_l3_filtered |> 
   dplyr::filter(trial != "" & trial != "Practice"  & url_code != "187575071" & 
@@ -103,11 +103,12 @@ median_plot_not <- ggplot(overall_median, aes(x = "load", y = overall_median_vp)
 
 # m and sd for each trial type per load
 m_sd_trial_load   <-  data_all |>  
-      dplyr::filter(trial != "" & trial != "practice"  & stimulus_type != "prom_spec") |>
+      dplyr::filter(trial != "" & trial != "practice" & trial != "Practice" & stimulus_type != "prom_spec" & url_code != "4746"
+                    & url_code != "2657") |>
       group_by(trial, load) %>%
       summarise(color_avg = mean(color_angle_abs_deviation, na.rm = TRUE),
                 color_median = median(color_angle_abs_deviation, na.rm = TRUE),
-                color_dif_sd = sd(color_angle_abs_deviation, na.rm = TRUE),
+                color_dif_mad = mad(color_angle_abs_deviation, na.rm = TRUE),
                 color_dif_min = min(color_angle_abs_deviation, na.rm = TRUE),
                 color_dif_max = max(color_angle_abs_deviation, na.rm = TRUE),)%>%
       arrange(load)
@@ -137,12 +138,14 @@ count_within_range <- sum(data_all$color_angle_abs_deviation >= 100, na.rm = TRU
 print(count_within_range)
 
 # filter out potential outliers
-filtered_data <- subset(data_all_v4, !(color_angle_abs_deviation >= 100))
+data_all <- subset(data_all, !(trial == Practice))
+data_all <- subset(data_all, trial != "practice")
+
 
 
 #first LME 
-LME_l1 <- lmer(color_angle_abs_deviation ~ trial + load + stimulus_type + (1|trial_type),
-              data = data, na.action = na.exclude)
+LME_l1 <- lmer(color_angle_abs_deviation ~ load + trial + stimulus_type + trial*load + (1|trial_type),
+              data = data_all, na.action = na.exclude)
 
 
 summary(LME_l1)
@@ -150,11 +153,11 @@ anova(LME_l1)
 summ(LME_1)
 
 #create table to be used in paper two variants
-sjPlot::tab_model(LME_l3, 
+sjPlot::tab_model(LME_l1, 
                   show.re.var= TRUE,
-                  dv.labels= "load 3")
+                  dv.labels= "Linear mixed model")
 
-stargazer(LME_2, type = "text",
+stargazer(LME_l1, type = "text",
           digits = 3,
           star.cutoffs = c(0.05, 0.01, 0.001),
           digit.separator = "")
@@ -322,14 +325,16 @@ ggplot(average_values_abs, aes(x = trial, y = average_color_angle_deviation, fil
 
 #calculate average per participant for geom_jitter points
 average_values_abs <- data_all %>%
-  dplyr::filter(trial != "" & trial != "Practice"  & stimulus_type != "prom_spec" & url_code != "222") |>
+  dplyr::filter(trial != "" & trial != "Practice" & trial != "practice" & stimulus_type != "prom_spec" & url_code != "4746"
+                & url_code != "2657") |>
   group_by(url_code, trial, load, stimulus_type) %>%
   summarise(average_color_angle_deviation = mean(color_angle_abs_deviation, na.rm = TRUE),
             overall_avg = mean(color_angle_deviation, na.rm = TRUE))
 
 # calculate median per participant
 median_values_abs <- data_all %>%
-  dplyr::filter(trial != "" & trial != "practice"  & stimulus_type != "prom_spec" & url_code != "222") |>
+  dplyr::filter(trial != "" & trial != "practice" & trial != "practice" & stimulus_type != "prom_spec" & url_code != "4746"
+                & url_code != "2657") |>
   group_by(url_code, trial, load, stimulus_type) %>%
   summarise(median_color_angle_deviation = median(color_angle_abs_deviation, na.rm = TRUE),
             overall_avg = mean(color_angle_abs_deviation, na.rm = TRUE))
@@ -337,7 +342,8 @@ median_values_abs <- data_all %>%
 
 #create avg value for barplot and for 95% interval
 summary_stats_median <- median_values_abs %>%
-  dplyr::filter(trial != "" & trial != "practice"  & stimulus_type != "prom_spec" & url_code != "222") |>
+  dplyr::filter(trial != "" & trial != "practice" & trial != "Practice" & stimulus_type != "prom_spec" & url_code != "4746"
+                & url_code != "2657") |>
   group_by(load, trial) %>%
   summarise(overall_avg = median(median_color_angle_deviation, na.rm = TRUE),
             sd_value = sd(median_color_angle_deviation, na.rm = TRUE),
@@ -346,7 +352,8 @@ summary_stats_median <- median_values_abs %>%
             overall_avg = mean(median_color_angle_deviation, na.rm = TRUE))
 
 summary_stats_avg <- average_values_abs %>%
-  dplyr::filter(trial != "" & trial != "practice"  & stimulus_type != "prom_spec" & url_code != "222") |>
+  dplyr::filter(trial != "" & trial != "practice" & trial != "Practice" & stimulus_type != "prom_spec" & url_code != "4746"
+                & url_code != "2657") |>
   group_by(load, trial) %>%
   summarise(overall_avg = mean(average_color_angle_deviation, na.rm = TRUE),
             sd_value = sd(average_color_angle_deviation, na.rm = TRUE),
@@ -355,7 +362,7 @@ summary_stats_avg <- average_values_abs %>%
 
 
 # change factor key to Baseline and Prospective memory
-data_all$trial <- ifelse(data_all$trial == "baseline2", "baseline", 
+data_all$trial <- ifelse(data_all$trial == "baseline1", "baseline", 
                          data_all$trial)
 
 
@@ -384,11 +391,15 @@ plot_median <- ggplot(data = median_values_abs, aes(x = trial, y = median_color_
         legend.title = element_text(size = 7), 
         legend.text = element_text(size = 7), 
         legend.position = "top") +
-  guides(color = guide_legend(nrow = 2))
+  guides(color = guide_legend(nrow = 2)) +
+  stat_compare_means(method = "t.test", label = "p.signif", 
+                     aes(group = trial), 
+                     position = position_nudge(x = 0.5))  # Add significance annotations
+
 
 plot_median <-  plot_median + 
   geom_point(data = summary_stats_median, aes(x = trial, y = overall_avg, color = "Average"), size = 3) +
-  scale_color_manual(values = c("black", "red", "blue", "violet", "orange"), labels = c("Mean",
+  scale_color_manual(values = c("black", "red", "blue"), labels = c("Mean",
                                                                               "Median per person",
                                                                               "Median per person")) +
   labs(color = "") +
@@ -400,7 +411,7 @@ print(plot_median_v2)
 print(plot_median)
 
 # save the plot
-ggplot2::ggsave(filename = "median_ADOK_v3.pdf", path = "/Users/tobiaskuehlwein/pm_color/analysis/plots", plot = plot_median, width = 7, height = 5, dpi = 300)
+ggplot2::ggsave(filename = "M09_results.pdf", path = "/Users/tobiaskuehlwein/pm_color/teaching_files", plot = plot_median, width = 7, height = 5, dpi = 300)
 
 
 
@@ -421,7 +432,10 @@ plot_median <- ggplot(data = median_values_abs, aes(x = trial, y = median_color_
                 theme(strip.text = element_text(size = 12),
                       axis.title.x = element_text(size = 10),  # Adjust x-axis title size
                       axis.text.y = element_text(size = 10),   # Adjust y-axis label size
-                      legend.position = "top")
+                      legend.position = "top") +
+  stat_compare_means(method = "t.test", label = "p.signif", group = "trial")  # Add significance annotations
+
+
 
 
 
@@ -766,7 +780,8 @@ data_l3 |>
 #descriptive data of avg, sd, median, and min, max abs_col_dev for each load, only one trial type
 data_all |>  
   dplyr::filter(trial != "" & trial != "practice"  & stimulus_type != "prom_spec"
-                & trial != "baseline2" & trial != "baseline1") |>
+                & trial != "baseline2" & trial != "baseline1" & url_code != "4746"
+                & url_code != "2657") |>
   group_by(trial, load) %>%
   summarise(color_avg = mean(color_angle_abs_deviation, na.rm = TRUE),
             color_median = median(color_angle_abs_deviation, na.rm = TRUE),
@@ -774,3 +789,23 @@ data_all |>
             color_dif_min = min(color_angle_abs_deviation, na.rm = TRUE),
             color_dif_max = max(color_angle_abs_deviation, na.rm = TRUE),)%>%
   arrange(load)
+
+# check for sign differences between trial per load
+
+# Filter the data
+filtered_data <- data_test |> 
+  filter(trial != "" & trial != "Practice" & trial != "practice" & stimulus_type != "prom_spec" & url_code != "4746"
+         & url_code != "2657")
+
+# Ensure factors for ANOVA
+filtered_data$load <- as.factor(filtered_data$load)
+filtered_data$trial <- as.factor(filtered_data$trial)
+
+# Create ANOVA model
+anova_model <- aov(color_angle_abs_deviation ~ load * trial, data = filtered_data)
+
+# Perform Tukey's HSD post-hoc test
+tukey_results <- TukeyHSD(anova_model)
+
+# View results
+print(tukey_results)
