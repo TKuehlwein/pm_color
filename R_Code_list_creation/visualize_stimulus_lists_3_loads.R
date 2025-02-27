@@ -52,8 +52,8 @@ hues <- data %>%
   pivot_longer(!block_number & !stimulus_seq & !trial_number & !stimulus_type & !load,
                names_to = "condition", values_to = "hue") %>%
   filter(!is.na(hue)) %>%
-  mutate(hue = hue, load = paste0("load ", load),
-         version = paste0("version ", parse_number(condition)))
+  mutate(hue = hue, load = paste0("Load ", load),
+         version = paste0("Version ", parse_number(condition)))
 
 
 # =========================================== visualize distribution of hues ===
@@ -77,54 +77,56 @@ hues %>%
   facet_grid(version ~ load, switch = "x") +
   theme_minimal(base_size = 15) +
   labs(x = "", y = "") +
-  ggtitle("Color distribution") +
   theme(strip.background = element_rect(color = "black", fill = "grey90", linetype = "blank"))
 
 plt_load_1 <-
 hues %>%
-  filter(load == "load 1", block_number > 0) %>%
+  filter(load == "Load 1", block_number > 0) %>%
   ggplot(aes(x = trial_number, y = hue, color = hue, shape = stimulus_type)) +
   geom_line(aes(group = trial_number), color = "grey") +
   geom_point(size = 3) +
   scale_colour_gradientn(colours = rainbow(360)) +
-  scale_shape_manual(values =c(1, 15)) +
+  scale_shape_manual(values =c(1, 15), 
+                     labels = c("Ongoing", "Prospective cue")) +
   theme_minimal(base_size = 15) +
   facet_grid(version ~ .) +
   scale_y_continuous(breaks = c(0, 360, 90, 180, 270)) +
   ggtitle("Load 1") +
-  labs(x = "", y = "") +
+  labs(x = "", y = "", shape = "Stimulus Type") +
   theme(strip.background = element_rect(color = "black", fill = "grey90", linetype = "blank"),
         panel.grid.minor.y = element_blank())
 
 plt_load_3 <-
 hues %>%
-  filter(load == "load 3", block_number > 0) %>%
+  filter(load == "Load 3", block_number > 0) %>%
   ggplot(aes(x = trial_number, y = hue, color = hue, shape = stimulus_type)) +
   geom_line(aes(group = trial_number), color = "grey") +
   geom_point(size = 3) +
   scale_colour_gradientn(colours = rainbow(360)) +
-  scale_shape_manual(values =c(1, 15)) +
+  scale_shape_manual(values =c(1, 15), 
+                     labels = c("Ongoing", "Prospective cue")) +
   theme_minimal(base_size = 15) +
   facet_grid(version ~ .) +
-  scale_y_continuous(breaks = c(-180, 90, 0, 90, 180)) +
+  scale_y_continuous(breaks = c(0, 360, 90, 180, 270)) +
   ggtitle("Load 3") +
-  labs(x = "", y = "") +
+  labs(x = "", y = "", shape = "Stimulus Type") +
   theme(strip.background = element_rect(color = "black", fill = "grey90", linetype = "blank"),
         panel.grid.minor.y = element_blank())
 
 plt_load_5 <-
 hues %>%
-  filter(load == "load 5", block_number > 0) %>%
+  filter(load == "Load 5", block_number > 0) %>%
   ggplot(aes(x = trial_number, y = hue, color = hue, shape = stimulus_type)) +
   geom_line(aes(group = trial_number), color = "grey") +
   geom_point(size = 3) +
   scale_colour_gradientn(colours = rainbow(360)) +
-  scale_shape_manual(values =c(1, 15)) +
+  scale_shape_manual(values =c(1, 15), 
+                     labels = c("Ongoing", "Prospective cue")) +
   theme_minimal(base_size = 15) +
   facet_grid(version ~ .) +
   scale_y_continuous(breaks = c(0, 360, 90, 180, 270)) +
   ggtitle("Load 5") +
-  labs(x = "", y = "") +
+  labs(x = "", y = "", shape = "Stimulus Type") +
   theme(strip.background = element_rect(color = "black", fill = "grey90", linetype = "blank"),
         panel.grid.minor.y = element_blank())
 
@@ -138,10 +140,10 @@ plt_all <- ggarrange(plt_load_1, plt_load_3, plt_load_5,
 
 # =============================================================== save plots ===
 
-ggsave(filename = paste0(dir_output, "color_distribution.pdf"),
+ggsave(filename = paste0(dir_output, "color_distribution_final.pdf"),
        plot = plt_col_dist, width = 29.7, height = 21.0, units = "cm")
 
-ggsave(filename = paste0(dir_output, "color_trial_conditions.pdf"),
+ggsave(filename = paste0(dir_output, "color_trial_conditions_final.pdf"),
        plot = plt_all, width = 21, height = 29.7, units = "cm")
 
 
