@@ -332,7 +332,7 @@ ggplot(average_values_abs, aes(x = trial, y = average_color_angle_deviation, fil
   labs(x = "Trial type", y = "Average Color Angle Deviation", fill = "Trial type")
 
 
-# create overall barplot for all loads and data points average
+# create overall boxplot for all loads and data points average
 
 #calculate average per participant for geom_jitter points
 average_values_abs <- data_all %>%
@@ -381,10 +381,13 @@ summary_stats_avg <- average_values_abs %>%
 
 
 # change factor key to Baseline and Prospective memory
-data_all$trial <- ifelse(data_all$trial == "baseline1", "baseline", 
+data_all$trial <- ifelse(data_all$trial == "baseline", "Baseline", 
                          data_all$trial)
 
-data_all$trial <- ifelse(data_all$trial == "baseline2", "baseline", 
+data_all$trial <- ifelse(data_all$trial == "baseline2", "Baseline", 
+                         data_all$trial)
+
+data_all$trial <- ifelse(data_all$trial == "pm", "Prospective memory", 
                          data_all$trial)
 
 
@@ -403,7 +406,7 @@ plot_median <- ggplot(data = median_values_abs, aes(x = trial, y = median_color_
   scale_color_manual(values = c(color_values, "Average" = average_color), 
                      labels = c(levels(median_values_abs$trial), "Average")) +
   scale_fill_manual(values = color_values) +
-  scale_x_discrete(labels = c("baseline" = "Baseline", "pm" = "Prospective \n memory")) +
+  scale_x_discrete(labels = c("baseline" = "Baseline", "Prospective memory" = "Prospective \n memory")) +
   facet_wrap(~ load, labeller = labeller(load = function(variable) paste("Load", variable))) +
   labs(x = "Block type", y = "Average Color Deviation [°]", fill = "Block type", color = "") +
   scale_y_continuous(breaks = seq(0, 50, by = 10)) +
@@ -424,9 +427,9 @@ plot_median <- ggplot(data = median_values_abs, aes(x = trial, y = median_color_
 
 plot_median <-  plot_median + 
   geom_point(data = summary_stats_median, aes(x = trial, y = overall_avg, color = "Average"), size = 3) +
-  scale_color_manual(values = c("black", "red", "blue", "orange"), labels = c("Median of all Medians",
-                                                                              "Median per person",
-                                                                              "Median per person")) +
+  scale_color_manual(values = c("black", "red", "blue"), labels = c("Median of all Medians",
+                                                                              "Median per person"
+                                                                              )) +
   labs(color = "") +
   facet_wrap(~ load, labeller = labeller(load = function(variable) paste("Load", variable))) +
   theme(legend.title = element_text(size = 15), legend.text = element_text(size = 15)) +
@@ -435,7 +438,7 @@ plot_median <-  plot_median +
 print(plot_median)
 
 # save the plot
-ggplot2::ggsave(filename = "TeaP_2025.pdf", path = "/Users/tobiaskuehlwein/pm_color/TeaP_2025", plot = plot_median, width = 9, height = 7, dpi = 400)
+ggplot2::ggsave(filename = "TeaP_2025_2.pdf", path = "/Users/tobiaskuehlwein/pm_color/TeaP_2025", plot = plot_median, width = 9, height = 7, dpi = 400)
 
 
 
